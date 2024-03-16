@@ -1,0 +1,68 @@
+.form-direction {
+  max-width: 1490px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: rgba(41, 41, 41, 0.69);
+  min-height: 350px;
+}
+
+.form-direction__container {
+  margin-top: 20px;
+  display:  flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* flex-wrap: nowrap; */
+}
+
+.form-direction__title {
+  width: 200px;
+}
+
+.form-direction__button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-direction__container input {
+  padding: 0 10px;
+  width: 325px;
+  height: 60px;
+  margin-right: 10px;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.form-direction__submit {
+  margin-top: 30px;
+  border: none;
+  width: 323px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: #ffa800;
+  font-size: 24px;
+}
+
+.form-direction__submit:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 15px;
+}
+
+.form-direction__submit:active {
+  box-shadow: none;
+  border: 1px solid #ffa800;
+  color: #ffa800;
+  background-color: #fff;
+}
+
+.form-direction__line {
+  display: flex;
+}
+
+.form-direction__city-from {
+  position: relative;
+}
+
+.list__clue-cities {
+  position: absolute;
+}
