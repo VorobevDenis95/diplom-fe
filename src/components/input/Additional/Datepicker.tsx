@@ -103,6 +103,7 @@ const DatePicker = ({value, coordinates,  onChange, onClickDate} : DatePickerPro
 
 
   const onDateSelect = (dateCells: DateCellItem) => {
+    // onChange(`${dateCells.year}, ${dateCells.month}, ${dateCells.day}`);
     onChange(new Date(dateCells.year, dateCells.month, dateCells.day));
     onClickDate(false);
   };

@@ -8,4 +8,12 @@ function getCurrentDate (date: Date) {
   return `${dateDay}.${month}.${year}`;
 }
 
-export {getCurrentDate};
+function setCurrentDate(valueInput: string)  {
+  const arrDate = valueInput.split('.');
+  const [year, mount, day] = arrDate.reverse();
+  const fullYear = 2000 + Number(year);
+  const currentMonth = Number(mount) - 1;
+  return new Date(fullYear, currentMonth, Number(day));
+}
+
+export {getCurrentDate, setCurrentDate};
