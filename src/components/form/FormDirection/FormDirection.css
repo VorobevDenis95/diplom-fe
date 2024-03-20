@@ -1,4 +1,6 @@
 .form-direction {
+  padding: 25px 0px;
+  margin: 0 auto;
   max-width: 1490px;
   display: flex;
   flex-direction: column;
@@ -8,6 +10,7 @@
 }
 
 .form-direction__container {
+  min-height: 350px;
   margin-top: 20px;
   display:  flex;
   justify-content: center;
@@ -34,7 +37,7 @@
 }
 
 .form-direction__submit {
-  margin-top: 30px;
+  margin-top: 40px;
   border: none;
   width: 323px;
   height: 60px;
@@ -65,4 +68,13 @@
 
 .list__clue-cities {
   position: absolute;
+}
+
+.home {
+  margin: 0;
+  width: 730px;
+}
+
+.ivan {
+  position: relative;
 }

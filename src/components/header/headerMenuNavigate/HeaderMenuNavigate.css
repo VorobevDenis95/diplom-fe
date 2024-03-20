@@ -1,15 +1,19 @@
 .header__menu {
-  height: 94px;
+  /* padding: 0  50px; */
+  padding-left: 120px;
   background-color: #292929;
   font-size: 30px;
 }
 
 .header__menu-container {
+  height: 94px;
   list-style-type: none;
   display: flex;
+  align-items: center;
 }
 
 .header__menu-link {
+  margin-right: 20px;
   text-decoration: none;
   color: #fff;
 }

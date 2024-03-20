@@ -5,6 +5,10 @@
   font-family: Roboto;
 }
 
+#root {
+  /* max-width: 1920px; */
+}
+
 @font-face {
   font-family: Roboto;
   src: local('Roboto' )url('/src/assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');

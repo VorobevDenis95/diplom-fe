@@ -87,10 +87,10 @@ const getAllCells = (year: number, month: number) => {
   ]
 }
 
-const DatePicker = ({value, coordinates,  onChange, onClickDate} : DatePickerProps) => {
+const DatePicker = ({value, coordinates, inputRef, timeout, onChange, onClickDate} : DatePickerProps) => {
   const [panelYear, setPanelYear] = useState(value.getFullYear());
   const [panelMonth, setPanelMonth] = useState(value.getMonth());
-  
+  console.log(timeout)
   const CalendarStyles = {
     top: `${coordinates.y + coordinates.height}px`,
     left: `${coordinates.x}px`,
@@ -109,6 +109,8 @@ const DatePicker = ({value, coordinates,  onChange, onClickDate} : DatePickerPro
   };
 
   const nextMonth = () => {
+    inputRef.current?.focus();
+    if (timeout) clearTimeout(timeout);
     if (panelMonth === 11) {
       setPanelMonth(0);
       setPanelYear(panelYear + 1);
@@ -118,6 +120,8 @@ const DatePicker = ({value, coordinates,  onChange, onClickDate} : DatePickerPro
   }
 
   const prevMonth = () => {
+    inputRef.current?.focus();
+    if (timeout) clearTimeout(timeout);
     if (panelMonth === 0) {
       setPanelMonth(11);
       setPanelYear(panelYear - 1);

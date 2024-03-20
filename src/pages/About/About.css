@@ -1,0 +1,17 @@
+.about__section {
+  padding: 150px 260px;
+  
+}
+
+#about__section-title {
+  margin: auto;
+  max-width: 1320px;
+  font-size: 36px;
+}
+
+.about__section-container {
+  margin: auto;
+  padding-left: 10px;
+  max-width: 1320px;
+  border-left: 9px solid rgb(255, 168, 0);
+}

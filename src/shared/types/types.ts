@@ -38,7 +38,9 @@ export interface DatePickerProps {
   coordinates: CoordinatesProps;
   onChange: (value: Date) => void;
   onClickDate: (value: boolean) => void;
+  inputRef: React.RefObject<HTMLInputElement>
 
+  timeout?: number;
   min?: Date;
   max?: Date;
 }
@@ -53,6 +55,11 @@ export interface DateCellItem {
 
   isToday?: boolean,
   isSelected?: boolean,
+}
+
+export interface ContainerWorkProps {
+  src: string,
+  title: string
 }
 
 export interface StateHeader {

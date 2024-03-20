@@ -1,4 +1,5 @@
 import { CityProps } from "../../../shared/types/types";
+import './DropdownListOfHints.css';
 
 interface DropListProps {
   list: CityProps[],
@@ -13,7 +14,7 @@ const DropdownListOfHints = ({list, handleClick, isActive} : DropListProps ) => 
         {
           list.map((el: CityProps) => (
          <li onClick={() => handleClick(el)}
-         key={el.id}>{el.name}</li>
+         key={el.id}>{el.name.toUpperCase()}</li>
      ))
         }
         </ul>

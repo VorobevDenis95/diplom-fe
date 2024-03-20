@@ -2,10 +2,11 @@ import axios, { AxiosResponse } from "axios";
 import { BASE_URL } from ".";
 import { CitiesProps } from "../types/types";
 
-export const getCities = async (city: string) => {
+export const getCities = async (city: string, controller: AbortController) => {
   try {
     const response: AxiosResponse<CitiesProps['list']> = await axios({
       url: `${BASE_URL}/routes/cities`,
+      signal: controller.signal,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'

@@ -51,7 +51,7 @@ export default [
       },
       propWrapperFunctions: [
           // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
-          forbidExtraProps,
+          // forbidExtraProps,
           {property: "freeze", "object": "Object"},
           {property: "myFavoriteWrapper"},
           // for rules that check exact prop wrappers
@@ -59,20 +59,20 @@ export default [
       ],
       componentWrapperFunctions: [
           // The name of any function used to wrap components, e.g. Mobx `observer` function. If this isn't set, components wrapped by these functions will be skipped.
-          observer, // `property`
+          // observer, // `property`
           {property: "styled"}, // `object` is optional
           {property: "observer", "object": "Mobx"},
           {property: "observer", "object": "<pragma>"} // sets `object` to whatever value `settings.react.pragma` is set to
       ],
       formComponents: [
         // Components used as alternatives to <form> for forms, eg. <Form endpoint={ url } />
-        CustomForm,
+        // CustomForm,
         {name: "SimpleForm", "formAttribute": "endpoint"},
         {name: "Form", "formAttribute": ["registerEndpoint", "loginEndpoint"]}, // allows specifying multiple properties if necessary
       ],
       linkComponents: [
         // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
-        Hyperlink,
+        // Hyperlink,
         {name: "MyLink", "linkAttribute": "to"},
         {name: "Link", "linkAttribute": ["to", "href"]}, // allows specifying multiple properties if necessary
       ]

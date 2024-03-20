@@ -10,6 +10,8 @@ const DateInput = ({nameClass }: InputProps) => {
   const [coordinates, setСoordinates] = useState<CoordinatesProps>();
   const currentDate = date ? date : new Date();
 
+  const [timeout, setTimeoutBlur] = useState(0);
+
   const [valueInput, setValueInput] = useState('');
 
   useEffect(() => {
@@ -35,14 +37,16 @@ const DateInput = ({nameClass }: InputProps) => {
   const handleBlur = () => {
     if (!isDatepicker && valueInput.length === 8) {
       setDate(setCurrentDate(valueInput));
+      return
     }
-
-    // setTimeout(() => {
-    //   if (isDatepicker) {
-    //     setActiveDatePicker(false);
-    //     return;
-    //   }
-    // }, 100);
+    
+    const time = setTimeout((() => {
+      if (isDatepicker) {
+        setActiveDatePicker(false);
+        return;
+      }
+    }), 200);
+    setTimeoutBlur(time);
   }
 
   return (
@@ -65,6 +69,8 @@ const DateInput = ({nameClass }: InputProps) => {
     {
       isDatepicker && 
       <DatePicker value={currentDate}
+      timeout={timeout}
+      inputRef={myInput}
       coordinates={coordinates as CoordinatesProps}  
       onClickDate={setActiveDatePicker}
       onChange={setDate}/>
