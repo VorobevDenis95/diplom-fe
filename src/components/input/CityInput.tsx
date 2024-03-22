@@ -79,7 +79,7 @@ const CityInput = ({nameClass, placeholder}: InputProps) => {
 
   return (
     <>
-      <div className="ivan">
+      <div className="city-input">
         <input className={nameClass} type="text" required
           placeholder={placeholder}
           // onBlur={

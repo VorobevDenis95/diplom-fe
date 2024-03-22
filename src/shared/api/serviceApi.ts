@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { BASE_URL } from ".";
 import { CitiesProps } from "../types/types";
 import { ResponseRoutes } from "../types/typesRoutesBilets";
+import { paramsRoutesSelection } from "../typesParamsUrl";
 
 
 export const getCities = async (city: string, controller: AbortController) => {
@@ -22,11 +23,11 @@ export const getCities = async (city: string, controller: AbortController) => {
   }
 }
 
-export const getRoute = async() => {
+export const getRoute = async(params: paramsRoutesSelection) => {
   try {
     // url: `${BASE_URL}/routes?from_city_id=${}&to_city_id=${}&date_start=${}&date_end={}`
     const response:  AxiosResponse<ResponseRoutes> = await axios({
-      url: `${BASE_URL}/routes?from_city_id=65f7ee8d3e252100467cb2a3&to_city_id=65f7ee8e3e252100467cb2a4&date_start=2024-05-01&date_end=2024-05-12`,
+      url: `${BASE_URL}/routes?from_city_id=${params.cityFrom}&to_city_id=${params.cityTo}&date_start=${params.dateStart}&date_end=${params.dateEnd}`,
       headers: {
         'Content-Type': 'application/json',
       },

@@ -31,10 +31,14 @@
   padding: 0 10px;
   width: 325px;
   height: 60px;
-  margin-right: 10px;
+  margin-right: 20px;
   border-radius: 3px;
   background-color: #fff;
 }
+
+/* .form-direction__city-from:nth-of-type(2) {
+  margin-right: 0px;
+} */
 
 .form-direction__submit {
   margin-top: 40px;
@@ -59,7 +63,16 @@
 }
 
 .form-direction__line {
+  position: relative;
   display: flex;
+}
+
+.form-direction__btn-exchange {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 30%;
+  left: 46.7%;
 }
 
 .form-direction__city-from {
@@ -75,6 +88,6 @@
   width: 730px;
 }
 
-.ivan {
+.city-input {
   position: relative;
 }
