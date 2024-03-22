@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Header from "../components/header/Header";
 import About from "./About/About";
 import Footer from "./Footer/Footer";
@@ -7,8 +8,7 @@ const Root = () => {
   return (
     <>
       <Header />
-      <About />
-      <HowItWork/>
+      <Outlet />
       <Footer/>
     </>
   )
