@@ -4,6 +4,7 @@ export interface CitiesProps {
 }
 
 export interface CityProps {
+  _id?: string;
   id: string,
   name: string
 }

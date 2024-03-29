@@ -13,7 +13,16 @@
 }
 
 .header__menu-link {
+  font-weight: 300;
   margin-right: 20px;
   text-decoration: none;
   color: #fff;
+}
+
+.header__menu-link:hover {
+  text-decoration: underline;
+}
+
+.header__menu-link:active {
+  font-weight: 400;
 }

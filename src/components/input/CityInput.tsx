@@ -4,6 +4,8 @@ import { getCities } from "../../shared/api/serviceApi";
 import DropdownListOfHints from "./Additional/DropdownListOfHints";
 import { CitiesProps, CityProps } from "../../shared/types/types";
 import useDebounce from "../../shared/hooks/useDebounce";
+import { useAppDispatch, useAppSelector } from "../../shared/redux/redux-hooks";
+import { setCityFrom, setCityTo } from "../../shared/redux/slice/directionSlice";
 
 
 const CityInput = ({nameClass, placeholder}: InputProps) => {
@@ -14,7 +16,25 @@ const CityInput = ({nameClass, placeholder}: InputProps) => {
   const [listCities, setListCities] = useState<CitiesProps['list']>([]);
   const debounceGetCities = useDebounce(inputValue);
   // const [timeout, setMyTimeout] = useState(0);
-  const [city, setCity] = useState<CityProps>();
+  const [city, setCity] = useState<CityProps>({
+    id: '',
+    name: '',
+  });
+
+  const {cityFrom, cityTo} = useAppSelector(state => state.direction);
+
+  const currentCity = nameClass === 'form-direction__city-from' ? cityFrom : cityTo;
+
+  const dispatch = useAppDispatch();
+
+  const changeInput = (value: string) => {
+    setCity((prevstate) => {
+      return {
+        ...prevstate,
+        name: value,
+      }
+    })
+  }
 
   // передавать в диспач город
   // useEffect(() => {
@@ -34,7 +54,7 @@ const CityInput = ({nameClass, placeholder}: InputProps) => {
       // если город в инпуте равен городу в подсказке
       // выбираем город и не показываем подсказку
       if (data.length === 1 && data[0].name === inputValue ) {
-        setCity(listCities[0]) 
+        setCity(data[0]) 
         setActiveList(false);
         return;
       }
@@ -50,7 +70,17 @@ const CityInput = ({nameClass, placeholder}: InputProps) => {
   }
     )()
     
-  }, [debounceGetCities])
+  }, [debounceGetCities]);
+
+  useEffect(() => {
+    if (nameClass === 'form-direction__city-from') dispatch(setCityFrom(city));
+     
+    if (nameClass === 'form-direction__city-to') dispatch(setCityTo(city))
+  }, [city])
+
+  useEffect(() => {
+    changeInput(inputValue);
+  }, [inputValue])
 
   const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     // console.log(listCities[0].name);
@@ -64,7 +94,7 @@ const CityInput = ({nameClass, placeholder}: InputProps) => {
     }
     
     const handleClick = (el: CityProps) => {
-      if (city?.id !== el.id) {
+      if (city?.id !== el._id) {
         setCity(el);
         setInputValue(el.name);
       }
@@ -89,7 +119,7 @@ const CityInput = ({nameClass, placeholder}: InputProps) => {
           //     }
           //   }
           // }
-          value={inputValue} onChange={onChangeValue}
+          value={currentCity.name} onChange={onChangeValue}
       />
         <DropdownListOfHints 
           isActive={isActive}

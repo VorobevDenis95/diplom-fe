@@ -1,0 +1,14 @@
+.service__container {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.service__container img {
+  margin-right: 10px;
+}
+
+.service__container img:last-of-type {
+  margin-right: 0px;
+}

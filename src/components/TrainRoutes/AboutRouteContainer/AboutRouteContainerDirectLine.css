@@ -1,0 +1,42 @@
+.direct-line-route {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.revers-flex {
+  flex-direction: row-reverse;
+}
+
+.reversArrow {
+  transform: rotate(180deg);
+}
+
+.direct-line-route__container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.direct-line-route__container__date {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.direct-line-route__container__station {
+  color: #928F94;
+}
+
+.direct-line-route__direct-time-arrow {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.direct-line-route__direct-time-arrow__time {
+  color: #C4C4C4;
+  font-size: 18px;
+}

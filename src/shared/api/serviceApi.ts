@@ -24,15 +24,32 @@ export const getCities = async (city: string, controller: AbortController) => {
 }
 
 export const getRoute = async(params: paramsRoutesSelection) => {
+  console.log(params);
+  let currentAdress = '/routes?';
+  for (const key in params) {
+    const value: paramsRoutesSelection[keyof paramsRoutesSelection] = params[key as keyof paramsRoutesSelection];
+    if (Object.keys(params)[0] === key) {
+      currentAdress += `${key}=${value}`;
+      continue;
+    }
+    currentAdress += `&${key}=${value}`;
+  }
   try {
     // url: `${BASE_URL}/routes?from_city_id=${}&to_city_id=${}&date_start=${}&date_end={}`
     const response:  AxiosResponse<ResponseRoutes> = await axios({
-      url: `${BASE_URL}/routes?from_city_id=${params.cityFrom}&to_city_id=${params.cityTo}&date_start=${params.dateStart}&date_end=${params.dateEnd}`,
+      // url: `${BASE_URL}/routes?from_city_id=${params.cityFrom}&to_city_id=${params.cityTo}
+      // ${params.dateStart ? `&date_start=${params.dateStart}` : ''}
+      // ${params.dateEnd ? `date_end=${params.dateEnd}` : ''}
+      // `,
+      // url: `${BASE_URL}/routes?from_city_id=${params.cityFrom}&to_city_id=${params.cityTo}`,
+      url: `${BASE_URL}${currentAdress}`,
+
       headers: {
         'Content-Type': 'application/json',
       },
     })
-
+      console.log(currentAdress)
+      console.log(response.data)
     return response.data;
 
   } catch (error) {

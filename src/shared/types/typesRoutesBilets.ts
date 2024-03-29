@@ -11,7 +11,8 @@ interface ItemRoutes {
   available_seats_info: {
     first: number,
     second: number,
-    third: number
+    third: number,
+    fourth: number,
   },
   departure: {
     _id: string,
@@ -28,7 +29,8 @@ interface ItemRoutes {
     available_seats_info: {
       first: number,
       second: number,
-      third: number
+      third: number,
+      fourth: number,
     },
     train: {
       _id: string,
@@ -64,10 +66,16 @@ interface ItemRoutes {
         top_price: number,
         bottom_price: number,
         side_price: number
+      },
+      fourth: {
+        price: number,
+        top_price: number,
+        bottom_price: number,
       }
+
     }
   },
-  arrival: {
+  arrival?: {
     _id: string,
     have_first_class: boolean,
     have_second_class: boolean,
@@ -116,9 +124,15 @@ interface ResponseRoutes {
   items: ItemRoutes[]
 }
 
+interface TraineRoutesItemProps {
+  item: ItemRoutes;
+}
+
+// type TraineRoutesItemProps = Pick<ItemRoutes, 'have_first_class'>;
+
 export const initResponseRoutes :ResponseRoutes = {
   total_count: 0,
   items: [],
 }
 
-export type {ItemRoutes, ResponseRoutes};
+export type {ItemRoutes, ResponseRoutes, TraineRoutesItemProps};

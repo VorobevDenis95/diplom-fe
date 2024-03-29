@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import DatePicker from "./Additional/Datepicker";
 import { getCurrentDate, setCurrentDate } from "./utils";
 import { CoordinatesProps, InputProps } from "../../shared/types/types";
+import { useAppDispatch, useAppSelector } from "../../shared/redux/redux-hooks";
+import { setDateEnd, setDateStart } from "../../shared/redux/slice/directionSlice";
 
 const DateInput = ({nameClass }: InputProps) => {
   const [date, setDate] = useState<Date>();
@@ -14,9 +16,22 @@ const DateInput = ({nameClass }: InputProps) => {
 
   const [valueInput, setValueInput] = useState('');
 
+  const {dateStart, dateTo} = useAppSelector(state => state.direction);
+  const currentDateInput = nameClass === 'search-form__input-date-from' ? dateStart : dateTo;
+  const dispatch = useAppDispatch();
+
+
   useEffect(() => {
+    if (nameClass === 'search-form__input-date-from') {
+      dispatch(setDateStart(valueInput));
+    } else { 
+      dispatch(setDateEnd(valueInput));
+    } 
+  }, [valueInput])
+
+  useEffect(() => {
+
     const el = myInput.current?.getBoundingClientRect();
-    console.log(el)
     if (el) {
       const {x, y, height, width}  = el;
       setСoordinates({
@@ -59,12 +74,13 @@ const DateInput = ({nameClass }: InputProps) => {
     placeholder="ДД.ММ.ГГ"
     maxLength={8}
     minLength={8}
-    value={valueInput}
+    value={currentDateInput}
     onChange={(e) => {
       setValueInput(e.target.value)
     }}
-
-    required/>
+    // required={unRequired ? false : true}
+    
+    />
 
     {
       isDatepicker && 

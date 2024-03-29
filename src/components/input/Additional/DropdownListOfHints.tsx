@@ -13,8 +13,8 @@ const DropdownListOfHints = ({list, handleClick, isActive} : DropListProps ) => 
       <ul className="list__clue-cities">
         {
           list.map((el: CityProps) => (
-         <li onClick={() => handleClick(el)}
-         key={el.id}>{el.name.toUpperCase()}</li>
+         <li key={el._id} onClick={() => handleClick(el)}
+         >{el.name.toUpperCase()}</li>
      ))
         }
         </ul>

@@ -1,0 +1,28 @@
+.seats__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.seats__container__name  {
+  width: 30%;
+  color: #3E3C41;
+}
+
+.seats__container__quantity {
+  width: 10%;
+  color: #FFA800;
+}
+
+.seats__container__word {
+  color: #928f94;
+}
+
+.seats__container__price {
+  color: #2D2B2F;
+  font-size: 24px;
+  font-weight: 700;
+}

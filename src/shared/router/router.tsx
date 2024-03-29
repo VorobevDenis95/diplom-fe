@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
         </>
       },
       {
-        path: '/routes/:cityFrom/:cityTo/:dateStart/:dateEnd',
+        path: '/routes/:from_city_id/:to_city_id/:date_start?/:date_end?',
         element: <TrainSelection />,
       }
 
