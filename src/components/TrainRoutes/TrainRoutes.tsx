@@ -1,4 +1,4 @@
-import { ItemRoutes, TraineRoutesItemProps } from "../../shared/types/typesRoutesBilets";
+import { TraineRoutesItemProps } from "../../shared/types/typesRoutesBilets";
 import AboutRouteContainerDirectLine from "./AboutRouteContainer/AboutRouteContainerDirectLine";
 import AboutRouteContainerDirectLineBack from "./AboutRouteContainer/AboutRouteContainerDirectLineBack";
 import RouteCategoriesSeatsContainer from "./RouteCategoriesSeatsContainer/RouteCategoriesSeatsContainer";

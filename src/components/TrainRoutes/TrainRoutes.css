@@ -26,13 +26,16 @@
 } */
 
 .train-routes__item__head-name-train {
-  margin-top: 20px;
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .train-routes__item__head-routes {
   text-align: center;
   width: 60%;
-  margin-bottom: 20px;
+
+  margin: 20px 0;
 }
 
 .train-routes__item__categories {
@@ -47,7 +50,7 @@
 }
 
 .train-routes__item__content {
-  padding: 30px;
+  padding: 20px 15px;
   width: 50%;
 }
 

@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 
 
-const Header = ({state} : StateHeader) => {
+const Header = () => {
   const [classState, setClassState] = useState<StateHeader['state']>('home'); 
   const [isMain, setMain] = useState(false);
 

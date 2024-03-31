@@ -15,13 +15,22 @@ const SelectSeatsContainer = ({have_wifi, have_air_conditioning, is_express} : S
   return (
     <div className='service__container'>
       {have_wifi &&
-      <img src={wifiIcon} alt="service__icon" />
+      <div className='service__container__image'>
+        <div className="service__container__image-tooltip">WI-FI</div>
+        <img src={wifiIcon} alt="service__icon" />
+      </div>
       }
       {is_express &&
-      <img src={expressIcon} alt="service__icon" />
+      <div className='service__container__image'>
+        <div className="service__container__image-tooltip">Экспресс</div>
+        <img src={expressIcon} alt="service__icon" />
+      </div>
     }
-    {have_air_conditioning && 
-    <img src={airConditionIcon} alt="service__icon" />
+    {have_air_conditioning &&
+      <div className='service__container__image'>
+        <div className="service__container__image-tooltip">Кондиционер </div>
+        <img src={airConditionIcon} alt="service__icon" />
+      </div>
     }
     </div>
   )

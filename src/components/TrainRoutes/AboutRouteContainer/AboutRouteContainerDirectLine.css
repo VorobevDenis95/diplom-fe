@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 0 40px;
 }
 
 .revers-flex {
@@ -14,11 +14,15 @@
 }
 
 .direct-line-route__container {
-  width: 40%;
+  width: 35%;
   display: flex;
   flex-direction: column;
-  text-align: center;
+  /* text-align: center; */
 }
+
+/* .direct-line-route__container:nth-of-type(1) {
+  width: 20%;
+} */
 
 .direct-line-route__container__date {
   font-size: 24px;
@@ -30,7 +34,7 @@
 }
 
 .direct-line-route__direct-time-arrow {
-  width: 20%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;

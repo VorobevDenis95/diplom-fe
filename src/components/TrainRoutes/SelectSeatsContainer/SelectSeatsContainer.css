@@ -5,9 +5,31 @@
   justify-content: flex-end;
 }
 
-.service__container img {
+.service__container__image {
+  position: relative;
   margin-right: 10px;
 }
+
+.service__container__image:hover .service__container__image-tooltip {
+  position: absolute;
+  display: block;
+  /* top: 0; */
+  
+} 
+
+.service__container__image-tooltip {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: -10px;
+  /* min-width: 50px; */
+  border-radius: 5px;
+  padding: 15px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 1px 4px 5px #918F94;
+}
+
 
 .service__container img:last-of-type {
   margin-right: 0px;
