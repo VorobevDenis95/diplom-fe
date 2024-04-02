@@ -11,9 +11,11 @@ export function getTravelTime(seconds: number) {
   return `${hours}:${minutes}`;
 }
 
-export function capitalized (text: string) {
-const regex = /(^|\s)([а-яё])/g;
-return text.replace(regex, function(match, group1, group2) {
-    return group1 + group2.toUpperCase();
-});
+export function capitalized (text: string) {;
+  const updatedText = text.replace(/(?:^|[^\p{L}])[а-яё]/gu, match => match.toUpperCase());
+  return updatedText;
+// const regex = /(^|\s)([а-яё])/g;
+// return text.replace(regex, function(match, group1, group2) {
+//     return group1 + group2.toUpperCase();
+// });
 }

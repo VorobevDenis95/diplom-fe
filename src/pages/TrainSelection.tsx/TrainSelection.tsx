@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ItemRoutes, ResponseRoutes, initResponseRoutes } from '../../shared/types/typesRoutesBilets';
 import { useLocation, useParams } from "react-router-dom";
-import { getRoute } from "../../shared/api/serviceApi";
+import { getRoute, lastTickets } from "../../shared/api/serviceApi";
 import TrainRoutes from "../../components/TrainRoutes/TrainRoutes";
 import { paramsRoutesSelection } from "../../shared/typesParamsUrl";
 import './TrainSelection.css';
@@ -14,6 +14,9 @@ import { fetchRoutes } from "../../shared/redux/asyncThunks/getRouteAsynkThunk";
 const TrainSelection = () => {
   const {items, totalCount} = useAppSelector(state => state.direction)
   const params = useParams();
+
+  const [lastTicketsList, setLastTicketsList] = useState<ItemRoutes[]>([]);
+
   
   // console.log(params);
   // const {from_city_id, to_city_id} = params;
@@ -22,7 +25,6 @@ const TrainSelection = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log(params)
     dispatch(fetchRoutes({...params} as paramsRoutesSelection))
     // console.log(params);
     // dispatch(getRoute)
@@ -36,7 +38,16 @@ const TrainSelection = () => {
     //     console.log(data);
     //   }
     // })() 
-}, [params])
+  }, [params]);
+
+  useEffect(() => {
+    (async () => {
+      const data = await lastTickets();
+      if (data) setLastTicketsList(data);
+    })()
+    // last tickets
+  }, [items])
+
 
 return (
   <>

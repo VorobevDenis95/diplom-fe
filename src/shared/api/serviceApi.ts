@@ -73,3 +73,17 @@ export const subscribe = async(mail: string) => {
     
   }
 }
+
+export const lastTickets = async() => {
+  try {
+    const response = await axios({
+      url: `${BASE_URL}`,
+      headers: {
+      'Content-Type': 'application/json'
+      },
+    })
+    return response.data;
+  } catch (error) {
+    
+  }
+}
