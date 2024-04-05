@@ -5,6 +5,14 @@
   font-family: Roboto;
 }
 
+body {
+  background-color: #F7F5F9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 #root {
   /* max-width: 1920px; */
 }

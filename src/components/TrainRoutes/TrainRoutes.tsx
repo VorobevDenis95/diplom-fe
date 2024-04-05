@@ -1,4 +1,5 @@
 import { TraineRoutesItemProps } from "../../shared/types/typesRoutesBilets";
+import { capitalized } from "../utils";
 import AboutRouteContainerDirectLine from "./AboutRouteContainer/AboutRouteContainerDirectLine";
 import AboutRouteContainerDirectLineBack from "./AboutRouteContainer/AboutRouteContainerDirectLineBack";
 import RouteCategoriesSeatsContainer from "./RouteCategoriesSeatsContainer/RouteCategoriesSeatsContainer";
@@ -21,7 +22,7 @@ const TrainRoutes = ({item} : TraineRoutesItemProps) => {
         </svg>
         <span className="train-routes__item__head-name-train">{item.departure.train.name}</span>
         <div className="train-routes__item__head-routes">
-          {`${item.departure.from.city.name} →	${item.departure.to.city.name}` } 
+          {`${capitalized(item.departure.from.city.name)} →	${capitalized(item.departure.to.city.name)}` } 
         </div>
       </div>
       <div className="train-routes__item__content">

@@ -17,6 +17,8 @@ interface DirectionStore {
   totalCount: number,
   dateStart: string;
   dateTo: string;
+  limit: number;
+  ofset: number;
   error: string;
   status: string;
 }
@@ -32,6 +34,8 @@ const initialState: DirectionStore = {
   },
   items: [],
   totalCount: 0,
+  limit: 5,
+  ofset: 0,
   dateStart: '',
   dateTo: '',
   error: '',
@@ -62,6 +66,7 @@ const direction = createSlice({
       state.cityFrom = to;
       state.cityTo = from;
     }
+    
   },
   extraReducers: (builder) => {
     builder.addCase(fetchRoutes.pending, (state) => {

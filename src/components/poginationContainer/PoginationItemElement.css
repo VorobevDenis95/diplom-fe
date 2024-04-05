@@ -1,0 +1,25 @@
+.page-number__item {
+  margin: 0 10px;
+  width: 85px;
+  height: 75px;
+  border-radius: 5px;
+  border: 2px solid #c4c4c4;
+  color: #928f94;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  /* align-self: center;
+   */
+   align-items: center;
+}
+
+.page-number__item:hover {
+  color: #fff;
+  background-color: #ffa800;
+  background-color: #ffa800;
+}
+
+.current__number {
+  color: #ffa800;
+  border-color: #ffa800;
+}

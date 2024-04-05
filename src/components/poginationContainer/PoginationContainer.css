@@ -1,0 +1,12 @@
+.page__numbers {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  /* align-items: center; */
+}
+
+.page-number__item  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

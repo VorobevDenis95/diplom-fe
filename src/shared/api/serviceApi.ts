@@ -24,7 +24,6 @@ export const getCities = async (city: string, controller: AbortController) => {
 }
 
 export const getRoute = async(params: paramsRoutesSelection) => {
-  console.log(params);
   let currentAdress = '/routes?';
   for (const key in params) {
     const value: paramsRoutesSelection[keyof paramsRoutesSelection] = params[key as keyof paramsRoutesSelection];
@@ -79,11 +78,12 @@ export const lastTickets = async() => {
     const response = await axios({
       url: `${BASE_URL}`,
       headers: {
-      'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
     })
     return response.data;
   } catch (error) {
     
   }
+
 }

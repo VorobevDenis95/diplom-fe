@@ -6,6 +6,7 @@ import { CitiesProps, CityProps } from "../../shared/types/types";
 import useDebounce from "../../shared/hooks/useDebounce";
 import { useAppDispatch, useAppSelector } from "../../shared/redux/redux-hooks";
 import { setCityFrom, setCityTo } from "../../shared/redux/slice/directionSlice";
+import { capitalized } from "../utils";
 
 
 const CityInput = ({nameClass, placeholder}: InputProps) => {
@@ -53,7 +54,7 @@ const CityInput = ({nameClass, placeholder}: InputProps) => {
     if (data) {
       // если город в инпуте равен городу в подсказке
       // выбираем город и не показываем подсказку
-      if (data.length === 1 && data[0].name === inputValue ) {
+      if (data.length === 1 && data[0].name === inputValue.toLocaleLowerCase() ) {
         setCity(data[0]) 
         setActiveList(false);
         return;
@@ -119,7 +120,7 @@ const CityInput = ({nameClass, placeholder}: InputProps) => {
           //     }
           //   }
           // }
-          value={currentCity.name} onChange={onChangeValue}
+          value={capitalized(currentCity.name)} onChange={onChangeValue}
       />
         <DropdownListOfHints 
           isActive={isActive}

@@ -1,7 +1,10 @@
+.train__selection {
+  max-width: 1100px;
+}
+
 .train__selection__header {
   display: flex;
   justify-content: space-between;
   color: #928F94;
   font-size: 18px;
-  ;
 }

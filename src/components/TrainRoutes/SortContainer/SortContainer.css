@@ -1,0 +1,20 @@
+.sort__routes {
+  display: flex;
+  cursor: pointer;
+}
+
+.sort__routes-filters {
+  margin-left: 5px;
+  overflow: hidden;
+  height: 25px;
+  color: #000;
+  font-weight: 400;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.sort__routes-filters-active {
+  overflow: visible;
+}
