@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import './CheckboxItem.css';
+import CheckBox from "./СheckBox";
 
 interface CheckBoxItemProps {
   src: string;
@@ -9,17 +12,43 @@ interface CheckBoxItemProps {
 const CheckBoxItem = ({src, title, params}: CheckBoxItemProps) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const value = searchParams.get(params) ? !!searchParams.get(params) : false;
+
+  const [value, setValue] = useState(searchParams.get(params) ? !!searchParams.get(params) : false);
 
   const prevParams = Object.fromEntries(searchParams);
-  setSearchParams({...prevParams, params: `${value}`})
+  // const obj = {params: `${value}`};
+  // setSearchParams({...prevParams, [params] :`${value}`})
 
+  useEffect(() => {
+    if (value) {
+      setSearchParams({...prevParams, [params]: `${value}`})
+    }
+    if (searchParams.get(params)) {
+      if (!value) {
+        
+        // удаляем свойство из гет параметра при значении фолс
+        const updatedParams = {...prevParams};
+        delete updatedParams[params];
+        console.log(updatedParams);
+      setSearchParams({...updatedParams});
+      }
+    }
+  }, [value])
   
   return (
-    <div className="checkbox__container">
+    <div className="setting__checkbox__container">
       <img src={src} alt="icon__wagon-type" />
       <span>{title}</span>
-      <input type="checkbox" checked={value} />
+        <CheckBox name={title}
+        value={value} onChange={() => {
+          setValue(!value)
+        }} />
+        {/* <label className="setting__checkbox__container__label">
+        <input type='checkbox' className="setting__checkbox__container-input" defaultChecked={value} 
+        onChange={() => {
+        setValue(!value);  
+      }}/>
+        </label> */}
     </div>
   )
 }

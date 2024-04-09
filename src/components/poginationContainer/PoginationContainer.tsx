@@ -9,28 +9,43 @@ const PoginationContainer = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const limit = searchParams.get('limit') ? Number(searchParams.get('limit')) : 5; 
   const {totalCount, items} = useAppSelector(state => state.direction);
-
   const offset = Number(searchParams.get('offset'));
-
-  console.log(Math.round(totalCount / limit))
 
   const [currentPage, setCurrentPage] = useState(1); 
   const [quantityPages, setQuantityPages] = useState(totalCount > 0 ? Math.round(totalCount / limit) : 0);
   const [paginationArr, setPaginationArr] = useState(getPages(quantityPages, currentPage)); 
 
-  useEffect(() => {
-   setQuantityPages(totalCount > 0 ? Math.round(totalCount / limit) : 0);
+  // useEffect(() => {
+  //  setQuantityPages(totalCount > 0 ? Math.round(totalCount / limit) : 0);
    
-  //  const offset = Number(searchParams.get('offset'));
-   if (offset) setCurrentPage(Math.round((offset + limit) / limit)) 
-   else setCurrentPage(1);
+  // //  const offset = Number(searchParams.get('offset'));
+  //  if (offset) setCurrentPage(Math.round((offset + limit) / limit)) 
+  //  else setCurrentPage(1);
 
-  setPaginationArr(getPages(quantityPages,currentPage))
+  // setPaginationArr(getPages(quantityPages,currentPage))
   
-  const prevParams = Object.fromEntries(searchParams);
-  // setSearchParams({...prevParams, offset: `${(currentPage - 1) * limit}`});
+  // const prevParams = Object.fromEntries(searchParams);
+  // // setSearchParams({...prevParams, offset: `${(currentPage - 1) * limit}`});
 
-  }, [totalCount, items, limit, offset])
+  // }, [totalCount, items, limit, offset])
+
+  useEffect(() => {
+    const newQuantityPages = totalCount > 0 ? Math.round(totalCount / limit) : 0;
+    setQuantityPages(newQuantityPages);
+ 
+    if (offset) {
+      setCurrentPage(Math.round((offset + limit) / limit)); 
+    } else {
+      setCurrentPage(1);
+    }
+ 
+    setPaginationArr(getPages(newQuantityPages, currentPage));
+ 
+    const prevParams = Object.fromEntries(searchParams);
+    // setSearchParams({ ...prevParams, offset: (currentPage - 1) * limit });
+ 
+ }, [totalCount, items, limit, offset, currentPage])
+  
 
   const pageDown = () => {
     if (currentPage === 1) return;
@@ -42,6 +57,7 @@ const PoginationContainer = () => {
 
   const pageUp = () => {
     if (currentPage === quantityPages) return;
+    if (quantityPages === 0) return
     const offset = currentPage * limit;
     const prevParams = Object.fromEntries(searchParams)
     return setSearchParams({...prevParams, offset: `${offset}`})

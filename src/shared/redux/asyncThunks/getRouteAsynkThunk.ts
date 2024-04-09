@@ -15,8 +15,8 @@ export const fetchRoutes = createAsyncThunk(
           'Content-Type': 'application/json',
         },
       });
-      console.log(`${BASE_URL}${getAddress(params, '/routes?')}`)
-      console.log(response)
+      // console.log(`${BASE_URL}${getAddress(params, '/routes?')}`)
+      // console.log(response)
       return response.data;
     } catch (error) {
       if (error instanceof Error) {

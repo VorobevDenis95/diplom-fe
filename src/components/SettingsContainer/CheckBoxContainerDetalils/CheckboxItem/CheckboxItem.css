@@ -1,0 +1,41 @@
+.setting__checkbox__container {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.setting__checkbox__container__label {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  width: 59px;
+  height: 19px;
+/*   border: 1px solid red;  */
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.setting__checkbox__container-input {
+  display: none;
+}
+
+.setting__checkbox__container__label::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  background-color: #C4C4C4;
+  border-radius: 50%;
+}
+
+.setting__checkbox__container-input:checked + .setting__checkbox__container__label {
+  background-color: #fcdc9d;
+}
+
+.setting__checkbox__container-input:checked +
+.setting__checkbox__container__label::before {
+  left: 45px;
+  background-color: #ffa800;
+}

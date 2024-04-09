@@ -3,15 +3,12 @@ import { getMinPriceClass } from "../utils"
 import './SeatsContainer.css'
 
 const SeatsContainer = ({item} : TraineRoutesItemProps) => {
-  
-  console.log(item.departure)
-
   return (
       <>
       { 
         item.departure.have_fourth_class &&
         <div className='seats__container'> 
-          <span className='seats__container__name'>Плацкарт</span>
+          <span className='seats__container__name'>Сидячий</span>
           <span className='seats__container__quantity'>{item.departure.available_seats_info.fourth}</span>
           <span>от</span>
           <span className='seats__container__price'>{getMinPriceClass(item.departure.price_info.fourth)}</span>  

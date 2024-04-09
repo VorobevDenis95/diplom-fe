@@ -17,17 +17,17 @@ const CheckBoxContainer = () => {
   return (
     <>
       <CheckBoxItem key={coupeIcon} src={coupeIcon} title='Купе'
-      params={} /> 
-      <CheckBoxItem key={coupeIcon} src={coupeIcon} title='Плацкарт'
-      params={} /> 
-      <CheckBoxItem key={coupeIcon} src={coupeIcon} title='Сидячий'
-      params={} /> 
-      <CheckBoxItem key={coupeIcon} src={coupeIcon} title='Люкс'
-      params={} /> 
-      <CheckBoxItem key={coupeIcon} src={coupeIcon} title='Wifi'
-      params={} /> 
-      <CheckBoxItem key={coupeIcon} src={coupeIcon} title='Экспресс'
-      params={} /> 
+      params='have_second_class' /> 
+      <CheckBoxItem key={reservedSeat} src={reservedSeat} title='Плацкарт'
+      params='have_third_class' /> 
+      <CheckBoxItem key={sedentary} src={sedentary} title='Сидячий'
+      params='have_fourth_class' /> 
+      <CheckBoxItem key={luxary} src={luxary} title='Люкс'
+      params='have_first_class' /> 
+      <CheckBoxItem key={wifiIcom} src={wifiIcom} title='Wifi'
+      params='have_wifi' /> 
+      <CheckBoxItem key={expressIcon} src={expressIcon} title='Экспресс'
+      params='have_air_conditioning' /> 
     </>
   )
 }

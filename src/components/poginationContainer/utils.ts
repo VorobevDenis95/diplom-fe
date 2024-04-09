@@ -2,7 +2,9 @@ export const getPages = (quantityPages: number, currentPage: number) => {
   let pagination = [];
   pagination.push(currentPage);
 
-
+  if (quantityPages === 0) {
+    return pagination;
+  }
 
   if (currentPage > 1) {
     pagination.unshift(currentPage - 1);

@@ -8,3 +8,9 @@
   color: #928F94;
   font-size: 18px;
 }
+
+.flex {
+  max-width: 1920px;
+  display: flex;
+  justify-content: space-evenly;
+}

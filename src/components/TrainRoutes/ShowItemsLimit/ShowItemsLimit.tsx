@@ -29,6 +29,7 @@ const ShowItemslimit = () => {
          
           {arrLimit.map((item) => (
             <span
+            key={item}
             onClick={() => clickNumber(item)}
             className={`${limit === item ? 'limit__items-active' : ''}`}
             >{item}</span>

@@ -12,6 +12,9 @@ import PoginationContainer from "../../components/poginationContainer/Pogination
 import SortContainer from "../../components/TrainRoutes/SortContainer/SortContainer";
 import ShowItemslimit from "../../components/TrainRoutes/ShowItemsLimit/ShowItemsLimit";
 import SettingContainer from "../../components/SettingsContainer/SettingContainer";
+import CheckBoxContainer from "../../components/SettingsContainer/CheckBoxContainerDetalils/CheckBoxContainer";
+import PriceContainer from "../../components/PriceContainer/PriceContainer";
+import SliderContainer from "../../components/SettingsContainer/SliderContainer/SliderContainer";
 
 // import { params2 } from "../../shared/typesParamsUrl";
 
@@ -34,11 +37,9 @@ const TrainSelection = () => {
   const paramsObject = Object.fromEntries(searchParams)
 
   for (const props in paramsObject) {
-    console.log(props, paramsObject[props]);
+    // console.log(props, paramsObject[props]);
   }
 
-  console.log(params)
-  console.log({...params, ...paramsObject})
 
   useEffect(() => {
     dispatch(fetchRoutes({...params, ...paramsObject } as paramsRoutesSelection))
@@ -64,12 +65,16 @@ const TrainSelection = () => {
     // last tickets
   }, [items])
 
+  // const [value, setValue] = useState({min: 100, max: 20000});
 
 return (
   <>
-  <div>
+
+
+  <div className="flex">
     <SettingContainer>
-       <div>123</div>
+      <CheckBoxContainer />
+      <PriceContainer />
     </SettingContainer>
 
 
@@ -78,7 +83,7 @@ return (
       <div className="train__selection__header">
         <span>найдено {totalCount}</span>
         <SortContainer />
-
+          
         <ShowItemslimit />
       </div>
       <div className="train-routes">

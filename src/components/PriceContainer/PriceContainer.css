@@ -1,0 +1,14 @@
+.price__container {
+  color: #fff;
+}
+
+.price__container h2 {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.price__container__sort-name {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+}
