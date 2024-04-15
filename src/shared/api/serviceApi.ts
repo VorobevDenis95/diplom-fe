@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { BASE_URL } from ".";
 import { CitiesProps } from "../types/types";
-import { ResponseRoutes } from "../types/typesRoutesBilets";
+import { ItemRoutes, ResponseRoutes } from "../types/typesRoutesBilets";
 import { paramsRoutesSelection } from "../typesParamsUrl";
 
 
@@ -75,8 +75,8 @@ export const subscribe = async(mail: string) => {
 
 export const lastTickets = async() => {
   try {
-    const response = await axios({
-      url: `${BASE_URL}`,
+    const response: AxiosResponse<ItemRoutes[]> = await axios({
+      url: `${BASE_URL}/routes/last`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -85,5 +85,17 @@ export const lastTickets = async() => {
   } catch (error) {
     
   }
+}
 
+export const getSeats = async(id: string) => {
+  try {
+    const response: AxiosResponse = await axios({
+      url: `${BASE_URL}/routes/id/seats`,
+      headers: {
+        "Content-Type": 'application.json',
+      }
+    })
+  } catch (error) {
+    
+  }
 }

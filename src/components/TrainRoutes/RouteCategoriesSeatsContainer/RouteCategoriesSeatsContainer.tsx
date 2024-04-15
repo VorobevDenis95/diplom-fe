@@ -1,6 +1,5 @@
 import { TraineRoutesItemProps } from '../../../shared/types/typesRoutesBilets';
 import SeatsContainer from '../SeatsContainer/SeatsContainer';
-import { getMinPriceClass } from '../utils';
 import './RouteCategoriesSeatsContainer.css';
 
 

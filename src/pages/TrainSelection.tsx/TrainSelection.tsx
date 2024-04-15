@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { ItemRoutes, ResponseRoutes, initResponseRoutes } from '../../shared/types/typesRoutesBilets';
-import { useLocation, useParams, useSearchParams } from "react-router-dom";
-import { getRoute, lastTickets } from "../../shared/api/serviceApi";
+import { useParams, useSearchParams } from "react-router-dom";
+import { lastTickets } from "../../shared/api/serviceApi";
 import TrainRoutes from "../../components/TrainRoutes/TrainRoutes";
 import { paramsRoutesSelection } from "../../shared/typesParamsUrl";
 import './TrainSelection.css';
-import RouteCategoriesSeatsContainer from "../../components/TrainRoutes/RouteCategoriesSeatsContainer/RouteCategoriesSeatsContainer";
 import { useAppDispatch, useAppSelector } from "../../shared/redux/redux-hooks";
 import { fetchRoutes } from "../../shared/redux/asyncThunks/getRouteAsynkThunk";
 import PoginationContainer from "../../components/poginationContainer/PoginationContainer";
@@ -14,7 +13,12 @@ import ShowItemslimit from "../../components/TrainRoutes/ShowItemsLimit/ShowItem
 import SettingContainer from "../../components/SettingsContainer/SettingContainer";
 import CheckBoxContainer from "../../components/SettingsContainer/CheckBoxContainerDetalils/CheckBoxContainer";
 import PriceContainer from "../../components/PriceContainer/PriceContainer";
-import SliderContainer from "../../components/SettingsContainer/SliderContainer/SliderContainer";
+import DirectTImeContainer from "../../components/SettingsContainer/DirectTimeContainer/DirectTimeContainer";
+import arrowToIcon from '../../assets/images/svg/time__container/arrow_to.svg';
+import arrowFromIcon from '../../assets/images/svg/time__container/arrow_from.svg';
+import LastTicketsContainer from "../../components/lastTicketsContainer/LastTicketsContainer";
+import TravelDatesContainer from "../../components/SettingsContainer/TravelDatesContainer/TravelDatesContainer";
+
 
 // import { params2 } from "../../shared/typesParamsUrl";
 
@@ -24,13 +28,13 @@ const TrainSelection = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const initLastTicketsList: ItemRoutes[] = []
   const [lastTicketsList, setLastTicketsList] = useState<ItemRoutes[]>([]);
 
   
   // console.log(params);
   // const {from_city_id, to_city_id} = params;
-  const [response, setResponce] = useState<ResponseRoutes>(initResponseRoutes);
-
+  
   const dispatch = useAppDispatch();
 
 
@@ -59,8 +63,10 @@ const TrainSelection = () => {
 
   useEffect(() => {
     (async () => {
-      const data = await lastTickets();
-      if (data) setLastTicketsList(data);
+      const data= await lastTickets() as ItemRoutes[];
+      if (data) {
+        setLastTicketsList(data);
+      }
     })()
     // last tickets
   }, [items])
@@ -72,10 +78,17 @@ return (
 
 
   <div className="flex">
-    <SettingContainer>
-      <CheckBoxContainer />
-      <PriceContainer />
-    </SettingContainer>
+    <div>
+      <SettingContainer>
+        <TravelDatesContainer />
+        <CheckBoxContainer />
+        <PriceContainer />
+        <DirectTImeContainer src={arrowToIcon} title="Туда"/>
+        <DirectTImeContainer src={arrowFromIcon} title="Обратно"/>
+      </SettingContainer>
+        <LastTicketsContainer list={lastTicketsList}/>
+
+    </div>
 
 
 

@@ -1,5 +1,5 @@
 export const getPages = (quantityPages: number, currentPage: number) => {
-  let pagination = [];
+  const pagination = [];
   pagination.push(currentPage);
 
   if (quantityPages === 0) {

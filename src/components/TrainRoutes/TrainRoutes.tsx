@@ -1,3 +1,4 @@
+import { Link, useNavigate } from "react-router-dom";
 import { TraineRoutesItemProps } from "../../shared/types/typesRoutesBilets";
 import { capitalized } from "../utils";
 import AboutRouteContainerDirectLine from "./AboutRouteContainer/AboutRouteContainerDirectLine";
@@ -9,8 +10,10 @@ import './TrainRoutes.css';
 const TrainRoutes = ({item} : TraineRoutesItemProps) => {
   // console.log(item);
 
-  const clickSelectSeats = () => {
+  const navigate = useNavigate();
 
+  const clickSelectSeats = (id: string) => {
+    navigate(`/routes/${id}/seats`);
   }
 
   return (
@@ -39,7 +42,7 @@ const TrainRoutes = ({item} : TraineRoutesItemProps) => {
           have_wifi={item.departure.have_wifi}
           is_express={item.departure.is_express}
           />
-          <button onClick={clickSelectSeats} 
+          <button onClick={() => clickSelectSeats(item.departure._id)} 
           className="train-routes__item__btn-select-seats">Выбрать места</button>
         </div>
 

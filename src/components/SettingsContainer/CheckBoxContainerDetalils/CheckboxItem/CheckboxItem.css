@@ -2,6 +2,7 @@
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  color: #fff;
 }
 
 .setting__checkbox__container__label {

@@ -1,4 +1,3 @@
-import { Children } from 'react';
 import './SettingContainer.css';
 
 interface SettingContainerProps {

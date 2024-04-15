@@ -43,12 +43,6 @@ const CheckBoxItem = ({src, title, params}: CheckBoxItemProps) => {
         value={value} onChange={() => {
           setValue(!value)
         }} />
-        {/* <label className="setting__checkbox__container__label">
-        <input type='checkbox' className="setting__checkbox__container-input" defaultChecked={value} 
-        onChange={() => {
-        setValue(!value);  
-      }}/>
-        </label> */}
     </div>
   )
 }

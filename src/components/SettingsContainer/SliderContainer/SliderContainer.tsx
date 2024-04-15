@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './SliderContainer.css'
 
 interface SliderContainerProps {
@@ -44,9 +44,9 @@ const SliderContainer = ({min, max, value, step, onChange}: SliderContainerProps
   const minPos = ((minValue - min) / (max - min)) * 100;
   const maxPos = ((maxValue - min) / (max - min)) * 100;
 
-  const myInput = useRef<HTMLDivElement>(null);
-  const myStartSlider = useRef<HTMLDivElement>(null);
-  const myEndSlider = useRef<HTMLDivElement>(null);
+  // const myInput = useRef<HTMLDivElement>(null);
+  // const myStartSlider = useRef<HTMLDivElement>(null);
+  // const myEndSlider = useRef<HTMLDivElement>(null);
   
   
   // const handleClickPrice = (e) => {

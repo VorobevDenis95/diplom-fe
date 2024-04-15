@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { ResponseRoutes, TraineRoutesItemProps } from '../../shared/types/typesRoutesBilets';
 import SliderContainer from '../SettingsContainer/SliderContainer/SliderContainer';
 import './PriceContainer.css';
 import { useSearchParams } from 'react-router-dom';

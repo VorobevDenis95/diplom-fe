@@ -1,0 +1,75 @@
+.last-tickets {
+  margin-top: 90px;
+}
+
+.last-tickets__title {
+  margin-bottom: 29px;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 35.16px;
+}
+
+.last-ticket__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #c4c4c4;
+  box-shadow: 1px 3px 5px #c4c4c4;
+  width: 360px;
+  height: 161px;
+  padding: 10px;
+  background-color: #fff;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.last-ticket__item__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.last-ticket__item__patch-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.last-ticket__item__bottom__price-container  {
+  display: flex;
+}
+
+.last-ticket__item__bottom__price-container__box {
+  width: 60%;
+  height: 40px;
+}
+
+.last-ticket__item__bottom__price-container-box-price {
+  width: 40%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.last-ticket__item__bottom__price-container-box-price span {
+  margin-right: 5px;
+}
+
+.last-ticket__price {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 42.19px;
+  color: #ffa800;
+}
+
+
+.patch-container-name-city {
+  font-size: 26px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.patch-container-name-station {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 23.44px;
+  color: #928f94;
+}
