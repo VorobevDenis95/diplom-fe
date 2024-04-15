@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { ItemRoutes, ResponseRoutes, initResponseRoutes } from '../../shared/types/typesRoutesBilets';
+import { ItemRoutes, 
+  // ResponseRoutes, initResponseRoutes 
+} from '../../shared/types/typesRoutesBilets';
 import { useParams, useSearchParams } from "react-router-dom";
 import { lastTickets } from "../../shared/api/serviceApi";
 import TrainRoutes from "../../components/TrainRoutes/TrainRoutes";
@@ -28,7 +30,8 @@ const TrainSelection = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const initLastTicketsList: ItemRoutes[] = []
+  // const initLastTicketsList: ItemRoutes[] = []
+
   const [lastTicketsList, setLastTicketsList] = useState<ItemRoutes[]>([]);
 
   

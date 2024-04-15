@@ -3,9 +3,9 @@ import './RailwayCarriage.css';
 import { useEffect } from 'react';
 import { getSeats } from '../../../shared/api/serviceApi';
 
-interface RailwayCarriageProps {
+// interface RailwayCarriageProps {
 
-}
+// }
 
 const RailwayCarriage = () => {
 

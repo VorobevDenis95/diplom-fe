@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { TraineRoutesItemProps } from "../../shared/types/typesRoutesBilets";
 import { capitalized } from "../utils";
 import AboutRouteContainerDirectLine from "./AboutRouteContainer/AboutRouteContainerDirectLine";

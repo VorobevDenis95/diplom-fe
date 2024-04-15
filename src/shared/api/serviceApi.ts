@@ -90,11 +90,12 @@ export const lastTickets = async() => {
 export const getSeats = async(id: string) => {
   try {
     const response: AxiosResponse = await axios({
-      url: `${BASE_URL}/routes/id/seats`,
+      url: `${BASE_URL}/routes/${id}/seats`,
       headers: {
         "Content-Type": 'application.json',
       }
     })
+    return response.data;
   } catch (error) {
     
   }

@@ -1,5 +1,5 @@
-import { TraineRoutesItemProps } from "../../shared/types/typesRoutesBilets";
+// import { TraineRoutesItemProps } from "../../shared/types/typesRoutesBilets";
 
-export function getMinPrice({item} : TraineRoutesItemProps) {
+// export function getMinPrice({item} : TraineRoutesItemProps) {
   
-}
+// }

@@ -41,7 +41,8 @@ const PoginationContainer = () => {
  
     setPaginationArr(getPages(newQuantityPages, currentPage));
  
-    const prevParams = Object.fromEntries(searchParams);
+    // const prevParams = Object.fromEntries(searchParams);
+
     // setSearchParams({ ...prevParams, offset: (currentPage - 1) * limit });
  
  }, [totalCount, items, limit, offset, currentPage])
