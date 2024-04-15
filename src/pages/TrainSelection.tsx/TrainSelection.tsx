@@ -28,8 +28,8 @@ const TrainSelection = () => {
   const {items, totalCount} = useAppSelector(state => state.direction)
   const params = useParams();
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  setSearchParams({...searchParams});
+  const [searchParams] = useSearchParams();
+  // setSearchParams({...searchParams});
   // const initLastTicketsList: ItemRoutes[] = []
 
   const [lastTicketsList, setLastTicketsList] = useState<ItemRoutes[]>([]);
