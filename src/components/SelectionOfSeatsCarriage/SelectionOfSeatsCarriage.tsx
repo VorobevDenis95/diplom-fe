@@ -1,9 +1,11 @@
-import './SelectionOfSeatsCarriage.css';
+// import './SelectionOfSeatsCarriage.css';
 
-const SelectionOfSeatsCarriage = () => {
-  return (
+// const SelectionOfSeatsCarriage = () => {
+//   return (
+//     <>
+      
+//     </>
+//   )
+// }
 
-  )
-}
-
-export default SelectionOfSeatsCarriage;
+// export default SelectionOfSeatsCarriage;

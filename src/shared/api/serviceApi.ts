@@ -69,7 +69,7 @@ export const subscribe = async(mail: string) => {
     return response.data;
     
   } catch (error) {
-    
+    console.log(error);
   }
 }
 
@@ -83,7 +83,7 @@ export const lastTickets = async() => {
     })
     return response.data;
   } catch (error) {
-    
+    console.log(error);
   }
 }
 
@@ -97,6 +97,6 @@ export const getSeats = async(id: string) => {
     })
     return response.data;
   } catch (error) {
-    
+    console.log(error);
   }
 }

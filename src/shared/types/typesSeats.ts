@@ -1,4 +1,4 @@
-interface SeatsRequestProps {
+export interface SeatsRequestProps {
 _id: string // - Идентификатор
 name: string // - Идентификатор
 class_type: string // - Идентификатор

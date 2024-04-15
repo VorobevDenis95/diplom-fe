@@ -43,9 +43,9 @@ const TrainSelection = () => {
 
   const paramsObject = Object.fromEntries(searchParams)
 
-  for (const props in paramsObject) {
-    // console.log(props, paramsObject[props]);
-  }
+  // for (const props in paramsObject) {
+  //   // console.log(props, paramsObject[props]);
+  // }
 
 
   useEffect(() => {
