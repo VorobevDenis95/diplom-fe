@@ -2,11 +2,9 @@ name: Build and Deploy
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   build-and-deploy:
@@ -22,7 +20,7 @@ jobs:
     - name: Install dependencies and build
       run: |
         npm install
-        npm run build
+        npm run predeploy
 
     - name: Deploy with gh-pages
       run: |
