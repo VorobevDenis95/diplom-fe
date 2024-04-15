@@ -29,7 +29,7 @@ const TrainSelection = () => {
   const params = useParams();
 
   const [searchParams, setSearchParams] = useSearchParams();
-
+  setSearchParams({...searchParams});
   // const initLastTicketsList: ItemRoutes[] = []
 
   const [lastTicketsList, setLastTicketsList] = useState<ItemRoutes[]>([]);
