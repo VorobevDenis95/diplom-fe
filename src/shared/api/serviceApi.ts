@@ -3,6 +3,7 @@ import { BASE_URL } from ".";
 import { CitiesProps } from "../types/types";
 import { ItemRoutes, ResponseRoutes } from "../types/typesRoutesBilets";
 import { paramsRoutesSelection } from "../typesParamsUrl";
+import { SeatsRequestProps } from "../types/typesSeats";
 
 
 export const getCities = async (city: string, controller: AbortController) => {
@@ -89,7 +90,7 @@ export const lastTickets = async() => {
 
 export const getSeats = async(id: string) => {
   try {
-    const response: AxiosResponse = await axios({
+    const response: AxiosResponse<SeatsRequestProps[]> = await axios({
       url: `${BASE_URL}/routes/${id}/seats`,
       headers: {
         "Content-Type": 'application.json',

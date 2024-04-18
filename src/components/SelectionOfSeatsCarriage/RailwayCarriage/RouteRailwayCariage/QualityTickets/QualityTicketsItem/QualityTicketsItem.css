@@ -1,0 +1,59 @@
+.railway-carriage__tickets-container_item {
+  padding: 0 45px;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-around; */
+  width: 317px;
+  height: 192px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+}
+
+.railway-carriage__tickets-container_item:hover {
+  box-shadow: none;
+  border: 1px solid #ffa800;
+}
+
+.railway-carriage__tickets-container_item:hover .type-ticket-active {
+  background-color: #f7f6f6;
+  border: none;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+
+.type-ticket-active .railway-carriage__tickets-container_item-text {
+  visibility: visible;
+}
+
+.railway-carriage__tickets-container_item:hover .railway-carriage__tickets-container_item-text {
+  visibility: visible;
+  color: #928f94
+}
+
+.type-ticket-active {
+  background-color: #f7f6f6;
+}
+
+.type-ticket-active .railway-carriage__tickets-container_item-text {
+  color: #000 !important;
+}
+
+.railway-carriage__tickets-container_item-type {
+  margin-top: 20px;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+  width: 240px;
+  height: 50px;
+  background-color: #fff;
+  color: #292929;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 15px;
+}
+
+.railway-carriage__tickets-container_item-text {
+  visibility: hidden;
+  margin-top: 20px;
+}

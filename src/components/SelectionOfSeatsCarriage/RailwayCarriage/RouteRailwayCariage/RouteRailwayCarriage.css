@@ -1,0 +1,50 @@
+
+.railway-carriage__route-train {
+  width: 100%;
+  min-height: 123px;
+  display: flex;
+  align-items: center;
+  background-color: #f7f6f6;
+}
+
+.railway-carriage__route-train .direct-line-route {
+  margin-bottom: 0;
+} 
+
+
+.railway-carriage__route__train-container {
+  display: flex;
+  align-items: center;
+}
+
+.railway-carriage__route__train-container svg {
+  margin: 0 30px;
+}
+
+.railway-carriage__route__train-container-div {
+  min-width: 150px;
+}
+
+.railway-carriage__route__train-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3e3c41;
+}
+
+.railway-carriage__route__train-container-time {
+  display: flex;
+  align-items: center;
+  min-width: 150px
+}
+
+.railway-carriage__route__train-container-time p {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.09px;
+}
+
+.railway-carriage__route__train-container-time svg  {
+  margin: 0 20px;
+}

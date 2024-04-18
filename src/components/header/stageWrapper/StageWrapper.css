@@ -99,12 +99,12 @@
 .stage-item:after {
   border-left-color: inherit;
   border-width: 48px;
-  margin-top: -48px;
+  margin-top: -49px;
 }
 .stage-item:before {
   border-color: rgba(255, 255, 255, 0);
   border-left-color: #fff;
-  border-width: 49px;
+  border-width: 48px;
   margin-top: -49px;
 }
 /* .stage-item,

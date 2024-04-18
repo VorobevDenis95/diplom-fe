@@ -1,5 +1,13 @@
 export interface SeatsRequestProps {
-_id: string // - Идентификатор
+coach: CoachSeatsRequestProps,
+seats: {
+  index: number;
+  avaliable: boolean;
+}[] // - информация о посадочных местах
+}
+
+export interface CoachSeatsRequestProps {
+  _id: string // - Идентификатор
 name: string // - Идентификатор
 class_type: string // - Идентификатор
 have_first_class: boolean // - Люкс (true/false)
@@ -15,11 +23,6 @@ bottom_price: number // - Цена нижнего места
 side_price: number // - Цена бокового места
 linens_price: number // - Цена постельного белья
 wifi_price: number // - Цена услуги Wi-Fi
-avaliable_seats: number // - Количество свободных мест в вагоне
+available_seats: number // - Количество свободных мест в вагоне
 is_linens_included: boolean // - Стоимость белья включена в стоимость билета и не может быть исключена (true/false)
-seats: {
-  index: number;
-  avaliable: boolean;
-}[] // - информация о посадочных местах
 }
-

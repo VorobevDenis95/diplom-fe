@@ -1,0 +1,15 @@
+.railway-carriage__tickets {
+  padding-bottom: 20px;
+}
+
+.railway-carriage__tickets-container{
+  display: flex;
+}
+
+.railway-carriage__tickets h3 {
+  margin: 5px;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #292929;
+}

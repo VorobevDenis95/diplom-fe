@@ -6,14 +6,20 @@ import AboutRouteContainerDirectLineBack from "./AboutRouteContainer/AboutRouteC
 import RouteCategoriesSeatsContainer from "./RouteCategoriesSeatsContainer/RouteCategoriesSeatsContainer";
 import SelectSeatsContainer from "./SelectSeatsContainer/SelectSeatsContainer";
 import './TrainRoutes.css';
+import { useAppDispatch } from "../../shared/redux/redux-hooks";
+import { setTrain } from "../../shared/redux/slice/trainSlice";
 
 const TrainRoutes = ({item} : TraineRoutesItemProps) => {
   // console.log(item);
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  // const {} = useAppSelector(state => state.)
 
-  const clickSelectSeats = (id: string) => {
-    navigate(`/routes/${id}/seats`);
+
+  const clickSelectSeats = (item: TraineRoutesItemProps['item']) => {
+    dispatch(setTrain(item));    
+    navigate(`/routes/${item.departure._id}/seats`);
   }
 
   return (
@@ -29,8 +35,8 @@ const TrainRoutes = ({item} : TraineRoutesItemProps) => {
         </div>
       </div>
       <div className="train-routes__item__content">
-        <AboutRouteContainerDirectLine item={item} />
-        <AboutRouteContainerDirectLineBack item={item} />
+        <AboutRouteContainerDirectLine item={item.departure} />
+        {item.arrival && <AboutRouteContainerDirectLineBack item={item.arrival} />}
       </div>
       <div className="train-routes__item__categories">
         <div className="">
@@ -42,7 +48,7 @@ const TrainRoutes = ({item} : TraineRoutesItemProps) => {
           have_wifi={item.departure.have_wifi}
           is_express={item.departure.is_express}
           />
-          <button onClick={() => clickSelectSeats(item.departure._id)} 
+          <button onClick={() => clickSelectSeats(item)} 
           className="train-routes__item__btn-select-seats">Выбрать места</button>
         </div>
 

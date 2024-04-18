@@ -1,0 +1,36 @@
+.railway-carriage {
+  background-color: #fff;
+  max-width: 959px;
+  /* padding: 20px; */
+}
+
+.railway-carriage__btn-back {
+  cursor: pointer;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  height: 60px;
+  width: 325px;
+  color: #292929;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;  
+}
+
+.railway-carriage__btn-back:hover {
+  background-color: #ffa800;
+}
+
+.railway-carriage__btn-back:active {
+  border-color: #ffa800;
+  color: #ffa800;
+  background-color: #fff;
+}
+
+.railway-carriage__button-container {
+  display: flex;
+  align-items: center;
+}
+
+.railway-carriage__button-container img {
+  margin-right: 5px;
+}
