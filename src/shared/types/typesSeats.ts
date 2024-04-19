@@ -1,15 +1,19 @@
+import { TypeRailwayCarriage } from "./typesTrain";
+
 export interface SeatsRequestProps {
 coach: CoachSeatsRequestProps,
-seats: {
+seats: SeatsProps[] // - информация о посадочных местах
+}
+
+export interface SeatsProps {
   index: number;
-  avaliable: boolean;
-}[] // - информация о посадочных местах
+  avaliable:boolean;
 }
 
 export interface CoachSeatsRequestProps {
   _id: string // - Идентификатор
 name: string // - Идентификатор
-class_type: string // - Идентификатор
+class_type: TypeRailwayCarriage // - Идентификатор
 have_first_class: boolean // - Люкс (true/false)
 have_second_class: boolean // - Купе (true/false)
 have_third_class: boolean // - Плацкарт (true/false)

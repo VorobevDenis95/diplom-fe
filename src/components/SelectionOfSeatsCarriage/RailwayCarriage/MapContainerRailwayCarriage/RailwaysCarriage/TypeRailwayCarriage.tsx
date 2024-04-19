@@ -1,22 +1,38 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './TypeRailwayCarriage.css';
+import type { TypeRailwayCarriage } from '../../../../../shared/types/typesTrain';
+import { useAppDispatch, useAppSelector } from '../../../../../shared/redux/redux-hooks';
+import { setActiveTypeRailwayCarriage } from '../../../../../shared/redux/slice/trainSlice';
+
 
 
 interface TypeRailwayCarriageProps {
-  type: 'first' | 'second' | 'thirth' | 'fourt';
+  type: TypeRailwayCarriage;
+  children: React.ReactNode;
+  
+
 }
 
-const TypeRailwayCarriage = () => {
+const TypeRailwayCarriage = ({type, children}: TypeRailwayCarriageProps) => {
   
+const dispatch = useAppDispatch();
 
   const [isActive, setActive] = useState(false);
+  const {activeTypeRailwayCarriage} = useAppSelector(state => state.train);
   
+  useEffect(() => {
+    activeTypeRailwayCarriage === type ? setActive(true) : setActive(false);
+  }, [activeTypeRailwayCarriage])
+
+  const clickItem = () => {
+    if (activeTypeRailwayCarriage !== type) 
+      dispatch(setActiveTypeRailwayCarriage(type))
+  }
+
   return (
-
-
-
-    <div>
-      <h3>Тип вагона</h3>
+    <div onClick={clickItem} 
+    className={`item__railway-carriage ${isActive ? 'item__railway-carriage-active' : ''}`}>
+      {children}
     </div>
   )
 }

@@ -8,8 +8,8 @@ import { useAppDispatch, useAppSelector } from '../../../shared/redux/redux-hook
 import arrowRight from '../../../assets/images/svg/time__container/blockArrowRight.svg';
 import arrowLeft from '../../../assets/images/svg/time__container/blockArrowLeft.svg';
 import QualityTickets from './RouteRailwayCariage/QualityTickets/QualityTickets';
-import { useDispatch } from 'react-redux';
 import { clearTrain } from '../../../shared/redux/slice/trainSlice';
+import ContainerRailwayCarriage from './MapContainerRailwayCarriage/RailwaysCarriage/ContainerRailwayCarriage/ContainerRailwayCarriage';
 
 // interface RailwayCarriageProps {
 
@@ -45,6 +45,8 @@ const RailwayCarriage = () => {
     navigate(-1);
   }
 
+  
+
   return (
     <div className='railway-carriage'>
       <div className='railway-carriage__button-container'>
@@ -58,6 +60,7 @@ const RailwayCarriage = () => {
       {/* <RouteRailwayCarriage list={response as SeatsRequestProps} /> */}
       {item && <RouteRailwayCarriage item={item.departure} />}
       { response && <QualityTickets list={response}/>}
+      <ContainerRailwayCarriage data={response}/>
     </div>
 
   )

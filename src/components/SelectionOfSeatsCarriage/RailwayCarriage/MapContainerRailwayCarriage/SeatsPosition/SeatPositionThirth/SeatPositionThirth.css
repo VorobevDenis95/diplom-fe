@@ -1,0 +1,33 @@
+.first-line {
+  display: flex;
+}
+
+.second-line {
+  /* margin-top: 40px; */
+  /* margin-left: 133px; */
+  display: flex;
+}
+
+.thirth-line {
+  display: flex;
+}
+
+.seat-element {
+  width: 27px;
+  height: 31px;
+  margin-right: 34px;
+  border: 1px solid black;
+}
+
+.seat-element__other {
+  width: 40px;
+  height: 29px;
+  margin-right: 2px;
+  border: 1px solid black;
+
+}
+
+.seat-element:nth-of-type(2n ) {
+  margin-right: 2px;
+}
+

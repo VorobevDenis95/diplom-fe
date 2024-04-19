@@ -1,0 +1,14 @@
+.railway-carriage-map {
+  /* padding: 28px 0 0 133px; */
+  height: 200px;
+  background-image: url('../../../../../../assets/images/image/railway-carriage.png'); 
+  background-repeat: no-repeat;
+  
+  position: relative;
+}
+
+.railway-carriage-seat-container {
+  width: 27px;
+  border: 1px solid black;
+  height: 32px;
+}

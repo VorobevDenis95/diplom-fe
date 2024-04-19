@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { TraineRoutesItemProps } from "../../types/typesRoutesBilets";
-import { TicketType } from "../../types/typesTrain";
+import { TicketType, TypeRailwayCarriage } from "../../types/typesTrain";
 
 // interface DirectionSliceProps {
 //   cityFrom: CityProps,
@@ -15,14 +15,16 @@ export interface TicketProps {
 }
 
 export interface trainStore {
-  item: TraineRoutesItemProps['item'] | null
+  item: TraineRoutesItemProps['item'] | null;
   activeTypeTicket: TicketType;
-  tickets: TicketProps[]
+  activeTypeRailwayCarriage: TypeRailwayCarriage | null;
+  tickets: TicketProps[];
 }
 
 const initialState: trainStore = {
   item: null,
   activeTypeTicket: "adult",
+  activeTypeRailwayCarriage: null,
   tickets: [],
 }
 
@@ -33,15 +35,18 @@ const train = createSlice({
     setTrain(state, action: PayloadAction<TraineRoutesItemProps['item']>) {
       state.item = action.payload;
     },
+    clearTrain(state) {
+      state.item = null;
+    },
     setActiveTypeTicket(state, action: PayloadAction<TicketType>) {
         state.activeTypeTicket = action.payload;
     },
-    clearTrain(state) {
-      state.item = null;
+    setActiveTypeRailwayCarriage(state, action: PayloadAction<TypeRailwayCarriage>) {
+      state.activeTypeRailwayCarriage = action.payload;
     }
   },
 })
 
-export const {setTrain, setActiveTypeTicket, clearTrain} = train.actions;
+export const {setTrain, clearTrain, setActiveTypeTicket, setActiveTypeRailwayCarriage} = train.actions;
 
 export default train.reducer;

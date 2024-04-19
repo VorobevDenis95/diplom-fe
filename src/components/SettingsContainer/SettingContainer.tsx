@@ -1,10 +1,10 @@
 import './SettingContainer.css';
 
-interface SettingContainerProps {
+export interface СhildrenContainerProps {
   children: React.ReactNode;
 }
 
-const SettingContainer = ({children}: SettingContainerProps) => {
+const SettingContainer = ({children}: СhildrenContainerProps) => {
   
   return (
     <div className="settings__container">

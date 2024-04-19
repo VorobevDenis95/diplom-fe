@@ -1,0 +1,23 @@
+.item__railway-carriage {
+  width: 25%;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item__railway-carriage svg:hover path {
+  cursor: pointer;
+  fill: #FFA800;
+}
+
+.item__railway-carriage-active svg path {
+  fill: #FFA800;
+}
+
+/* .footer__link-icon:active path{
+  fill: #FFCA62;
+} */
