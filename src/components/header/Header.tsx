@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 
 const Header = () => {
-  const [classState, setClassState] = useState<StateHeader['state']>('home'); 
+  const [classState, setClassState] = useState<StateHeader['state']>('home');
   const [isMain, setMain] = useState(false);
 
   const location = useLocation();
@@ -25,22 +25,22 @@ const Header = () => {
     <>
       <header className={`header header__${classState}`} id='header'>
         <div className="logo">Лого</div>
-        <HeaderMenuNavigate /> 
+        <HeaderMenuNavigate />
         <div className="header__container">
           <div className="header__container-body">
-{ !isMain &&            <h1 >
+            {!isMain && <h1 >
               <p className="bold500">
-            Вся жизнь - 
+                Вся жизнь -
               </p>
               <span>
-              путешествие!
+                путешествие!
               </span>
-              </h1>}
-          <FormDirection state={classState} />
+            </h1>}
+            <FormDirection state={classState} />
           </div>
         </div>
         {isMain && <StageWrapper />}
-        
+
       </header>
     </>
   )

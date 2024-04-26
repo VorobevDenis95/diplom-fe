@@ -11,15 +11,14 @@ interface QualityTicketsProps {
   list: SeatsRequestProps[];
 }
 
-const QualityTickets = ({list} :QualityTicketsProps ) => {  
-  // console.log(list)
+const QualityTickets = ({ list }: QualityTicketsProps) => {
 
   const [available_seats, setAvailable_seats] = useState(0);
-  const {tickets} = useAppSelector(state => state.train);
-  const  [quantityAddTickets, setQuantityAddTickets] = useState(0);
+  const { tickets } = useAppSelector(state => state.train);
+  const [quantityAddTickets, setQuantityAddTickets] = useState(0);
   const [ticketsAduls, setTicketsAduls] = useState<TicketProps[]>([]);
   const [ticketsChild, setTicketsChild] = useState<TicketProps[]>([]);
-  const [ticketsChildNotSeat, SetTicketsChildNotSeat] = useState<TicketProps[]>([]);
+  const [ticketsChildNotSeat, setTicketsChildNotSeat] = useState<TicketProps[]>([]);
 
   useEffect(() => {
     if (list) {
@@ -33,18 +32,22 @@ const QualityTickets = ({list} :QualityTicketsProps ) => {
     setQuantityAddTickets(available_seats - tickets.length);
   }, [list, tickets])
 
+  // useEffect(() => {
+  //   if (tickets.length) {
+  //     setTicketsAduls(tickets.filter((el) => el.type === 'adult' ));
+  //     setTicketsChild(tickets.filter((el) => el.type === 'child'));
 
-  function filterTickets (tickets: TicketProps[], type: TicketType) {
-    return tickets.filter((el) => {
-      el.type === type;
-    } )
+  //   }
+  // }, [tickets])
+
+  function filterTickets(tickets: TicketProps[], type: TicketType) {
+    return tickets.filter((el) => el.type === type)
   }
 
   useEffect(() => {
     setTicketsAduls(filterTickets(tickets, 'adult'));
     setTicketsChild(filterTickets(tickets, 'child'));
-    SetTicketsChildNotSeat(filterTickets(tickets, 'childWithoutSeat'));
-
+    setTicketsChildNotSeat(tickets.filter((el) => el.include_children_seat));
   }, [tickets])
 
   const textAdult = `
@@ -55,20 +58,20 @@ const QualityTickets = ({list} :QualityTicketsProps ) => {
   Можно добавить еще ${quantityAddTickets} детей до 10 лет.
   Свое место в вагоне, как у взрослых, но дешевле в среднем на 50-65% 
 `;
-    
+
   return (
     <div className='railway-carriage__tickets'>
       <h3>Количество билетов</h3>
-        <div className="railway-carriage__tickets-container">
-          <QualityTicketsItem name='Взрослых' type='adult'
+      <div className="railway-carriage__tickets-container">
+        <QualityTicketsItem name='Взрослых' type='adult'
           countTickets={ticketsAduls.length}
           text={textAdult} />
-          <QualityTicketsItem name='Детских' type='child'
+        <QualityTicketsItem name='Детских' type='child'
           countTickets={ticketsChild.length}
           text={textChild} />
-          <QualityTicketsItem name='Детских "без места"'
+        <QualityTicketsItem name='Детских "без места"'
           type='childWithoutSeat' countTickets={ticketsChildNotSeat.length} />
-        </div>
+      </div>
     </div>
   )
 }

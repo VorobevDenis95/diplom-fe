@@ -1,0 +1,38 @@
+.about__railway-carrage {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 168, 0, 0.44);
+}
+
+.about__railway-carrage__container {
+  display: flex;
+}
+
+.about__railway-carrage-seats-price-container {
+  display: flex;
+} 
+
+.about__railway-carrage__container span {
+  font-size: 18px;
+  font-weight: 400;
+  margin-right: 5px;
+}
+
+.about__railway-carrage-number-container {
+  width: 190px;
+  height: 161px;
+  background-color: rgba(255, 168, 0, 0.44);
+  color: #292929;
+  font-size: 72px;
+}
+
+.about__railway-carrage-number-map {
+  position: relative;
+  top: 23px;
+  left: 60px;
+  background-color: #292929;
+  color: #fff;
+  width: 30px;
+  height: 20px;
+  text-align: center;
+}

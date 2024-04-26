@@ -4,9 +4,11 @@ import './SeatPositionFirst.css';
 
 const SeatPositionFirst = ({seats} :RailwayCarriageItemProps) => {
   return (
-    <div className="first-line-luxary">{seats.map((el) => (
-      <SeatItem seatItem={el} key={el.index} position='seat-luxary' />
-    ))}</div>
+    <div className="railway__carriage_map static-map">
+      <div className="first-line-luxary">{seats.map((el) => (
+        <SeatItem seatItem={el} key={el.index} position='seat-luxary' />
+      ))}</div>
+    </div>
   )
 }
 

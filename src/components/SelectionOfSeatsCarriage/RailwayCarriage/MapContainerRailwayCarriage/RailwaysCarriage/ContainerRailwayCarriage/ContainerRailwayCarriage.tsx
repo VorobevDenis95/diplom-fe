@@ -1,25 +1,69 @@
-import { useAppSelector } from "../../../../../../shared/redux/redux-hooks";
+import { useAppDispatch, useAppSelector } from "../../../../../../shared/redux/redux-hooks";
 import TypeRailwayCarriage from "../TypeRailwayCarriage";
 import './ContainerRailwayCarriage.css';
 import { SeatsRequestProps } from "../../../../../../shared/types/typesSeats";
 import ThirthRailwayCarriage from "../ThirthRailwayCarriage/ThirthRailwayCarriage";
 import MapRailwayCarriage from "../../MapRailwayCarriage";
 import AboutRailwayCarriage from "./AboutRailwayCarriage/AboutRailwayCarriage";
+import { useEffect, useState } from "react";
+import { clearActiveTypeRailwayCarriage, setActiveTypeRailwayCarriage } from "../../../../../../shared/redux/slice/trainSlice";
 
 export interface ContainerRailwayCarriageProps {
   data: SeatsRequestProps[];
 } 
 
+
+
 const ContainerRailwayCarriage = ({data} :ContainerRailwayCarriageProps ) => {
+
+  const [avaliableClasses, setAvaliableClasses] = useState<TypeRailwayCarriage[]>([]); 
+  const [avaliableCarriages, setCarriages] = useState<string[]>([]); 
+  const dispatch = useAppDispatch();
 
   const {activeTypeRailwayCarriage} = useAppSelector(state => state.train);
   
-
-
+  function addAvilableClasses () {
+    const arr:TypeRailwayCarriage [] = [];
+    data.map((el) => {
+      arr.push(el.coach.class_type)
+    }) 
+    console.log(arr)
+    return arr;
+  }
+  
+  // function addAvilableCarriages () {
+  //   const arr: string[] = [];
+  //   data.map((el) => {
+  //     arr.push(el.coach.name)
+  //   })
+  // }
+  
+  
+  // const [listRailwayCarriageName, setListRailwayCarriage] = useState([]);
+  
+  useEffect(() => {
+    const data = addAvilableClasses();
+    const names = addAvilableClasses();
+    setAvaliableClasses(data)
+    setCarriages(names)
+    
+    
+  }, [data])
+  
+  const clickTypeEl = (type: TypeRailwayCarriage) => {
+    if (activeTypeRailwayCarriage !== type && avaliableClasses.includes(type)) {
+      dispatch(setActiveTypeRailwayCarriage(type));
+    }
+    if (activeTypeRailwayCarriage === type) {
+      dispatch(clearActiveTypeRailwayCarriage())
+    }
+  }
+  
+  
   return (
     <>
       <div className='railway-carriage__container'>
-        <TypeRailwayCarriage type="fourt">
+        <TypeRailwayCarriage clickTypeElement={clickTypeEl} type="fourth">
             <svg width="31" height="50" viewBox="0 0 31 50" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 19.0289C0.307988 18.6378 0.559979 18.1523 0.951964 17.8691C2.23992 16.952 3.90585 17.5859 4.28384 19.1368C4.61983 20.5394 4.89982 21.9554 5.19381 23.3714C5.71179 25.8124 6.21577 28.2669 6.74775 30.7079C7.44772 33.8771 9.58964 35.5494 12.9635 35.5629C15.3714 35.5764 17.7653 35.5494 20.1732 35.5764C21.5872 35.5898 22.3852 36.2102 22.6092 37.397C22.8331 38.6782 21.9232 39.8649 20.5792 39.8784C17.4573 39.9054 14.3355 39.9863 11.2136 39.8515C7.37772 39.6896 3.80786 36.6418 2.81389 32.7847C2.16992 30.2628 1.69394 27.7005 1.13396 25.1651C0.769971 23.4793 0.377986 21.807 0 20.1213C0 19.7572 0 19.393 0 19.0289Z" fill="#C4C4C4"/>
               <path d="M9.87021 0C10.9762 0.229264 11.9981 0.579903 12.8801 1.30815C14.714 2.8186 15.274 5.58325 14.126 7.63314C12.8801 9.87183 10.2622 10.9777 7.86828 10.2899C5.48837 9.60211 4.06042 7.94332 3.87843 5.44839C3.73844 3.53336 4.8024 1.51044 7.01431 0.512472C7.51829 0.283208 8.07827 0.175319 8.62425 0C9.03024 0 9.45022 0 9.87021 0Z" fill="#C4C4C4"/>
@@ -27,19 +71,19 @@ const ContainerRailwayCarriage = ({data} :ContainerRailwayCarriageProps ) => {
             </svg>
             <span>Сидячий</span>
         </TypeRailwayCarriage>
-        <TypeRailwayCarriage type="thirth">
+        <TypeRailwayCarriage clickTypeElement={clickTypeEl} type="third">
         <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M45.4854 0H4.51465C2.03174 0 0 2.0293 0 4.50958V45.4904C0 47.9707 2.03174 50 4.51465 50L17.6475 50.0001H18.6475L45.4854 50C47.9683 50 50 47.9707 50 45.4904V4.50958C50 2.0293 47.9683 0 45.4854 0ZM18.6475 47.1815H35.1582C36.3994 47.1815 37.4155 46.1669 37.4155 44.9267H37.3589V40.8681C37.3589 39.628 36.3433 38.6133 35.1016 38.6133H18.6475V47.1815ZM17.6475 38.6133H14.8418C13.6006 38.6133 12.5845 39.628 12.5845 40.8681V44.9267C12.5845 46.1669 13.6006 47.1815 14.8418 47.1815H17.6475V38.6133ZM6.60254 29.0868C5.64355 29.0868 4.85352 28.2976 4.85352 27.3394V11.7646H13.4312V27.3394C13.4312 28.2976 12.6411 29.0868 11.6816 29.0868H6.60254ZM4.85352 6.08795V10.7646H13.4312V6.08795C13.4312 5.12964 12.6411 4.34045 11.6816 4.34045H6.60254C5.64355 4.34045 4.85352 5.12964 4.85352 6.08795ZM36.0044 27.283V11.7646H44.6387V27.283C44.6387 28.2976 43.7925 29.1432 42.7764 29.1432H37.8667C36.8511 29.1432 36.0044 28.2976 36.0044 27.283ZM36.0044 10.7646H44.6387V6.14429C44.6387 5.12964 43.7925 4.28412 42.7764 4.28412H37.8667C36.8511 4.28412 36.0044 5.12964 36.0044 6.14429V10.7646Z" fill="#C4C4C4"/>
         </svg>
         <span>Плацкарт</span>
         </TypeRailwayCarriage>
-        <TypeRailwayCarriage type="second">
+        <TypeRailwayCarriage clickTypeElement={clickTypeEl} type="second">
         <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M4.51465 0H45.4854C47.9683 0 50 2.04541 50 4.54541V45.4546C50 47.9546 47.9683 50 45.4854 50H4.51465C2.03174 50 0 47.9546 0 45.4546V4.54541C0 2.04541 2.03174 0 4.51465 0ZM38.6006 6.25C37.3589 6.25 36.3433 7.27271 36.3433 8.52271V13.7061H44.9775V8.52271C44.9775 7.27271 43.9614 6.25 42.7202 6.25H38.6006ZM44.9775 14.7061H36.3433V29.5454C36.3433 30.7954 37.3589 31.8181 38.6006 31.8181H42.7202C43.9614 31.8181 44.9775 30.7954 44.9775 29.5454V14.7061ZM13.3745 13.7061V8.75C13.3745 7.38647 12.2461 6.25 10.8916 6.25H7.22363C5.86914 6.25 4.74023 7.38647 4.74023 8.75V13.7061H13.3745ZM4.74023 14.7061H13.3745V29.375C13.3745 30.7385 12.2461 31.875 10.8916 31.875H7.22363C5.86914 31.875 4.74023 30.7385 4.74023 29.375V14.7061ZM44.8081 49.2046C47.1782 49.2046 49.1533 47.2727 49.1533 44.8296V36.7046H0.84668V44.8296C0.84668 47.2158 2.76514 49.2046 5.19189 49.2046H44.8081Z" fill="#C4C4C4"/>
         </svg>
         <span>Купе</span>
         </TypeRailwayCarriage>
-        <TypeRailwayCarriage type="first">
+        <TypeRailwayCarriage clickTypeElement={clickTypeEl} type="first">
         <svg width="57" height="50" viewBox="0 0 57 50" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M28.2258 0L34.8606 19.0776H56.4516L39.0213 30.9224L45.6561 50L28.2258 38.26L10.7955 50L17.4303 30.9224L0 19.0776H21.5911L28.2258 0Z" fill="#C4C4C4"/>
         </svg>

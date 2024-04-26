@@ -6,23 +6,21 @@ import arrows from '../../../assets/images/svg/arrows.svg'
 import { FormEvent } from "react";
 import { useAppDispatch, useAppSelector } from "../../../shared/redux/redux-hooks";
 import { changingCities } from "../../../shared/redux/slice/directionSlice";
-import {useNavigate} from 'react-router-dom';
-import {sendCurrentDateToServer} from './utils'
+import { useNavigate } from 'react-router-dom';
+import { sendCurrentDateToServer } from './utils'
 
-const FormDirection = ({state} : StateHeader) => {
+const FormDirection = ({ state }: StateHeader) => {
   const navigate = useNavigate();
-  const {cityFrom, cityTo, dateStart, dateTo} = useAppSelector(state =>  state.direction);
+  const { cityFrom, cityTo, dateStart, dateTo } = useAppSelector(state => state.direction);
   const dispatch = useAppDispatch();
-
-  
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-      // navigate(`routes/${cityFrom.id}/${cityTo.id}`);
-      //отправляем роут по параметрам которые существуют
-      navigate(`routes/${cityFrom.id}/${cityTo.id}${dateStart 
-        ? `/${sendCurrentDateToServer(dateStart)}${dateTo 
-          ? `/${sendCurrentDateToServer(dateTo)}` : ''}` : ''}`);
+    // navigate(`routes/${cityFrom.id}/${cityTo.id}`);
+    //отправляем роут по параметрам которые существуют
+    navigate(`routes/${cityFrom.id}/${cityTo.id}${dateStart
+      ? `/${sendCurrentDateToServer(dateStart)}${dateTo
+        ? `/${sendCurrentDateToServer(dateTo)}` : ''}` : ''}`);
 
 
     // if (dateTo) 
@@ -41,39 +39,39 @@ const FormDirection = ({state} : StateHeader) => {
 
   return (
     <form className={`form-direction ${state}`}
-    onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
     >
-      <div className="form-direction__container">
+      <div className={`form-direction__container ${state}__container`}>
         <div className="form-direction__direction-container">
-        <h2 className="form-direction__title">
-          Направление
-        </h2>
-        <div className="form-direction__line">
-          <CityInput placeholder='Откуда' nameClass='form-direction__city-from'/>
-          <button onClick={swapCities} 
-          type='button' className="form-direction__btn-exchange">
-            <img src={arrows} alt="" />
-          </button>
-          <CityInput placeholder='Куда' nameClass='form-direction__city-to' />
+          <h2 className="form-direction__title">
+            Направление
+          </h2>
+          <div className="form-direction__line">
+            <CityInput placeholder='Откуда' nameClass='form-direction__city-from' />
+            <button onClick={swapCities}
+              type='button' className="form-direction__btn-exchange">
+              <img src={arrows} alt="" />
+            </button>
+            <CityInput placeholder='Куда' nameClass='form-direction__city-to' />
           </div>
         </div>
         <div className="form-direction__direction-container">
-        <h2 className="form-direction__title">
-          Дата
-        </h2>
-        <div className="form-direction__line static">
-          <DateInput nameClass='search-form__input-date-from' />   
-          <div className="form-direction__button-container">
-          <DateInput nameClass='search-form__input-date-to' 
-          />
-          <button className="form-direction__submit" 
-            type="submit">
-              НАЙТИ НАПРАВЛЕНИЕ</button>
+          <h2 className="form-direction__title">
+            Дата
+          </h2>
+          <div className="form-direction__line static">
+            <DateInput nameClass='search-form__input-date-from' />
+            <div className="form-direction__button-container">
+              <DateInput nameClass='search-form__input-date-to'
+              />
+              <button className="form-direction__submit"
+                type="submit">
+                НАЙТИ НАПРАВЛЕНИЕ</button>
 
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
     </form>
   )

@@ -16,14 +16,12 @@ const MapRailwayCarriage = ({seats} :RailwayCarriageItemProps) => {
       {activeTypeRailwayCarriage === "second" &&
         <SeatPositionSecond seats={seats} />
       }
-      {activeTypeRailwayCarriage === "thirth" &&
+      {activeTypeRailwayCarriage === "third" &&
         <SeatPositionThirth seats={seats} />
       }
-      {activeTypeRailwayCarriage === "fourt" &&
+      {activeTypeRailwayCarriage === "fourth" &&
         <SeatPositionFour seats={seats} />
       }
-
-
     </>
   )
 }

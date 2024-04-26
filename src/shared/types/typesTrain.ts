@@ -1,2 +1,2 @@
 export type TicketType = 'adult' | 'child' | 'childWithoutSeat';
-export type TypeRailwayCarriage = 'first' | 'second' | 'thirth' | 'fourt'; 
+export type TypeRailwayCarriage = 'first' | 'second' | 'third' | 'fourth'; 

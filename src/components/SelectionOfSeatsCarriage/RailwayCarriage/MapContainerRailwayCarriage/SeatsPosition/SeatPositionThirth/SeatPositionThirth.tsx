@@ -6,7 +6,7 @@ import './SeatPositionThirth.css';
 
 const SeatPositionThirth = ({seats} :RailwayCarriageItemProps) => {
   return (
-    <>
+    <div className="railway__carriage_map static-map">
       <div className="first-line">{filterSeatsArrEven(seats).map((el) => (
         <SeatItem key={el.index} seatItem={el} />
       ))}</div>
@@ -16,7 +16,7 @@ const SeatPositionThirth = ({seats} :RailwayCarriageItemProps) => {
     <div className="thirth-line">{filterSeatsArrOther(seats).map((el) => (
       <SeatItem key={el.index} seatItem={el} position="seat-passage" />
     ))}</div>
-    </>
+    </div>
 
   )
 }

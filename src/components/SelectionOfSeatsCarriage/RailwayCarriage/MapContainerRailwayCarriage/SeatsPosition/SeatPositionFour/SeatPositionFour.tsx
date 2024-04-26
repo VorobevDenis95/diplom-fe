@@ -7,6 +7,7 @@ const SeatPositionFour = ({seats} :RailwayCarriageItemProps) => {
   
   return (
     <>
+    <div className="railway__carriage_map four-class-map">
       <div className="second-line">{filterSeatsArrEven(seats).map((el) => (
         <SeatItem key={el.index} position='sedentary' seatItem={el} />
       ))}</div>
@@ -20,6 +21,7 @@ const SeatPositionFour = ({seats} :RailwayCarriageItemProps) => {
             <div className="four-line">{filterSeatsArrEvenOther(seats).map((el) => (
         <SeatItem key={el.index} position='sedentary' seatItem={el} />
       ))}</div>
+    </div>
     </>
   )
 }

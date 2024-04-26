@@ -1,0 +1,23 @@
+.railway__carriage_map {
+  padding: 32px 0 0 168px;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  min-height: 200px;
+} 
+
+.static-map {
+  padding: 29px 0 0 153px;
+  background-image: url('../../../../../../assets/images/image/railway-carriage.png');
+}
+
+.four-class-map {
+  background-image: url('../../../../../../assets/images/image/four-class.png');
+}
+
+.four-line {
+  display: flex;
+}
+
+.thirth-line {
+  margin-top: 17px;
+}

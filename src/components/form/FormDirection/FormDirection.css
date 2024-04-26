@@ -14,7 +14,7 @@
   min-height: 350px;
   margin-top: 20px;
   display:  flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-wrap: wrap;
   /* flex-wrap: nowrap; */
 }
@@ -98,11 +98,27 @@
   width: 730px;
 }
 
+.home__container {
+
+}
+
 .main {
   margin-top: 100px;
   height: 340px;
 }
 
+.main__container {
+  justify-content: center;
+
+}
+
 .city-input {
   position: relative;
+}
+
+@media screen and (max-width: 1750px) {
+  .form-direction__city-to {
+    margin-right: 0 !important;
+  }
+  
 }

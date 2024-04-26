@@ -1,0 +1,26 @@
+.about__railway-carrage-info-container {
+  min-width: 600px;
+  padding: 10px;
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.about__railway-carrage-info-container-column {
+  margin: 0 100px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.about__railway-carrage-info-container-column div {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.font-gray {
+  color: #928f94;
+}
+
+.font-black {
+  color: #000;
+}

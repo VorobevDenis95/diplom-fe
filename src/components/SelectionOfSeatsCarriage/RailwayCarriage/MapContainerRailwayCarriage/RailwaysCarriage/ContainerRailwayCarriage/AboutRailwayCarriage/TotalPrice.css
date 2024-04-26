@@ -1,0 +1,13 @@
+.totalPriceRailwayCarriage {
+  margin-right: 35px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #ffa800;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.totalPriceRailwayCarriage span {
+  margin-right: 10px;
+}

@@ -5,14 +5,14 @@ import './SeatPositionSecond.css';
 
 const SeatPositionSecond = ({seats} :RailwayCarriageItemProps) => {
   return (
-    <>
-    <div className="first-line">{filterSeatsArrOdd(seats).map((el) => (
-      <SeatItem key={el.index} seatItem={el} />
-    ))}</div>
-    <div className="second-line">{filterSeatsArrEven(seats).map((el) => (
-      <SeatItem key={el.index} seatItem={el} />
-    ))}</div>
-    </>
+    <div className="railway__carriage_map static-map">
+      <div className="first-line">{filterSeatsArrOdd(seats).map((el) => (
+        <SeatItem key={el.index} seatItem={el} />
+      ))}</div>
+      <div className="second-line">{filterSeatsArrEven(seats).map((el) => (
+        <SeatItem key={el.index} seatItem={el} />
+      ))}</div>
+    </div>
 
   )
 }

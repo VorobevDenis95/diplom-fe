@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
         element: <TrainSelection />,
       },
       {
-        path: '/routes/:id/seats',
+        path: '/routes/:id/:id2?/seats',
         element: <RailwayCarriage />
       },
 
