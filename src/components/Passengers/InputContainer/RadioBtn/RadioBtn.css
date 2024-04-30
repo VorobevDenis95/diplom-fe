@@ -1,0 +1,32 @@
+.radio__btn {
+  display: flex;
+  margin-right: 15%;
+}
+
+.radio__btn-item {
+  cursor: pointer;
+  text-align: center;
+  padding-top: 5px;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+  width: 102px;
+  height: 50px;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.radio__btn-item-active {
+  background-color: #ffa800;
+}
+
+.radio__btn-item:first-of-type {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.radio__btn-item:last-of-type {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+

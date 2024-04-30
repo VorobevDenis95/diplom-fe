@@ -1,0 +1,7 @@
+.passenger__document-container {
+  padding: 20px;
+  border-top: 1px dashed #928f94;
+  border-bottom: 1px dashed #928f94;
+  background-color: #fff;
+  height: 170px;
+}

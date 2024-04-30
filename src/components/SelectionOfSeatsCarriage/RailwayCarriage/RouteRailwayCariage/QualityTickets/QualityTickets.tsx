@@ -9,9 +9,10 @@ import { SeatsRequestProps } from '../../../../../shared/types/typesSeats';
 
 interface QualityTicketsProps {
   list: SeatsRequestProps[];
+  typeDirection: 'departure' | 'arrival';
 }
 
-const QualityTickets = ({ list }: QualityTicketsProps) => {
+const QualityTickets = ({ list, typeDirection }: QualityTicketsProps) => {
 
   const [available_seats, setAvailable_seats] = useState(0);
   const { tickets } = useAppSelector(state => state.train);
@@ -65,12 +66,16 @@ const QualityTickets = ({ list }: QualityTicketsProps) => {
       <div className="railway-carriage__tickets-container">
         <QualityTicketsItem name='Взрослых' type='adult'
           countTickets={ticketsAduls.length}
+          typeDirection={typeDirection}
           text={textAdult} />
         <QualityTicketsItem name='Детских' type='child'
           countTickets={ticketsChild.length}
+          typeDirection={typeDirection}
           text={textChild} />
         <QualityTicketsItem name='Детских "без места"'
-          type='childWithoutSeat' countTickets={ticketsChildNotSeat.length} />
+          type='childWithoutSeat'
+          typeDirection={typeDirection}
+          countTickets={ticketsChildNotSeat.length} />
       </div>
     </div>
   )

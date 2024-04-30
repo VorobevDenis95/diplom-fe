@@ -8,22 +8,35 @@ interface QualityTicketsItemProps {
   name: string;
   countTickets?: number;
   type: TicketType, 
+  typeDirection: 'departure' | 'arrival',
   text?: string;
 } 
 
-const QualityTicketsItem = ({name, countTickets, type, text}: QualityTicketsItemProps) => {
-  const {activeTypeTicket} = useAppSelector(state => state.train);
+const QualityTicketsItem = ({name, countTickets, type, text, typeDirection}: QualityTicketsItemProps) => {
+  
+  
+  const {arrival, departure} = useAppSelector(state => state.train);
+  
+  const [activeDirection, setActiveDirection] = useState(typeDirection ==="departure" ? departure : arrival);
+
+  useEffect(() => { 
+    typeDirection ==="departure" ? setActiveDirection(departure) : setActiveDirection(arrival);
+  }, [typeDirection, departure, arrival])
+
+  
+  
+  // const {activeTypeTicket} = useAppSelector(state => state.train);
   const dispatch = useAppDispatch();
   
-  const [isActive, setActive] = useState(type === activeTypeTicket ? true : false);
+  const [isActive, setActive] = useState(type === activeDirection.activeTypeTicket ? true : false);
 
   useEffect(() => {
-    activeTypeTicket !== type ? setActive(false) : setActive(true); 
-  }, [activeTypeTicket])
+    activeDirection.activeTypeTicket !== type ? setActive(false) : setActive(true); 
+  }, [activeDirection.activeTypeTicket])
 
   const clickTypeTicket = () => {
-    if (activeTypeTicket !== type)
-    dispatch(setActiveTypeTicket(type))  
+    if (activeDirection.activeTypeTicket !== type)
+    dispatch(setActiveTypeTicket({ticketType :type, typeDirection}))  
   }
 
   return (

@@ -1,0 +1,43 @@
+.next__container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.next__container__btn {
+  border: none;
+  width: 222px;
+  height: 60px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+  background-color: #ffa800;
+  border-radius: 5px;
+
+}
+
+.next__container__btn:hover {
+  box-shadow: 1px 1px 5px #928f94;
+}
+
+.next__container__btn:active {
+  background-color: #fff;
+  color: #ffa800;
+  border: 1px solid #ffa800;
+}
+
+.btn-disable {
+  background-color: #5c5c5c;
+}
+
+.btn-disable:hover {
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.btn-disable:active {
+  cursor: not-allowed;
+  background-color: #5c5c5c;
+  color: #fff;
+  border: none;
+}

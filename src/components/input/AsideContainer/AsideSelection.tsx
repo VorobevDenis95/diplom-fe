@@ -1,7 +1,7 @@
 import arrowToIcon from '../../../assets/images/svg/time__container/arrow_to.svg';
 import arrowFromIcon from '../../../assets/images/svg/time__container/arrow_from.svg';
 import { useEffect, useState } from 'react';
-import { useAppSelector } from '../../../shared/redux/redux-hooks';
+// import { useAppSelector } from '../../../shared/redux/redux-hooks';
 import { lastTickets } from '../../../shared/api/serviceApi';
 import { ItemRoutes } from '../../../shared/types/typesRoutesBilets';
 import SettingContainer from '../../SettingsContainer/SettingContainer';
@@ -14,7 +14,7 @@ import LastTicketsContainer from '../../lastTicketsContainer/LastTicketsContaine
 
 const AsideSelection = () => {
 
-  const {items} = useAppSelector(state => state.direction);
+  // const {items} = useAppSelector(state => state.direction);
 
   const [lastTicketsList, setLastTicketsList] = useState<ItemRoutes[]>([]);
 
@@ -27,7 +27,7 @@ const AsideSelection = () => {
       }
     })()
     // last tickets
-  }, [items])
+  }, [])
 
   return (
     <div>

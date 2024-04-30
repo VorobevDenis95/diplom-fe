@@ -176,6 +176,8 @@ export interface PathTrain {
 export interface RouteRailwayCarriageProps {
   item: PathTrain;
   isNotTime?: boolean;
+  typeDirection?: "departure" | "arrival";
+
 }
 
 export const initResponseRoutes :ResponseRoutes = {

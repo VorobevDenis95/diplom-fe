@@ -6,9 +6,13 @@
 }
 
 .railway-carriage {
-  background-color: #fff;
   max-width: 959px;
   /* padding: 20px; */
+}
+
+.railway-carriage-item {
+  background-color: #fff;
+  margin-bottom: 100px;
 }
 
 .railway-carriage__btn-back {
@@ -40,4 +44,8 @@
 
 .railway-carriage__button-container img {
   margin-right: 5px;
+}
+
+.container-back {
+  justify-content: flex-end;
 }

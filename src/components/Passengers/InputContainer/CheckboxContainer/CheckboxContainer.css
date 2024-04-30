@@ -1,0 +1,11 @@
+.passenger__limited-container {
+  width: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.passenger__limited-container-text {
+  font-size: 18px;
+  font-weight: 400;
+}

@@ -20,6 +20,7 @@ interface DirectionStore {
   limit: number;
   ofset: number;
   error: string;
+  loading: boolean;
   status: string;
 }
 
@@ -39,6 +40,7 @@ const initialState: DirectionStore = {
   dateStart: '',
   dateTo: '',
   error: '',
+  loading: false,
   status: '',
 }
 
@@ -70,15 +72,21 @@ const direction = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchRoutes.pending, (state) => {
+      state.loading = true;
+      state.items = [];
       state.status = 'loading';
       state.error = '';
     }),
     builder.addCase(fetchRoutes.fulfilled, (state, action: PayloadAction<ResponseRoutes>) => {
+      state.loading = false;
+      
       state.status = 'succes';
       state.items = action.payload.items;
       state.totalCount = action.payload.total_count;
     }),
     builder.addCase(fetchRoutes.rejected, (state, action) => {
+      state.loading = false;
+      
       state.status = 'failed'
       state.error = action.payload as string;
     })

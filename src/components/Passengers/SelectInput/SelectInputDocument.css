@@ -1,0 +1,25 @@
+.input_type-passenger-small {
+  border-radius: 5px;
+  border: 1px solid #928F94;
+  padding-left: 20px;
+  font-size: 18px;
+  color: #292929;
+  font-weight: 400;
+  height: 50px;
+  padding-right: 130px;
+}
+
+.input_type-passenger-wrapper-small {
+  position: relative;
+}
+
+.input_type-passenger-wrapper-small::after {
+  content: "";
+  position: absolute;
+  top: 23px;
+  left: 320px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 5px solid #928F94;
+}
+

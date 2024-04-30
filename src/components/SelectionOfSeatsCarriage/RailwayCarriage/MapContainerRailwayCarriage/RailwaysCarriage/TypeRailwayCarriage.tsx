@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './TypeRailwayCarriage.css';
 import type { TypeRailwayCarriage } from '../../../../../shared/types/typesTrain';
 import { useAppSelector } from '../../../../../shared/redux/redux-hooks';
+// import { DirectionTrainStore } from '../../../../../shared/redux/slice/trainSlice';
 // import { setActiveTypeRailwayCarriage } from '../../../../../shared/redux/slice/trainSlice';
 
 
@@ -9,27 +10,37 @@ import { useAppSelector } from '../../../../../shared/redux/redux-hooks';
 interface TypeRailwayCarriageProps {
   type: TypeRailwayCarriage;
   children: React.ReactNode;
+  activeType: TypeRailwayCarriage;
+  typeDirection: 'departure' | 'arrival';
   clickTypeElement: (type: TypeRailwayCarriage) => void;
 
 }
 
-const TypeRailwayCarriage = ({type, children, clickTypeElement}: TypeRailwayCarriageProps) => {
+const TypeRailwayCarriage = ({type, children, typeDirection, clickTypeElement}: TypeRailwayCarriageProps) => {
   
+  const {arrival, departure} = useAppSelector(state => state.train);
+  
+  const [activeDirection, setActiveDirection] = useState(typeDirection ==="departure" ? departure : arrival);
 
- 
+  useEffect(() => { 
+    typeDirection ==="departure" ? setActiveDirection(departure) : setActiveDirection(arrival);
+  }, [typeDirection, departure, arrival])
+
+
+//  const {departure} = useAppSelector(state => state.train);
 
 // const dispatch = useAppDispatch();
-  const [isDisable, setDisable] = useState(false);
+  // const [isDisable, setDisable] = useState(false);
   const [isActive, setActive] = useState(false);
-  const {activeTypeRailwayCarriage} = useAppSelector(state => state.train);
+  // const {activeTypeRailwayCarriage} = useAppSelector(state => state.train);
   
   // useEffect(() => {
   //   avaliableClasses.includes(type) ? setDisable(false) : setDisable(true);
   // }, [avaliableClasses])
 
   useEffect(() => {
-    activeTypeRailwayCarriage === type ? setActive(true) : setActive(false);
-  }, [activeTypeRailwayCarriage])
+    activeDirection.activeTypeRailwayCarriage === type ? setActive(true) : setActive(false);
+  }, [activeDirection])
 
   // const clickItem = () => {
   //   if (activeTypeRailwayCarriage !== type) 

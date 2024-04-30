@@ -1,0 +1,10 @@
+.wrapper_input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper_input-container-title {
+  color: #928f94;
+  font-size: 16px;
+  font-weight: 400;
+}

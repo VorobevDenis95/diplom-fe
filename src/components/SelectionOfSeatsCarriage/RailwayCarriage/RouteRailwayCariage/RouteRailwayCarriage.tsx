@@ -1,5 +1,6 @@
 import { RouteRailwayCarriageProps } from '../../../../shared/types/typesRoutesBilets';
 import AboutRouteContainerDirectLine from '../../../TrainRoutes/AboutRouteContainer/AboutRouteContainerDirectLine';
+import AboutRouteContainerDirectLineBack from '../../../TrainRoutes/AboutRouteContainer/AboutRouteContainerDirectLineBack';
 import { capitalized } from '../../../utils';
 import './RouteRailwayCarriage.css';
 import { formatTimeStringHour, formatTimeStringMinutes } from './utils';
@@ -8,7 +9,9 @@ import { formatTimeStringHour, formatTimeStringMinutes } from './utils';
 
 // interface Props 
 
-const RouteRailwayCarriage = ({ item }: RouteRailwayCarriageProps) => {
+const RouteRailwayCarriage = ({ item, typeDirection }: RouteRailwayCarriageProps) => {
+
+  
   // console.log(item)
   return (
     <>
@@ -38,9 +41,16 @@ const RouteRailwayCarriage = ({ item }: RouteRailwayCarriageProps) => {
             </div>
 
           </div>
-
+          {
+            typeDirection === 'departure' &&
           <AboutRouteContainerDirectLine item={item}
+          isNotTime={true} />
+          }
+          {
+            typeDirection === 'arrival' &&
+            <AboutRouteContainerDirectLineBack item={item}
             isNotTime={true} />
+          }
 
           <div className='railway-carriage__route__train-container-time'>
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

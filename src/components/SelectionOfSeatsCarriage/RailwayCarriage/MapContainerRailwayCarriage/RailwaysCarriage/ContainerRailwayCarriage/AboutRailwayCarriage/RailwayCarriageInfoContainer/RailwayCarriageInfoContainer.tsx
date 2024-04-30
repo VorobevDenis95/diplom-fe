@@ -1,23 +1,30 @@
-import { useEffect, useState } from 'react';
-import { CoachSeatsRequestProps, SeatsRequestProps } from '../../../../../../../../shared/types/typesSeats';
+import { useEffect } from 'react';
+import { SeatsRequestProps } from '../../../../../../../../shared/types/typesSeats';
 import './RailwayCarriageInfoContainer.css';
 import { getLowerSeats, getUpperSeats } from './utils';
-import { TypeRailwayCarriage } from '../../../../../../../../shared/types/typesTrain';
+// import { TypeRailwayCarriage } from '../../../../../../../../shared/types/typesTrain';
 import SelectSeatsContainer2 from '../../../../../../../TrainRoutes/SelectSeatsContainer/SelectSeatsContainer2';
+// import { useAppSelector } from '../../../../../../../../shared/redux/redux-hooks';
 
 interface RailwayCarriageInfoContainerProps {
   item: SeatsRequestProps;
   type?: '';
+  typeDirection?: "departure" | "arrival";
 }
 
-const RailwayCarriageInfoContainer = ({item} :RailwayCarriageInfoContainerProps) => {
+const RailwayCarriageInfoContainer = ({item,  typeDirection} :RailwayCarriageInfoContainerProps) => {
 
+  // const { arrival, departure } = useAppSelector(state => state.train);
+  // const [activeDirection, setActiveDirection] = useState(typeDirection === "departure" ? departure : arrival);
 
+  // useEffect(() => {
+  //   typeDirection === "departure" ? setActiveDirection(departure) : setActiveDirection(arrival);
+  // }, [typeDirection, departure, arrival])
 
   
   useEffect(() => {
-    console.log(item)
-  }, [item.coach.class_type])
+    console.log(typeDirection)
+  }, [item])
   
   return (
     <div className="about__railway-carrage-info-container">
@@ -73,7 +80,9 @@ const RailwayCarriageInfoContainer = ({item} :RailwayCarriageInfoContainerProps)
         <span className='font-gray'>Обслуживание 
           <span className='font-ligth-gray'>ФПК</span>
         </span>
-        <SelectSeatsContainer2 coach={item.coach} />
+        <SelectSeatsContainer2 coach={item.coach}
+        typeDirection={typeDirection!} 
+        />
       </div>
     </div>
   )

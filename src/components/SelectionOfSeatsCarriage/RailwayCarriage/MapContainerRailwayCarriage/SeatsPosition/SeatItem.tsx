@@ -19,47 +19,55 @@ interface SeatItemProps {
   position?: SeatPosition; 
   seatItem: SeatsProps;
   onClick?: (el: seatElProps) => void;
+  typeDirection: 'departure' | 'arrival';
 }
 
-const SeatItem = ({seatItem, position = 'seat-static'} : SeatItemProps) => {
+const SeatItem = ({seatItem, position = 'seat-static', typeDirection} : SeatItemProps) => {
   const dispatch = useAppDispatch();
-  const {coach, servicesObj} = useAppSelector(state => state.train);
   const [isActive, setActive] = useState(false);
-  const {tickets, activeTypeTicket, activeNumberCars} = useAppSelector(state => state.train);
+  const {tickets} = useAppSelector(state => state.train);
 
-  useEffect(() => {
-    console.log(position)
-  }, [])
+  const {arrival, departure} = useAppSelector(state => state.train);
+  
+  const [activeDirection, setActiveDirection] = useState(typeDirection ==="departure" ? departure : arrival);
+
+  useEffect(() => { 
+    typeDirection ==="departure" ? setActiveDirection(departure) : setActiveDirection(arrival);
+  }, [typeDirection, departure, arrival])
 
 useEffect(() => {
-  const find = tickets.find((el) => el.index === seatItem.index && el.numberCars === activeNumberCars);
+  const find = tickets.find((el) => el.index === seatItem.index && el.numberCars === activeDirection.activeNumberCars);
   find ? setActive(true) : setActive(false);
-}, [tickets, activeNumberCars, seatItem.index]);
+}, [tickets, activeDirection.activeNumberCars, seatItem.index]);
   
   const clickItemSeat = (seatItem: seatElProps) => {
-    if (activeTypeTicket === "childWithoutSeat") {
+    console.log(12)
+    if (activeDirection.activeTypeTicket === "childWithoutSeat") {
       const index = tickets.findIndex((el) => (el.is_adult
         && el.index === seatItem.index))
       if (index >= 0) dispatch(setInclude_children_seat(index))
         return
     }
-    if (activeNumberCars && coach && position) {
+    console.log(activeDirection.activeNumberCars)
+    if (activeDirection.activeNumberCars && activeDirection.coach && position) {
       const price = getPrice(position, seatItem.index);
-      const linensPrice =  servicesObj.inCludesLinens || servicesObj.linens ? coach.linens_price : 0; 
-      const wifiPrice = servicesObj.wifi ? coach.wifi_price : 0;
+      const linensPrice =  activeDirection.servicesObj.inCludesLinens || activeDirection.servicesObj.linens ? activeDirection.coach.linens_price : 0; 
+      const wifiPrice = activeDirection.servicesObj.wifi ? activeDirection.coach.wifi_price : 0;
       
-      const coeff = activeTypeTicket === "adult" ? 1 : 0.5;
-      const totalPrice = (coach[price] + linensPrice + wifiPrice) * coeff;
+      const coeff = activeDirection.activeTypeTicket === "adult" ? 1 : 0.5;
+      const totalPrice = (activeDirection.coach[price] + linensPrice + wifiPrice) * coeff;
       const obj = {
         ...seatItem,
-        numberCars: activeNumberCars!,
-        is_adult: activeTypeTicket === "adult" ? true : false,
+        numberCars: activeDirection.activeNumberCars!,
+        is_adult: activeDirection.activeTypeTicket === "adult" ? true : false,
         include_children_seat: false,
-        type: activeTypeTicket,
+        type: activeDirection.activeTypeTicket!,
         price: totalPrice,
+        typeDirection: typeDirection,
+        
       }
       console.log(obj)
-      dispatch(addRemoveTicket(obj));
+      dispatch(addRemoveTicket({ticket: obj, typeDirection}));
     }
   }
 

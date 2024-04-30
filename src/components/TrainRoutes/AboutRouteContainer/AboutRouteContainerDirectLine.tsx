@@ -6,7 +6,7 @@ import arrow from '../../../assets/images/svg/arrowRoute.svg';
 const AboutRouteContainerDirectLine = ({item, isNotTime = false}: RouteRailwayCarriageProps) => {
 
   return (
-    <div className='direct-line-route'>
+    <div className={`direct-line-route`}>
       <div className='direct-line-route__container'>
         <span className='direct-line-route__container__date'>{getDateTimeTrain(item.from.datetime)}</span>
         <span className='direct-line-route__container__city'>{ capitalized(item.from.city.name)}</span>

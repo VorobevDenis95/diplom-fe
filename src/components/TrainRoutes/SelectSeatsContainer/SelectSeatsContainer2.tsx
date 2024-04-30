@@ -3,25 +3,34 @@ import { CoachSeatsRequestProps } from '../../../shared/types/typesSeats';
 import { useAppSelector } from '../../../shared/redux/redux-hooks';
 import { useDispatch } from 'react-redux';
 import { setServicesObj } from '../../../shared/redux/slice/trainSlice';
+import { useEffect, useState } from 'react';
 
 
 export interface SelectSeatsContainerProps2 { 
   coach: CoachSeatsRequestProps,
+  typeDirection: "departure" | "arrival";
 }
 
-const SelectSeatsContainer2 = ({coach} : SelectSeatsContainerProps2) => {
+const SelectSeatsContainer2 = ({coach, typeDirection} : SelectSeatsContainerProps2) => {
+  
+    const { arrival, departure } = useAppSelector(state => state.train);
+  const [activeDirection, setActiveDirection] = useState(typeDirection === "departure" ? departure : arrival);
+
+  useEffect(() => {
+    typeDirection === "departure" ? setActiveDirection(departure) : setActiveDirection(arrival);
+  }, [typeDirection, departure, arrival])
 
   // const {servicesObj} = useAppSelector(state => state.train);
   const dispatch = useDispatch();
-  const {servicesObj} = useAppSelector(state => state.train);
+  // const {servicesObj} = useAppSelector(state => state.train);
 
   const clickLinens = () => {
     if (coach.is_linens_included) return;
-    dispatch(setServicesObj({ key: 'linens', value: !servicesObj.linens }));
+    dispatch(setServicesObj({ key: 'linens', value: !activeDirection.servicesObj.linens, typeDirection: typeDirection }));
   }
   
   const clickWifi = () => {
-    dispatch(setServicesObj({ key: 'wifi', value: !servicesObj.wifi }));
+    dispatch(setServicesObj({ key: 'wifi', value: !activeDirection.servicesObj.wifi, typeDirection }));
   }
 
   // useEffect(() => {
@@ -31,6 +40,7 @@ const SelectSeatsContainer2 = ({coach} : SelectSeatsContainerProps2) => {
 
   return (
     <>
+    
       <div className='services'>
          { coach.have_air_conditioning && 
          <div className='services__item services__include'>
@@ -43,7 +53,7 @@ const SelectSeatsContainer2 = ({coach} : SelectSeatsContainerProps2) => {
             </svg>
           </div>}
 
-        <div className={`services__item ${servicesObj.wifi ? 'services__item-active' : ''}`} onClick={clickWifi}>
+        <div className={`services__item ${activeDirection.servicesObj?.wifi ? 'services__item-active' : ''}`} onClick={clickWifi}>
           <div className="services__item-tooltip">WI-FI</div>
           {/* <img src={wifiIcon} alt="services__icon" /> */}
           <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +67,7 @@ const SelectSeatsContainer2 = ({coach} : SelectSeatsContainerProps2) => {
 {       coach.class_type !== 'fourth' &&
           <div onClick={clickLinens}
            className={`services__item
-           ${servicesObj.linens ? 'services__item-active' : ''}
+           ${activeDirection.servicesObj?.linens ? 'services__item-active' : ''}
            ${coach.is_linens_included ? 'services__item-included' : ''}`}>
           <div className='services__item-tooltip'>Бельё</div>
           {/* <img src={linensIcon} alt="services__icon" /> */}

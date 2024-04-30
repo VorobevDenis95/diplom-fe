@@ -3,6 +3,7 @@ import SliderContainer from '../SettingsContainer/SliderContainer/SliderContaine
 import './PriceContainer.css';
 import { useSearchParams } from 'react-router-dom';
 import useDebounce from '../../shared/hooks/useDebounce';
+// import { useAppSelector } from '../../shared/redux/redux-hooks';
 
 // const PriceContainer = ({items} : Omit<ResponseRoutes, 'total_count'>) => {
 const PriceContainer = () => {
@@ -11,7 +12,7 @@ const PriceContainer = () => {
   const prevParams = Object.fromEntries(searchParams);
   const debounceValue = useDebounce(value);
   
-
+  // const {status} = useAppSelector(state => state.direction)
   useEffect(() => {
     // setSearchParams({ ...prevParams, price_from: `${value.max}`});
     setSearchParams({ ...prevParams, price_to: `${debounceValue.max}`});

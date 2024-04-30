@@ -5,6 +5,7 @@ interface TotalPriceProps {
 }
 
 const TotalPrice = ({number} :TotalPriceProps) => {
+
   return (
     <div className="totalPriceRailwayCarriage">
       <span>{number}</span>

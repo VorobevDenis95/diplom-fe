@@ -5,6 +5,10 @@
   padding: 0 40px;
 }
 
+.direct-line-route-reverse {
+  flex-direction: row-reverse;
+}
+
 .revers-flex {
   flex-direction: row-reverse;
 }
