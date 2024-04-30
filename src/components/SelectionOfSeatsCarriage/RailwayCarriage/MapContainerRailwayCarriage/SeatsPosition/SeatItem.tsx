@@ -66,14 +66,14 @@ useEffect(() => {
         typeDirection: typeDirection,
         
       }
-      console.log(obj)
+      console.log(seatItem)
       dispatch(addRemoveTicket({ticket: obj, typeDirection}));
     }
   }
 
   return (
     <div onClick={() => clickItemSeat(seatItem)}  
-    className={`${position} ${seatItem.available ? 'seat-busy' : 'seat'}
+    className={`${position} ${seatItem.available ? 'seat' : 'seat-busy'}
     ${isActive ? 'seat-selected' : ''} `}>
     {seatItem.index}
     </div>
