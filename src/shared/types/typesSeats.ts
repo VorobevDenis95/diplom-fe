@@ -7,7 +7,7 @@ seats: SeatsProps[] // - информация о посадочных места
 
 export interface SeatsProps {
   index: number;
-  avaliable:boolean;
+  available:boolean;
 }
 
 export interface CoachSeatsRequestProps {

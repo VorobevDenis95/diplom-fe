@@ -9,7 +9,7 @@ import { getPrice } from "./utils";
 interface seatElProps {
   line?: string;
   type?: TypeRailwayCarriage;
-  avaliable: boolean;
+  available: boolean;
   index: number;
 }
 
@@ -73,7 +73,7 @@ useEffect(() => {
 
   return (
     <div onClick={() => clickItemSeat(seatItem)}  
-    className={`${position} ${seatItem.avaliable ? 'seat-busy' : 'seat'}
+    className={`${position} ${seatItem.available ? 'seat-busy' : 'seat'}
     ${isActive ? 'seat-selected' : ''} `}>
     {seatItem.index}
     </div>

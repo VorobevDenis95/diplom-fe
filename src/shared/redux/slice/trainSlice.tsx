@@ -6,7 +6,7 @@ import { CoachSeatsRequestProps } from "../../types/typesSeats";
 export interface TicketProps {
   type: TicketType;
   // number: number;
-  avaliable: boolean;
+  available: boolean;
   index: number;
   numberCars: string;
   typeDirection: 'departure' | 'arrival';
