@@ -20,8 +20,6 @@ const DateInput = ({nameClass }: InputProps) => {
   const currentDateInput = nameClass === 'search-form__input-date-from' ? dateStart : dateTo;
   const dispatch = useAppDispatch();
 
-  
-
   useEffect(() => {
     if (nameClass === 'search-form__input-date-from') {
       dispatch(setDateStart(valueInput));

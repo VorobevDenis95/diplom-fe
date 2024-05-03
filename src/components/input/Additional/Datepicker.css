@@ -7,6 +7,7 @@
   border-bottom: 1px solid rgb(161, 161, 161);
   border-radius: 5px;
   position: absolute;
+  z-index: 3;
   /* left: 0; */
   width: 300px;
   box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.25);

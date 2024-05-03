@@ -41,7 +41,7 @@ useEffect(() => {
 }, [tickets, activeDirection.activeNumberCars, seatItem.index]);
   
   const clickItemSeat = (seatItem: seatElProps) => {
-    console.log(12)
+    if (!seatItem.available) return;
     if (activeDirection.activeTypeTicket === "childWithoutSeat") {
       const index = tickets.findIndex((el) => (el.is_adult
         && el.index === seatItem.index))

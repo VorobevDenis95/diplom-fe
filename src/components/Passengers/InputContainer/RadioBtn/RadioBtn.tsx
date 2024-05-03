@@ -1,20 +1,17 @@
-import { useState } from 'react';
 import './RadioBtn.css';
 import RadioBtnItem, { GenderType } from './RadioBtnItem';
 
-const RadioBtn = () => {
+interface RadioBtnProps {
+  activeTypeGender: GenderType;
+  clickBtnGender: (type: GenderType) => void
+}
 
-  const [isActiveType, setActiveType] = useState<GenderType>('male');
-
-  const clickBtn = (type:  GenderType) => {
-    setActiveType(type);
-  }
-  
+const RadioBtn = ({activeTypeGender, clickBtnGender} : RadioBtnProps) => {
   
   return (
     <div className="radio__btn">
-      <RadioBtnItem type='male' activeType={isActiveType} clickItem={clickBtn}/>
-      <RadioBtnItem type='female' activeType={isActiveType} clickItem={clickBtn}/>
+      <RadioBtnItem type='male' activeType={activeTypeGender} clickItem={clickBtnGender}/>
+      <RadioBtnItem type='female' activeType={activeTypeGender} clickItem={clickBtnGender}/>
     </div>
   )
 }

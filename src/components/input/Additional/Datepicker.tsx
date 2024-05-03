@@ -2,6 +2,7 @@ import { useState, useMemo} from "react";
 import { months } from "./utils";
 import './Datepicker.css';
 import { DateCellItem, DatePickerProps } from "../../../shared/types/types";
+import { useLocation } from "react-router-dom";
 
 const getDaysAmountInAMonth = (year: number, month: number) => {
   const nextMonthDate = new Date(year, month + 1, 1);
@@ -90,10 +91,13 @@ const getAllCells = (year: number, month: number) => {
 const DatePicker = ({value, coordinates, inputRef, timeout, onChange, onClickDate} : DatePickerProps) => {
   const [panelYear, setPanelYear] = useState(value.getFullYear());
   const [panelMonth, setPanelMonth] = useState(value.getMonth());
-  console.log(timeout)
-  const CalendarStyles = {
-    top: `${coordinates.y + coordinates.height}px`,
-    left: `${coordinates.x}px`,
+
+  const location = useLocation();
+
+
+  const CalendarStyles = { 
+    top: location.pathname === '/' ? `${coordinates.y + coordinates.height}px` : `${coordinates.y - coordinates.height * 3}px`,
+    left: location.pathname === '/' ? `${coordinates.x - 15}px` : `${coordinates.x + 45}px`,
   }
 
   const dateCells = useMemo(() => {

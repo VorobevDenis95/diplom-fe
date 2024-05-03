@@ -1,7 +1,12 @@
 .passenger__document-container {
+  display: flex;
   padding: 20px;
   border-top: 1px dashed #928f94;
   border-bottom: 1px dashed #928f94;
   background-color: #fff;
   height: 170px;
+}
+
+.passenger__document-container div {
+  margin-right: 20px;
 }

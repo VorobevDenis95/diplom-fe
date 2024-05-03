@@ -1,19 +1,27 @@
+import { ChangeEvent, useRef } from 'react';
 import './InputPassenger.css';
+import { capitalized } from '../../utils';
 
-interface InputPassengerProps {
-  type: 'first_name' | 'last_name' | 'patronymic';
+export type InputType = 'first_name' | 'last_name' | 'patronymic' | 'birthday';
 
+export interface InputPassengerProps {
+  type: InputType;
+  changeInput: (type: InputType, e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputPassenger = ({type} : InputPassengerProps) => {
-// const InputPassenger = () => {
+const InputPassenger = ({ type, changeInput }: InputPassengerProps) => {
 
-  console.log(type);
+  const myInput = useRef<HTMLInputElement>(null);
 
   return (
-    <input className='passenger_input-fullname'
-     type='text' required/>
+    <input
+      className='passenger_input-fullname'
+      onChange={(e: ChangeEvent<HTMLInputElement>) => changeInput(type, e)}
+      ref={myInput}
+      value={capitalized(myInput.current?.value ?? '')}
+      type='text'
+    />
   )
 }
 
-export default InputPassenger
+export default InputPassenger;
