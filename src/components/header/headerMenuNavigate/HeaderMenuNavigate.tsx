@@ -15,7 +15,7 @@ const HeaderMenuNavigate = () => {
           </a>
         </li>
         <li className="header__menu-item-container">
-          <a className='header__menu-link' href="/#">
+          <a className='header__menu-link' href="/#reviews">
             Отзывы
           </a>
         </li>

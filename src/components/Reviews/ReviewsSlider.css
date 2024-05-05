@@ -1,0 +1,20 @@
+.slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-btn {
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+}
+
+.slider-btn:hover {
+  box-shadow: 1px 1px 5px #e5e5e5;
+}
+
+.slider-btn-active {
+  background-color: #c4c4c4;
+}

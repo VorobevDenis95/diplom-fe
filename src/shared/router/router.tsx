@@ -5,6 +5,7 @@ import HowItWork from '../../pages/HowItWork/HowItWork';
 import TrainSelection from '../../pages/TrainSelection.tsx/TrainSelection';
 import RailwayCarriage from '../../components/SelectionOfSeatsCarriage/RailwayCarriage/RailwayCarriage';
 import Passenger from '../../pages/Passenger/Passenger';
+import ReviewsContainer from '../../components/Reviews/ReviewsContainer';
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ export const router = createBrowserRouter([
         <>
           <About />
           <HowItWork />
+          <ReviewsContainer />
           {/* <Loader /> */}
         </>
       },

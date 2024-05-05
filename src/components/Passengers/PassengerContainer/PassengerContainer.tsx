@@ -10,6 +10,7 @@ import { InputType } from '../InputContainer/InputPassenger';
 import { TicketType } from '../SelectInput/ListValues/ListValues';
 import { GenderType } from '../InputContainer/RadioBtn/RadioBtnItem';
 import { requiredFieldsObject } from './utils';
+import RequiestContainer from '../RequiestContainer/RequiestContainer';
 
 export interface PassengerContainerProps {
   index: number,
@@ -46,7 +47,8 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
   const [data, setData] = useState<PassengerDataSeats>(initPassengerDataSeats);
 
   useEffect(() => {
-    isActive ? setCurrentImage(closeIcon) : setCurrentImage(openIcon)
+    isActive ? setCurrentImage(closeIcon) : setCurrentImage(openIcon);
+    setChecked(false);
   }, [isActive])
 
 
@@ -183,7 +185,7 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
 
   // logic document change
   const [passportValue, setPassportValue] = useState('');
-  
+
   const [certificateValue, setCertificateValue] = useState('');
 
 
@@ -192,7 +194,7 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
   }
 
   const changeNumberPassport = (series: string, number: string) => {
-    setPassportValue(`${series} ${number}`);  
+    setPassportValue(`${series} ${number}`);
   }
 
   // certificate number logic
@@ -213,15 +215,23 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
   // logic required fields
 
   const [required, setRequired] = useState(requiredFieldsObject(data));
-  
+  const [isChecked, setChecked] = useState(false);
+
   useEffect(() => {
     setRequired(requiredFieldsObject(data));
   }, [data])
 
   const clickRequired = () => {
-    setRequired(requiredFieldsObject(data))
+    setRequired(requiredFieldsObject(data));
+    setChecked(true);
     console.log(required);
   }
+
+  // function statusCheck () {
+
+  // }
+
+  // const [statusRequiredContainer, setStatusRequiredContainer] = useState();
 
   return (
     <div className="passenger__item">
@@ -252,10 +262,11 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
             clickValue={clickValueDocument} clickInput={clickInputDocument} index={indexDocument}
             changeInputPassportNumber={changeNumberPassport} changeInputPassportSeries={changeSeriesPassport}
             changeInputCertificateNumber={changeInputCertificateNumber} />
+          <RequiestContainer data={required} clickBtnPassenger={clickRequired}
+            checkStatus={isChecked} />
         </>
       }
-      <button onClick={clickRequired}>Проверить</button>
-      <div></div>
+
     </div>
   )
 }

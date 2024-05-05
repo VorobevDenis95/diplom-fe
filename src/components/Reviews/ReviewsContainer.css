@@ -1,0 +1,12 @@
+.reviews {
+  max-width: 1920px;
+  margin: auto;
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: center; */
+}
+
+.reviews__container {
+  display: flex;
+  flex-wrap: wrap;
+}
