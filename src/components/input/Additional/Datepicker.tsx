@@ -2,7 +2,6 @@ import { useState, useMemo} from "react";
 import { months } from "./utils";
 import './Datepicker.css';
 import { DateCellItem, DatePickerProps } from "../../../shared/types/types";
-import { useLocation } from "react-router-dom";
 
 const getDaysAmountInAMonth = (year: number, month: number) => {
   const nextMonthDate = new Date(year, month + 1, 1);
@@ -88,17 +87,22 @@ const getAllCells = (year: number, month: number) => {
   ]
 }
 
-const DatePicker = ({value, coordinates, inputRef, timeout, onChange, onClickDate} : DatePickerProps) => {
+const DatePicker = ({value, inputRef, timeout, onChange, onClickDate} : DatePickerProps) => {
   const [panelYear, setPanelYear] = useState(value.getFullYear());
   const [panelMonth, setPanelMonth] = useState(value.getMonth());
 
-  const location = useLocation();
+  // const location = useLocation();
 
 
-  const CalendarStyles = { 
-    top: location.pathname === '/' ? `${coordinates.y + coordinates.height}px` : `${coordinates.y - coordinates.height * 3}px`,
-    left: location.pathname === '/' ? `${coordinates.x - 15}px` : `${coordinates.x + 45}px`,
-  }
+  // console.log(coordinates);
+
+  // const CalendarStyles = {
+  //   // top: `${coordinates.y }px`,
+  //   // left: `${coordinates.x}px`,
+  //   // top: location.pathname === '/' ? `${coordinates.y + coordinates.height}px` : `${coordinates.y - coordinates.height * 3}px`,
+  //   // left: location.pathname === '/' ? `${coordinates.x - 15}px` : `${coordinates.x + 45}px`,
+  // }
+  // console.log(CalendarStyles)
 
   const dateCells = useMemo(() => {
     const items: DateCellItem[] = getAllCells(panelYear, panelMonth);
@@ -136,7 +140,8 @@ const DatePicker = ({value, coordinates, inputRef, timeout, onChange, onClickDat
 
   return (
     <div className="calendar"
-      style={CalendarStyles}>
+      // style={CalendarStyles}
+      >
         <div className="calendar__header">
           <button type='button' className='calendar__btn' onClick={prevMonth}>◂</button>
           <span className="calendar__header-month" >{months[panelMonth]}</span>

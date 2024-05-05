@@ -25,7 +25,7 @@ const TrainSelection = () => {
   useEffect(() => {
     
       dispatch(fetchRoutes({ ...params, ...paramsObject } as paramsRoutesSelection, ))
-    console.log(debounceGetParams)
+
   }, [debounceGetParams]);
 
   // console.log(isActive)

@@ -36,7 +36,7 @@ export interface InputProps {
 
 export interface DatePickerProps {
   value: Date;
-  coordinates: CoordinatesProps;
+  // coordinates: CoordinatesProps;
   onChange: (value: Date) => void;
   onClickDate: (value: boolean) => void;
   inputRef: React.RefObject<HTMLInputElement>

@@ -1,6 +1,10 @@
-
+.input-container-calendar {
+  position: relative;
+}
 
 .calendar {
+  top: 45px;
+  left: -18px;
   background-color: #fff;
   color: #000;
   margin: 30px;

@@ -4,6 +4,7 @@ import DateInput from "../InputContainer/DateInput/DateInput"
 import InputPassenger, { InputType } from "../InputContainer/InputPassenger"
 import RadioBtn from "../InputContainer/RadioBtn/RadioBtn"
 import { GenderType } from "../InputContainer/RadioBtn/RadioBtnItem"
+import { PassengerDataSeats } from "../PassengerContainer/PassengerContainer"
 import { TicketType } from "../SelectInput/ListValues/ListValues"
 import SelectInput from "../SelectInput/SelectInput"
 import WrapperContainer from "../WrapperContainer/WrapperContainer"
@@ -21,28 +22,32 @@ interface PassengerInfoConrainer {
   clickBtnGender: (type: GenderType) => void;
   checked: boolean;
   onChangeChecked: (checked: boolean) => void;
-
+  data: PassengerDataSeats;
 }
 
 const PassengerInfoContainer = ({changeInput, list, index, clickInput, clickValue,
    isActive, activeTypeGender, clickBtnGender,
-  checked, onChangeChecked} : PassengerInfoConrainer) => {
+  checked, onChangeChecked, data} : PassengerInfoConrainer) => {
   return (
     <div className='passenger__item__container'>
       <SelectInput list={list} active={isActive}
       index={index} changeList={clickInput} clickItemList={clickValue} />
       <div className="passenger__fullname-container">
         <WrapperContainer title='Фамилия'>
-          <InputPassenger type='last_name' 
-          changeInput={changeInput}/>
+          <InputPassenger type='last_name'
+          value={data.last_name} 
+          changeInput={changeInput}
+          />
         </WrapperContainer>
         <WrapperContainer title='Имя'>
           <InputPassenger type='first_name'
-          changeInput={changeInput} />
+          changeInput={changeInput} 
+          value={data.first_name}/>
         </WrapperContainer>
         <WrapperContainer title='Отчество'>
           <InputPassenger type='patronymic'
-          changeInput={changeInput} />
+          changeInput={changeInput}
+          value={data.patronymic} />
         </WrapperContainer>
       </div>
 

@@ -257,7 +257,8 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
             clickBtnGender={clickBtnGender}
             checked={isCheckedLimited}
             onChangeChecked={handlerChangeChecked}
-            index={indexInfoContainer} isActive={isActiveInfoContainer} />
+            index={indexInfoContainer} isActive={isActiveInfoContainer} 
+            data={data}/>
           <PassengerDocumentContainer list={listDocument} isActive={isActiveDocument}
             clickValue={clickValueDocument} clickInput={clickInputDocument} index={indexDocument}
             changeInputPassportNumber={changeNumberPassport} changeInputPassportSeries={changeSeriesPassport}
