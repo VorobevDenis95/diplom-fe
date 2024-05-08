@@ -6,6 +6,7 @@ import TrainSelection from '../../pages/TrainSelection.tsx/TrainSelection';
 import RailwayCarriage from '../../components/SelectionOfSeatsCarriage/RailwayCarriage/RailwayCarriage';
 import Passenger from '../../pages/Passenger/Passenger';
 import ReviewsContainer from '../../components/Reviews/ReviewsContainer';
+import Payment from '../../pages/Payment/Payment';
 
 export const router = createBrowserRouter([
   {
@@ -33,8 +34,11 @@ export const router = createBrowserRouter([
       {
         path: '/passengers',
         element: <Passenger />
+      },
+      {
+        path: '/payment',
+        element: <Payment />
       }
-
     ]
   }
 ]);

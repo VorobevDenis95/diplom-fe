@@ -1,3 +1,9 @@
+.passenger__limited-container-box {
+  margin-top: 15px;
+  /* width: 260px; */
+  /* height: 20px; */
+}
+
 .passenger__limited-container {
   width: 260px;
   display: flex;
@@ -5,7 +11,34 @@
   justify-content: space-between;
 }
 
-.passenger__limited-container-text {
+.passenger__limited-container-box-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.passenger__limited-container-box-text {
+  position: relative;
+  cursor: pointer;
   font-size: 18px;
   font-weight: 400;
+  margin-left: 50px;
+}  
+
+.passenger__limited-container-box-text::before {
+  content: '';
+  position: absolute;
+  display: block;
+  top: -4px;
+  left: -50px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+}
+
+.passenger__limited-container-box-checkbox:checked + .passenger__limited-container-box-text::before {
+  border-color: #ffa800;
+  background-image: url('../../../../assets//images/svg/payment/check_mark-icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
 }

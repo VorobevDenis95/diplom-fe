@@ -22,7 +22,7 @@ export function requiredPassport(str: string) {
 }
 
 export function requiredCertificate(str: string) {
-  const regex = /^[A-Z]{3}-[А-Я]{2}-d{6}$/;
+  const regex = /^[A-Z]{4}-[А-Я]{2}-\d{6}$/;
   return regex.test(str);
 }
 

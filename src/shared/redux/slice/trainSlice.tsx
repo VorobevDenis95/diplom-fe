@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { TraineRoutesItemProps } from "../../types/typesRoutesBilets";
 import { TicketType, TypeRailwayCarriage } from "../../types/typesTrain";
 import { CoachSeatsRequestProps } from "../../types/typesSeats";
+import { PassengerDataSeats } from "../../../components/Passengers/PassengerContainer/PassengerContainer";
 
 export interface TicketProps {
   type: TicketType;
@@ -28,8 +29,8 @@ export interface DirectionTrainStore {
     wifi: boolean,
     linens: boolean,
     inCludesLinens: boolean,
-  } 
-} 
+  }
+}
 
 export interface TrainStore {
   item: TraineRoutesItemProps['item'] | null;
@@ -46,7 +47,8 @@ export interface TrainStore {
     wifi: boolean,
     linens: boolean,
     inCludesLinens: boolean,
-  } 
+  }
+  passengers: PassengerDataSeats[];
 }
 
 const initialState: TrainStore = {
@@ -82,7 +84,8 @@ const initialState: TrainStore = {
     wifi: false,
     linens: false,
     inCludesLinens: false,
-  }
+  },
+  passengers: [],
 }
 
 const train = createSlice({
@@ -95,18 +98,18 @@ const train = createSlice({
     clearTrain(state) {
       state.item = null;
     },
-    clearActiveTypeRailwayCarriage(state, action: PayloadAction<'arrival'| 'departure'>) {
+    clearActiveTypeRailwayCarriage(state, action: PayloadAction<'arrival' | 'departure'>) {
       state[action.payload].activeTypeRailwayCarriage = null;
     },
-    setActiveTypeTicket(state, action: PayloadAction<{ticketType: TicketType, typeDirection: 'arrival'| 'departure' }>) {
-        state[action.payload.typeDirection].activeTypeTicket = action.payload.ticketType;
+    setActiveTypeTicket(state, action: PayloadAction<{ ticketType: TicketType, typeDirection: 'arrival' | 'departure' }>) {
+      state[action.payload.typeDirection].activeTypeTicket = action.payload.ticketType;
     },
-    setActiveTypeRailwayCarriage(state, action: PayloadAction<{type: TypeRailwayCarriage, typeDirection: 'arrival'| 'departure'}>) {
-      state[action.payload.typeDirection].activeTypeRailwayCarriage = state[action.payload.typeDirection].activeTypeRailwayCarriage === action.payload.type 
-      ? null 
-      : action.payload.type
+    setActiveTypeRailwayCarriage(state, action: PayloadAction<{ type: TypeRailwayCarriage, typeDirection: 'arrival' | 'departure' }>) {
+      state[action.payload.typeDirection].activeTypeRailwayCarriage = state[action.payload.typeDirection].activeTypeRailwayCarriage === action.payload.type
+        ? null
+        : action.payload.type
     },
-    setServicesObj(state, action: PayloadAction<{ key: keyof TrainStore['servicesObj'], value: boolean, typeDirection: 'arrival'| 'departure' }>) {
+    setServicesObj(state, action: PayloadAction<{ key: keyof TrainStore['servicesObj'], value: boolean, typeDirection: 'arrival' | 'departure' }>) {
       state[action.payload.typeDirection].servicesObj[action.payload.key] = action.payload.value;
     },
     resetServicesObj(state) {
@@ -117,8 +120,8 @@ const train = createSlice({
         inCludesLinens: false,
       }
     },
-    addRemoveTicket(state, action: PayloadAction<{ticket: TicketProps, typeDirection: 'arrival'| 'departure'}>) {
-      const findEl = state.tickets.findIndex(el => el.index === action.payload.ticket.index && el.numberCars === state[action.payload.typeDirection].activeNumberCars 
+    addRemoveTicket(state, action: PayloadAction<{ ticket: TicketProps, typeDirection: 'arrival' | 'departure' }>) {
+      const findEl = state.tickets.findIndex(el => el.index === action.payload.ticket.index && el.numberCars === state[action.payload.typeDirection].activeNumberCars
         && el.typeDirection === action.payload.typeDirection
       );
       // console.log(findEl)
@@ -129,29 +132,46 @@ const train = createSlice({
       }
       state[action.payload.typeDirection].totalPrice = state.tickets.reduce((acc, item) => {
         const el = item.typeDirection === action.payload.typeDirection ? item.price : 0
-        
+
         return acc + el;
       }, 0)
     },
-    setActiveNumberCars(state, action: PayloadAction<{numberCars : string | null, typeDirection: 'arrival'| 'departure'}>) {
+    setActiveNumberCars(state, action: PayloadAction<{ numberCars: string | null, typeDirection: 'arrival' | 'departure' }>) {
       state[action.payload.typeDirection].activeNumberCars = action.payload.numberCars;
     },
-    setCoach(state, action: PayloadAction<{coach: CoachSeatsRequestProps, typeDirection: 'arrival'| 'departure'}>) {
+    setCoach(state, action: PayloadAction<{ coach: CoachSeatsRequestProps, typeDirection: 'arrival' | 'departure' }>) {
       state[action.payload.typeDirection].coach = action.payload.coach;
     },
-    clearCoach(state, action: PayloadAction <'arrival'| 'departure'> ) {
+    clearCoach(state, action: PayloadAction<'arrival' | 'departure'>) {
       state[action.payload].coach = null;
     },
     setInclude_children_seat(state, action: PayloadAction<number>) {
-      state.tickets[action.payload].include_children_seat = !state.tickets[action.payload].include_children_seat     
+      state.tickets[action.payload].include_children_seat = !state.tickets[action.payload].include_children_seat
     },
+    addPassengers(state, action: PayloadAction<{ data: PassengerDataSeats, index: number }>) {
+      const findEl = state.passengers.findIndex((el) => el.index === action.payload.index)
+
+      if (findEl === -1) {
+        state.passengers.push({
+          ...action.payload.data,
+          index: action.payload.index
+        });
+      }
+    },
+    removePassengers(state, action: PayloadAction<{ data: PassengerDataSeats, index: number }>) {
+      const findEl = state.passengers.findIndex((el) => el.index === action.payload.index)
+
+      if (findEl !== -1)
+        state.passengers = state.passengers.slice(0, findEl).concat(state.passengers.slice(findEl + 1));
+    }
   },
 })
 
-export const {setTrain, clearTrain, setActiveTypeTicket, 
+export const { setTrain, clearTrain, setActiveTypeTicket,
   setActiveTypeRailwayCarriage, clearActiveTypeRailwayCarriage,
   setServicesObj, resetServicesObj, addRemoveTicket, setActiveNumberCars,
-  setCoach, clearCoach, setInclude_children_seat
+  setCoach, clearCoach, setInclude_children_seat,
+  addPassengers, removePassengers
 } = train.actions;
 
 export default train.reducer;

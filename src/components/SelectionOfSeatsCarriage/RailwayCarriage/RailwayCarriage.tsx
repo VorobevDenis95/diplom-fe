@@ -13,7 +13,7 @@ import ContainerRailwayCarriage from './MapContainerRailwayCarriage/RailwaysCarr
 // import AsideSelection from '../../input/AsideContainer/AsideSelection';
 import { sendCurrentDateToServer } from '../../form/FormDirection/utils';
 import NextButton from '../../NextButton/NextButton';
-import AsideSelection from '../../input/AsideContainer/AsideSelection';
+import AsideSelection from '../../AsideContainer/AsideSelection';
 
 // interface RailwayCarriageProps {
 
@@ -120,7 +120,8 @@ const RailwayCarriage = () => {
         </div>
         }
       
-      <NextButton clickAction={nextPage} active={btnActive} />
+      <NextButton title='Далее' type='button'
+      clickAction={nextPage} active={btnActive} />
       </div>
 
       

@@ -57,12 +57,14 @@ const PassengerInfoContainer = ({changeInput, list, index, clickInput, clickValu
         </WrapperContainer>
 
         <WrapperContainer title='Дата рождения'>
-          <DateInput type="birthday" changeInput={changeInput}/>
+          <DateInput type="birthday" changeInput={changeInput}
+          value={data.birthday}/>
         </WrapperContainer>
 
       </div>
 
-      <CheckboxContainer checked={checked} onChange={onChangeChecked}/>
+      <CheckboxContainer checked={checked} onChange={onChangeChecked}
+      title="ограниченная подвижность"/>
     </div>
   )
 }

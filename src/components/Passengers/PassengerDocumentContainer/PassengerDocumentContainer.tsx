@@ -1,6 +1,7 @@
 // import SelectInput from "../SelectInput/SelectInput";
 import CertificateInput from "../CertificateInput/CertificateInput";
 import PassportInput from "../InputContainer/PassportInput/PassportInput";
+import { PassengerDataSeats } from "../PassengerContainer/PassengerContainer";
 import SelectInputDocument from "../SelectInput/SelectInputDocument";
 import WrapperContainer from "../WrapperContainer/WrapperContainer";
 import './PassengerDocumentContainer.css';
@@ -16,10 +17,12 @@ interface PassengerDocumentContainerProps {
   changeInputPassportSeries:(series: string, number: string) => void;
   changeInputPassportNumber: (series: string, number: string) => void;
   changeInputCertificateNumber: (text: string) => void;
+  data: PassengerDataSeats;
 }
 
 const PassengerDocumentContainer = ({ list, index, clickValue, clickInput, isActive,
-  changeInputPassportSeries, changeInputPassportNumber, changeInputCertificateNumber
+  changeInputPassportSeries, changeInputPassportNumber, changeInputCertificateNumber,
+  data
  }: PassengerDocumentContainerProps) => {
 
   return (
@@ -30,11 +33,13 @@ const PassengerDocumentContainer = ({ list, index, clickValue, clickInput, isAct
       </WrapperContainer>
         {index === 0 &&
         <>
-          <PassportInput changeNumber={changeInputPassportNumber} changeSeries={changeInputPassportSeries}/>
+          <PassportInput changeNumber={changeInputPassportNumber} changeSeries={changeInputPassportSeries}
+          value={data.document_data}/>
         </>
         } 
         {index === 1 && 
-          <CertificateInput changeInputCertificateNumber={changeInputCertificateNumber} />
+          <CertificateInput changeInputCertificateNumber={changeInputCertificateNumber} 
+          value={data.document_data}/>
         }
 
       

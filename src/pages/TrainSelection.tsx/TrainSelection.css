@@ -9,9 +9,3 @@
   font-size: 18px;
 }
 
-.flex {
-  padding: 50px 0;
-  max-width: 1920px;
-  display: flex;
-  justify-content: space-evenly;
-}

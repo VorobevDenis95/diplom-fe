@@ -10,6 +10,8 @@ const StageWrapper = () => {
 
   useEffect(() => {
     if (location.pathname === '/passengers') setCount(2);
+    if (location.pathname === '/payment') setCount(3);
+    
   }, [location.pathname])
 
 

@@ -1,15 +1,15 @@
-import arrowToIcon from '../../../assets/images/svg/time__container/arrow_to.svg';
-import arrowFromIcon from '../../../assets/images/svg/time__container/arrow_from.svg';
+import arrowToIcon from '../../assets/images/svg/time__container/arrow_to.svg';
+import arrowFromIcon from '../../assets/images/svg/time__container/arrow_from.svg';
 import { useEffect, useState } from 'react';
 // import { useAppSelector } from '../../../shared/redux/redux-hooks';
-import { lastTickets } from '../../../shared/api/serviceApi';
-import { ItemRoutes } from '../../../shared/types/typesRoutesBilets';
-import SettingContainer from '../../SettingsContainer/SettingContainer';
-import TravelDatesContainer from '../../SettingsContainer/TravelDatesContainer/TravelDatesContainer';
-import CheckBoxContainer from '../../SettingsContainer/CheckBoxContainerDetalils/CheckBoxContainer';
-import PriceContainer from '../../PriceContainer/PriceContainer';
-import DirectTImeContainer from '../../SettingsContainer/DirectTimeContainer/DirectTimeContainer';
-import LastTicketsContainer from '../../lastTicketsContainer/LastTicketsContainer';
+import { lastTickets } from '../../shared/api/serviceApi';
+import { ItemRoutes } from '../../shared/types/typesRoutesBilets';
+import SettingContainer from '../SettingsContainer/SettingContainer';
+import TravelDatesContainer from '../SettingsContainer/TravelDatesContainer/TravelDatesContainer';
+import CheckBoxContainer from '../SettingsContainer/CheckBoxContainerDetalils/CheckBoxContainer';
+import PriceContainer from '../PriceContainer/PriceContainer';
+import DirectTImeContainer from '../SettingsContainer/DirectTimeContainer/DirectTimeContainer';
+import LastTicketsContainer from '../lastTicketsContainer/LastTicketsContainer';
 
 
 const AsideSelection = () => {

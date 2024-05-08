@@ -11,10 +11,8 @@ const ReviewsContainer = () => {
       </h2>
       <div className="reviews__container">
         {listReviews.map((el) => (
-          <>
-            <Reviews name={el.name} 
-            src={el.src} text={el.text} />
-          </>
+          <Reviews key={el.name}
+            name={el.name} src={el.src} text={el.text} />
         ))}
       </div>
       <ReviewsSlider />

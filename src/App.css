@@ -13,8 +13,12 @@ html {
   scroll-behavior: smooth;
 }
 
-#root {
-  /* max-width: 1920px; */
+.flex {
+  padding: 50px 0;
+  max-width: 1920px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
 }
 
 @font-face {
@@ -36,4 +40,15 @@ html {
   src: local('Roboto' )url('/src/assets/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 107px;
+  background-color: #f9f9f9;
+  color: #292929;
+  font-size: 30px;
+  font-weight: 400;
 }

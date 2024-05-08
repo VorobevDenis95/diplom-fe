@@ -3,7 +3,7 @@ import './PassengerContainer.css';
 import openIcon from '../../../assets/images/svg/passenger /open-btn.svg';
 import closeIcon from '../../../assets/images/svg/passenger /close-btn.svg';
 import closeIcon2 from '../../../assets/images/svg/passenger /close2.svg';
-import { TicketProps } from '../../../shared/redux/slice/trainSlice';
+import { TicketProps, addPassengers, removePassengers } from '../../../shared/redux/slice/trainSlice';
 import PassengerInfoContainer from '../PassengerInfoConrainer/PassengerInfoContainer';
 import PassengerDocumentContainer, { TypeDocument } from '../PassengerDocumentContainer/PassengerDocumentContainer';
 import { InputType } from '../InputContainer/InputPassenger';
@@ -11,6 +11,7 @@ import { TicketType } from '../SelectInput/ListValues/ListValues';
 import { GenderType } from '../InputContainer/RadioBtn/RadioBtnItem';
 import { requiredFieldsObject } from './utils';
 import RequiestContainer from '../RequiestContainer/RequiestContainer';
+import { useAppDispatch } from '../../../shared/redux/redux-hooks';
 
 export interface PassengerContainerProps {
   index: number,
@@ -26,6 +27,7 @@ export interface PassengerDataSeats {
   birthday: string;
   document_type: 'паспорт' | 'свидетельство';
   document_data: string;
+  index?: number;
 }
 
 const initPassengerDataSeats: PassengerDataSeats = {
@@ -41,6 +43,7 @@ const initPassengerDataSeats: PassengerDataSeats = {
 
 const PassengerContainer = ({ index }: PassengerContainerProps) => {
 
+  const dispatch = useAppDispatch();
   const [isActive, setActive] = useState(false);
   const [currentImage, setCurrentImage] = useState(isActive ? closeIcon : openIcon);
 
@@ -86,7 +89,7 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
     const newYear = year >= 0 && year <= currentYear ?
       Number(`20${year}`) : Number(`19${year}`);
 
-    return `${day}.${month}.${newYear}`
+    return `${newYear}.${month}.${day}`;
 
   }
 
@@ -227,6 +230,12 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
     console.log(required);
   }
 
+  useEffect(() => {
+    if (isChecked && required.length === 0)  
+      dispatch(addPassengers({data, index})) 
+    if (isChecked && required.length !== 0) dispatch(removePassengers({data, index}))
+  }, [isChecked, required])
+
   // function statusCheck () {
 
   // }
@@ -262,7 +271,8 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
           <PassengerDocumentContainer list={listDocument} isActive={isActiveDocument}
             clickValue={clickValueDocument} clickInput={clickInputDocument} index={indexDocument}
             changeInputPassportNumber={changeNumberPassport} changeInputPassportSeries={changeSeriesPassport}
-            changeInputCertificateNumber={changeInputCertificateNumber} />
+            changeInputCertificateNumber={changeInputCertificateNumber} 
+            data={data}/>
           <RequiestContainer data={required} clickBtnPassenger={clickRequired}
             checkStatus={isChecked} />
         </>

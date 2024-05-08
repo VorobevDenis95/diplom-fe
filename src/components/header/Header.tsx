@@ -15,7 +15,10 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname.includes('routes')) {
+    if (location.pathname.includes('routes') ||
+    location.pathname.includes('passengers') ||
+    location.pathname.includes('payment')
+  ) {
       !isMain ? setMain(true) : isMain;
       if (classState !== 'main') setClassState('main');
     }

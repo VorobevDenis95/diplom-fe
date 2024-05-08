@@ -1,0 +1,37 @@
+
+
+.passenger__limited-container-radio {
+  position: absolute;
+  opacity: 0;
+}
+
+.passenger__limited-container-text {
+  position: relative;
+  cursor: pointer;
+  margin-left: 50px;
+  color: #928f94;
+  font-size: 24px;
+}
+
+.passenger__limited-container-text::before {
+  content: '';
+  top: -1px;
+  left: -50px;
+  display: block;
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+}
+
+.passenger__limited-container-radio:checked + .passenger__limited-container-text::before {
+  border-color: #ffa800;
+  background-image: url('../../../../assets/images/svg/payment/check_mark-icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.passenger__limited-container-radio:checked + .passenger__limited-container-text {
+  color: #ffa800;
+}

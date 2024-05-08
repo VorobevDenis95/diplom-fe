@@ -3,15 +3,17 @@ import './NextButton.css';
 interface NextButtonProps{
   active: boolean;
   clickAction: () => void;
+  title: string;
+  type: 'button' | 'submit';
 }
 
-const NextButton = ({active, clickAction} :NextButtonProps) => {
+const NextButton = ({active, clickAction, title, type} :NextButtonProps) => {
 
   return (
     <div onClick={clickAction}
     className="next__container">
-      <button type="button" className={`next__container__btn
-      ${active ? '' : 'btn-disable'}`} >Далее</button>
+      <button type={type} className={`next__container__btn
+      ${active ? '' : 'btn-disable'}`} >{title}</button>
     </div>
   )
 }

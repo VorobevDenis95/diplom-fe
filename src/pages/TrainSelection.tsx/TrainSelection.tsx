@@ -8,7 +8,7 @@ import { fetchRoutes } from "../../shared/redux/asyncThunks/getRouteAsynkThunk";
 import PoginationContainer from "../../components/poginationContainer/PoginationContainer";
 import SortContainer from "../../components/TrainRoutes/SortContainer/SortContainer";
 import ShowItemslimit from "../../components/TrainRoutes/ShowItemsLimit/ShowItemsLimit";
-import AsideSelection from "../../components/input/AsideContainer/AsideSelection";
+import AsideSelection from "../../components/AsideContainer/AsideSelection";
 import useDebounce from "../../shared/hooks/useDebounce";
 
 const TrainSelection = () => {

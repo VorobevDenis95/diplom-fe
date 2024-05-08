@@ -1,0 +1,10 @@
+.payment {
+  width: 958px;
+  /* margin-bottom: 30px; */
+  /* background-color: #fff; */
+}
+
+.payment-body {
+  border: 1px solid #c4c4c4;
+  box-shadow: 1px 1px 5px #c4c4c4;
+}

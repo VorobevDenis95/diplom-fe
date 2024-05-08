@@ -33,6 +33,7 @@ const InputPassenger = ({ type, changeInput, value }: InputPassengerProps) => {
       ref={myInput}
       value={inputValue}
       type='text'
+      required
     />
   )
 }

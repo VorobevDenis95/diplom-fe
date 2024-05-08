@@ -1,0 +1,25 @@
+.payment-method {
+  background-color: #fff;
+  /* margin-bottom: 100px; */
+}
+
+.payment-method__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-top: 1px dashed #928f94;
+  min-height: 130px;
+  padding: 40px 20px;
+}
+
+.payment-method__container-type-payment {
+  margin-top: 30px;
+  display: flex;
+}
+
+.payment-method__container-type-payment p {
+  width: 184px;
+  font-weight: 700;
+  font-size: 24px;
+  margin-right: 20px;
+}
