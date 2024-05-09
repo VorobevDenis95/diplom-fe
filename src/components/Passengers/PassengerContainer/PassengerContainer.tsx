@@ -1,8 +1,8 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import './PassengerContainer.css';
-import openIcon from '../../../assets/images/svg/passenger /open-btn.svg';
-import closeIcon from '../../../assets/images/svg/passenger /close-btn.svg';
-import closeIcon2 from '../../../assets/images/svg/passenger /close2.svg';
+import openIcon from '../../../assets/images/svg/passenger/open-btn.svg';
+import closeIcon from '../../../assets/images/svg/passenger/close-btn.svg';
+import closeIcon2 from '../../../assets/images/svg/passenger/close2.svg';
 import { TicketProps, addPassengers, removePassengers } from '../../../shared/redux/slice/trainSlice';
 import PassengerInfoContainer from '../PassengerInfoConrainer/PassengerInfoContainer';
 import PassengerDocumentContainer, { TypeDocument } from '../PassengerDocumentContainer/PassengerDocumentContainer';
