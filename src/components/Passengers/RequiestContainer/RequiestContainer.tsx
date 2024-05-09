@@ -1,6 +1,6 @@
 import './RequiestContainer.css';
-import errorIcon from '../../../assets/images/svg/passenger /error-icon.svg';
-import successIcon from '../../../assets/images/svg/passenger /success-icon.svg';
+import errorIcon from '../../../assets/images/svg/passenger/error-icon.svg';
+import successIcon from '../../../assets/images/svg/passenger/success-icon.svg';
 import { useEffect, useState } from 'react';
 
 interface RequiestContainerProps {
