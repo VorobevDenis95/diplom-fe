@@ -67,8 +67,10 @@ const direction = createSlice({
       const to = {...state.cityTo};
       state.cityFrom = to;
       state.cityTo = from;
+    },
+    clearDirectionState(state) {
+      Object.assign(state, initialState)
     }
-    
   },
   extraReducers: (builder) => {
     builder.addCase(fetchRoutes.pending, (state) => {
@@ -93,6 +95,8 @@ const direction = createSlice({
   },
 })
 
-export const {setCityFrom, setCityTo, setDateStart, setDateEnd, changingCities} = direction.actions;
+export const {setCityFrom, setCityTo, setDateStart, setDateEnd, changingCities,
+  clearDirectionState
+} = direction.actions;
 
 export default direction.reducer;

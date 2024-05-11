@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 interface ItemRoutes {
   have_first_class: boolean;
   have_second_class: boolean;
@@ -126,6 +128,7 @@ interface ResponseRoutes {
 
 interface TraineRoutesItemProps {
   item: ItemRoutes;
+  children?: ReactNode;
 }
 
 // type TraineRoutesItemProps = Pick<ItemRoutes, 'have_first_class'>;

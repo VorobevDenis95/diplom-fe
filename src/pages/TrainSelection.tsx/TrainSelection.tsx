@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import TrainRoutes from "../../components/TrainRoutes/TrainRoutes";
 import { paramsRoutesSelection } from "../../shared/typesParamsUrl";
 import './TrainSelection.css';
@@ -10,6 +10,8 @@ import SortContainer from "../../components/TrainRoutes/SortContainer/SortContai
 import ShowItemslimit from "../../components/TrainRoutes/ShowItemsLimit/ShowItemsLimit";
 import AsideSelection from "../../components/AsideContainer/AsideSelection";
 import useDebounce from "../../shared/hooks/useDebounce";
+import { setTrain } from "../../shared/redux/slice/trainSlice";
+import { TraineRoutesItemProps } from "../../shared/types/typesRoutesBilets";
 
 const TrainSelection = () => {
   const { items, totalCount } = useAppSelector(state => state.direction)
@@ -18,6 +20,7 @@ const TrainSelection = () => {
   // const [isActive, setActive] = useState(loading ? false : true);
   const [searchParams] = useSearchParams();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const paramsObject = Object.fromEntries(searchParams)
   const debounceGetParams = useDebounce(params);
@@ -28,6 +31,10 @@ const TrainSelection = () => {
 
   }, [debounceGetParams]);
 
+  const clickSelectSeats = (item: TraineRoutesItemProps['item']) => {
+    dispatch(setTrain(item));
+    navigate(`/routes/${item.departure._id}${item.arrival?._id ? `/${item.arrival._id}`  : ''}/seats`);
+  }
   // console.log(isActive)
 
   return (
@@ -45,7 +52,10 @@ const TrainSelection = () => {
             </div>
             <div className="train-routes">
               {items.map((el) => (
-                <TrainRoutes key={el.departure._id} item={el} />
+                <TrainRoutes key={el.departure._id} item={el}>
+                  <button onClick={() => clickSelectSeats(el)}
+                   className="train-routes__item__btn-select-seats">Выбрать места</button> 
+                </TrainRoutes>
               ))}
 
             </div>

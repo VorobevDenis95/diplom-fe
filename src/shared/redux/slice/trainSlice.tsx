@@ -3,6 +3,7 @@ import { TraineRoutesItemProps } from "../../types/typesRoutesBilets";
 import { TicketType, TypeRailwayCarriage } from "../../types/typesTrain";
 import { CoachSeatsRequestProps } from "../../types/typesSeats";
 import { PassengerDataSeats } from "../../../components/Passengers/PassengerContainer/PassengerContainer";
+import { DataPaymentPassenger } from "../../../pages/Payment/Payment";
 
 export interface TicketProps {
   type: TicketType;
@@ -47,8 +48,9 @@ export interface TrainStore {
     wifi: boolean,
     linens: boolean,
     inCludesLinens: boolean,
-  }
+  };
   passengers: PassengerDataSeats[];
+  user: DataPaymentPassenger | null;
 }
 
 const initialState: TrainStore = {
@@ -86,6 +88,7 @@ const initialState: TrainStore = {
     inCludesLinens: false,
   },
   passengers: [],
+  user: null,
 }
 
 const train = createSlice({
@@ -163,6 +166,12 @@ const train = createSlice({
 
       if (findEl !== -1)
         state.passengers = state.passengers.slice(0, findEl).concat(state.passengers.slice(findEl + 1));
+    },
+    setUserTrain(state, action: PayloadAction<DataPaymentPassenger>) {
+      state.user = action.payload;
+    },
+    clearTrainState(state) {
+      Object.assign(state, initialState);
     }
   },
 })
@@ -171,7 +180,8 @@ export const { setTrain, clearTrain, setActiveTypeTicket,
   setActiveTypeRailwayCarriage, clearActiveTypeRailwayCarriage,
   setServicesObj, resetServicesObj, addRemoveTicket, setActiveNumberCars,
   setCoach, clearCoach, setInclude_children_seat,
-  addPassengers, removePassengers
+  addPassengers, removePassengers, clearTrainState,
+  setUserTrain
 } = train.actions;
 
 export default train.reducer;

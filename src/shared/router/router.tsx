@@ -7,6 +7,7 @@ import RailwayCarriage from '../../components/SelectionOfSeatsCarriage/RailwayCa
 import Passenger from '../../pages/Passenger/Passenger';
 import ReviewsContainer from '../../components/Reviews/ReviewsContainer';
 import Payment from '../../pages/Payment/Payment';
+import Confirmation from '../../pages/Confirmation/Confirmation';
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: '/payment',
         element: <Payment />
+      }, 
+      {
+        path: '/confirmation',
+        element: <Confirmation />
       }
     ]
   }

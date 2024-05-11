@@ -5,8 +5,9 @@ import './Payment .css';
 import { InputType } from '../../components/Passengers/InputContainer/InputPassenger';
 import { EmailPhoneInput } from '../../components/Passengers/PhoneContainer/PhoneContainer';
 import NextButton from '../../components/NextButton/NextButton';
-// import { useNavigate } from 'react-router-dom';
-// import { useAppDispatch } from '../../shared/redux/redux-hooks';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../shared/redux/redux-hooks';
+import { setUserTrain } from '../../shared/redux/slice/trainSlice';
 // import {useForm, SubmitHandler} from 'react-hook-form';
 
 export type PaymentMethodType = 'cash' | 'online';
@@ -28,7 +29,7 @@ export type PaymentMethodType = 'cash' | 'online';
 // } = useForm<MyPaymentForm>()
 // const onSubmit: SubmitHandler<MyPaymentForm> = (data) => console.log(data)
 
-interface DataPaymentPassenger {
+export interface DataPaymentPassenger {
   first_name: string;
   last_name: string;
   patronymic: string;
@@ -48,8 +49,8 @@ const initDataPayment: DataPaymentPassenger = {
 
 const Payment = () => {
 
-  // const navigator = useNavigate();
-  // const dispatch = useAppDispatch();
+  const navigator = useNavigate();
+  const dispatch = useAppDispatch();
 
   const [data, setData] = useState(initDataPayment);
 
@@ -168,8 +169,10 @@ const Payment = () => {
   }
 
   const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    console.log(data)
+    e.preventDefault();
+    dispatch(setUserTrain(data));
+    navigator('/confirmation');
+    // console.log(data)
   }
 
   return (
