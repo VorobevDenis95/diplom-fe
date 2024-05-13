@@ -34,7 +34,7 @@ const AsideSelection = () => {
       <SettingContainer>
         <TravelDatesContainer />
         <CheckBoxContainer />
-        <PriceContainer />
+        {/* <PriceContainer /> */}
         <DirectTImeContainer src={arrowToIcon} title="Туда"/>
         <DirectTImeContainer src={arrowFromIcon} title="Обратно"/>
       </SettingContainer>

@@ -95,6 +95,8 @@ const direction = createSlice({
   },
 })
 
+// type Status = '' | '' |
+
 export const {setCityFrom, setCityTo, setDateStart, setDateEnd, changingCities,
   clearDirectionState
 } = direction.actions;

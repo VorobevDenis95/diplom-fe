@@ -15,10 +15,12 @@ const PriceContainer = () => {
   // const {status} = useAppSelector(state => state.direction)
   useEffect(() => {
     // setSearchParams({ ...prevParams, price_from: `${value.max}`});
+    if (value.max !== Number(prevParams.price_to))
     setSearchParams({ ...prevParams, price_to: `${debounceValue.max}`});
   }, [debounceValue.max])
 
   useEffect(() => {
+    if (value.min !== Number(prevParams.price_from))
     setSearchParams({ ...prevParams, price_from: `${debounceValue.min}`});
     }, [debounceValue.min])
 

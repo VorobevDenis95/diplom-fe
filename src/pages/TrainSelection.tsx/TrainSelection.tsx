@@ -14,8 +14,10 @@ import { setTrain } from "../../shared/redux/slice/trainSlice";
 import { TraineRoutesItemProps } from "../../shared/types/typesRoutesBilets";
 
 const TrainSelection = () => {
-  const { items, totalCount } = useAppSelector(state => state.direction)
+  const { status, items, totalCount } = useAppSelector(state => state.direction)
+  // const {} = useAppSelector(state => state.train)
   const params = useParams();
+  
 
   // const [isActive, setActive] = useState(loading ? false : true);
   const [searchParams] = useSearchParams();
@@ -24,11 +26,24 @@ const TrainSelection = () => {
 
   const paramsObject = Object.fromEntries(searchParams)
   const debounceGetParams = useDebounce(params);
+  // const debounceGetParamsObject = useDebounce(paramsObject, 2000);
+
+
+  // useEffect(() => {
+  //   const controller = new AbortController();
+  //   const signal = controller.signal;
+
+  //   dispatch(fetchRoutes({ ...params, ...paramsObject } as paramsRoutesSelection, { signal }));
+
+  //   return () => {
+  //     controller.abort();
+  //   };
+  // }, [debounceGetParams]);
 
   useEffect(() => {
     
       dispatch(fetchRoutes({ ...params, ...paramsObject } as paramsRoutesSelection, ))
-
+      // console.log(debounceGetParams)
   }, [debounceGetParams]);
 
   const clickSelectSeats = (item: TraineRoutesItemProps['item']) => {
@@ -41,7 +56,7 @@ const TrainSelection = () => {
     <>
       {
         
-        // status !== 'loading' &&
+        status !== 'loading' &&
         <div className="flex">
           <AsideSelection />
           <div className="train__selection">

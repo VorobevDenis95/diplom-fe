@@ -35,7 +35,8 @@ const SortContainer = () => {
   
   useEffect(() => {
     const prevParams = Object.fromEntries(searchParams)
-    return setSearchParams({...prevParams, sort: `${arrSort[0].type}`})
+    if (arrSort[0].type !==  prevParams.sort)
+    setSearchParams({...prevParams, sort: `${arrSort[0].type}`})
     // console.log({...prevParams, sort: `${arrSort[0].type}`})
   }, [arrSort])
 
