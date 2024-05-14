@@ -11,17 +11,20 @@ const ConfirmationItemPassenger = ({item} : ConfirmationItemPassengerProps) => {
     <div className='confirmation__passenger-item'>
       <div className='confirmation__passenger-item-column'>
         <img src={iconPassenger} alt="icon passenger" />
-        <span>{item.is_adult ? 'Взрослый' : 'Детский'}</span>
+        <span className='confirmation__passenger-item-type'>{item.is_adult ? 'Взрослый' : 'Детский'}</span>
       </div>
-      <div className='confirmation__passenger-item-column'>
+      <div className='confirmation__passenger-item-column confirmation__passenger-body'>
         <span className='confirmation__passenger-item-fullname'>
           {`${item.first_name} ${item.last_name} ${item.patronymic}`}
         </span>
+        <div className='confirmation__passenger-item-column confirmation__passenger-font-grey'>
         <span>Пол {item.gender ? 'мужской' : 'женский'}</span>
         <span>Дата рождения {item.birthday}</span>
-        <span>{item.document_type === 'паспорт' ? 'Паспорт РФ' : 'Свидетельство о рождении'}
+        <span>{item.document_type === 'паспорт' ? 'Паспорт РФ ' : 'Свидетельство о рождении '}
         {item.document_data}
         </span>
+
+        </div>
       </div>
     </div>
   )

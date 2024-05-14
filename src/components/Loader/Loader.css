@@ -28,7 +28,7 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  animation: moveRight 7s infinite;
+  animation: moveRight 2.9s infinite;
 }
 
 .loader_run_road {
@@ -38,7 +38,7 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  animation: moveLeft 7s infinite;
+  animation: moveLeft 2.9s infinite;
 }
 
 @keyframes moveRight {

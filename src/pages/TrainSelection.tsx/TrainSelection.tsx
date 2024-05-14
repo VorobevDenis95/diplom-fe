@@ -12,6 +12,7 @@ import AsideSelection from "../../components/AsideContainer/AsideSelection";
 import useDebounce from "../../shared/hooks/useDebounce";
 import { setTrain } from "../../shared/redux/slice/trainSlice";
 import { TraineRoutesItemProps } from "../../shared/types/typesRoutesBilets";
+import Loader from "../../components/Loader/Loader";
 
 const TrainSelection = () => {
   const { status, items, totalCount } = useAppSelector(state => state.direction)
@@ -55,7 +56,10 @@ const TrainSelection = () => {
   return (
     <>
       {
-        
+        status === 'loading' &&
+        <Loader />
+      }
+      {
         status !== 'loading' &&
         <div className="flex">
           <AsideSelection />

@@ -10,9 +10,16 @@ const ShowItemslimit = () => {
   const [limit, setLimit] = useState(currentLimit);
   
   useEffect(() => {
-    const prevParams = Object.fromEntries(searchParams)
-  if (limit !==  Number(prevParams.limit) )
+    const prevParams = Object.fromEntries(searchParams);
+  if (limit !==  Number(prevParams.limit) ) {
+
+    // setSearchParams(prevParams)
     setSearchParams({...prevParams, limit: `${limit}`})
+
+  
+        // setSearchParams({...prevParams});
+      
+    }
   }, [limit])
 
   const clickNumber = (item: number) => {

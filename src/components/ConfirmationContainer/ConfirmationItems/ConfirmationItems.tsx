@@ -7,11 +7,11 @@ interface ConfirmationItemsProps {
 
 const ConfirmationItems = ({list}: ConfirmationItemsProps) => {
   return (
-    <div>
+    <>
       {list.map((item) => (
         <ConfirmationItemPassenger item={item} key={item.document_data} />
       ))}
-    </div>
+    </>
   )
 }
 

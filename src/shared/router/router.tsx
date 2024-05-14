@@ -8,7 +8,6 @@ import Passenger from '../../pages/Passenger/Passenger';
 import ReviewsContainer from '../../components/Reviews/ReviewsContainer';
 import Payment from '../../pages/Payment/Payment';
 import Confirmation from '../../pages/Confirmation/Confirmation';
-import Loader from '../../components/Loader/Loader';
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +21,6 @@ export const router = createBrowserRouter([
           <About />
           <HowItWork />
           <ReviewsContainer />
-          <Loader />
         </>
       },
       {
