@@ -9,6 +9,7 @@ const StageWrapper = () => {
 
 
   useEffect(() => {
+    if (location.pathname.includes('routes')) setCount(1);
     if (location.pathname === '/passengers') setCount(2);
     if (location.pathname === '/payment') setCount(3);
     if (location.pathname === '/confirmation') setCount(4);

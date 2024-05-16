@@ -1,3 +1,11 @@
+.confirmation {
+  max-width: 959px;
+}
+
+.confirmation .next__container__btn {
+  width: 330px;
+}
+
 .train-routes__item__btn-edit-train {
   width: 233px;
   height: 39px;

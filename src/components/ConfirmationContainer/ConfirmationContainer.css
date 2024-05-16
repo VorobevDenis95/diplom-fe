@@ -1,10 +1,16 @@
 .confirmation__container {
+  border: 1px solid #c4c4c4;
+  box-shadow: 2px 3px 5px #c4c4c4;
   max-width: 959px;
-  /* height: 1000px; */
+  display: flex;
+  flex-direction: column;
+  margin: 80px 0;
+  background-color: #fff;
+}
+
+.confirmation__container-wrapper {
   display: flex;
   justify-content: space-between;
-  background-color: #fff;
-  /* padding: 20px; */
 }
 
 .confirmation__container-box {
@@ -12,20 +18,11 @@
   align-items: flex-end;
   border-left: 1px dashed #e5e5e5;
   padding: 20px;
-  /* align-self: flex-end; */
 }
-
-/* .confirmation__container-column {
-  display: flex;
-  flex-direction: column;
-} */
 
 .confirmation__container-price {
   display: flex;
-
   flex-direction: column;
-  /* align-items: center; */
-  /* flex-direction: column; */
 }
 
 .confirmation__container-row {

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import ConfirmationItems from "./ConfirmationItems/ConfirmationItems";
 import { PassengerDataSeats } from "../Passengers/PassengerContainer/PassengerContainer";
 import './ConfirmationContainer.css';
+import ConfirmationTitle from "./ConfirmationTitle/ConfirmationTitle";
 
 interface ConfirmationContainerProps {
   list: PassengerDataSeats[];
@@ -18,6 +19,8 @@ const ConfirmationContainer = ({ list, totalAmount }: ConfirmationContainerProps
 
   return (
     <div className="confirmation__container">
+      <ConfirmationTitle title='Пассажиры'/>
+      <div className="confirmation__container-wrapper">
       <ConfirmationItems list={list} />
       <div className="confirmation__container-box">
         <div className="confirmation__container-price">
@@ -39,6 +42,8 @@ const ConfirmationContainer = ({ list, totalAmount }: ConfirmationContainerProps
 
         </div>
       </div>
+      </div>
+
     </div>
   )
 }

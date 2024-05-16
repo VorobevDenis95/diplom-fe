@@ -12,6 +12,7 @@ const Header = () => {
   const [classState, setClassState] = useState<StateHeader['state']>('home');
   const [isMain, setMain] = useState(false);
 
+
   const location = useLocation();
 
   useEffect(() => {
@@ -22,6 +23,11 @@ const Header = () => {
   ) {
       !isMain ? setMain(true) : isMain;
       if (classState !== 'main') setClassState('main');
+    }
+
+    if (location.pathname === '/order') {
+      setMain(false);
+      setClassState('order');
     }
   }, [location])
 

@@ -1,16 +1,25 @@
 import { useNavigate } from 'react-router-dom';
-import TrainRoutes from '../../components/TrainRoutes/TrainRoutes';
+// import TrainRoutes from '../../components/TrainRoutes/TrainRoutes';
 import { useAppSelector } from '../../shared/redux/redux-hooks';
 import { ItemRoutes } from '../../shared/types/typesRoutesBilets';
 import './Confirmation.css';
 import { sendCurrentDateToServer } from '../../components/form/FormDirection/utils';
 import ConfirmationContainer from '../../components/ConfirmationContainer/ConfirmationContainer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+// import ConfirmationTitle from '../../components/ConfirmationContainer/ConfirmationTitle/ConfirmationTitle';
+import ConfirmationTrain from '../../components/ConfirmationContainer/ConfirmationTrain/ConfirmationTrain';
+import ConfirmationPayment from '../../components/ConfirmationContainer/ConfirmationPayment/ConfirmationPayment';
+import NextButton from '../../components/NextButton/NextButton';
 
 const Confirmation = () => {
 
+  const {user} = useAppSelector(state => state.train);
+  const [cashText, setCashText] = useState('');
 
 
+  useEffect(() => {
+    user?.payment_method === 'cash' ? setCashText('Наличными') : setCashText('Онлайн')
+  }, [user])
 
   const navigate = useNavigate();
   const { item, tickets, passengers } = useAppSelector(state => state.train)
@@ -22,19 +31,32 @@ const Confirmation = () => {
     navigate(`/routes/${cityFrom.id}/${cityTo.id}${dateStart
       ? `/${sendCurrentDateToServer(dateStart)}${dateTo
         ? `/${sendCurrentDateToServer(dateTo)}` : ''}` : ''}`);
-    console.log(item)
+    console.log(item);
   }
 
+  const handleClickNextPage = () => {
+    navigate('/order');
+  }
+
+  
 
 
   return (
     <div className='confirmation'>
-      {item && <TrainRoutes item={item} >
-        <button onClick={() => handleEditBtn(item)}
-          className="train-routes__item__btn-edit-train">Изменить</button>
-      </TrainRoutes>}
+      {item && 
+      <ConfirmationTrain item={item} onClick={handleEditBtn}/>
+      }
+      
       <ConfirmationContainer list={passengers} 
       totalAmount={totalPrice}/>
+
+      <ConfirmationPayment text={cashText} />
+
+      <NextButton title='Подтвердить'
+          active={true}
+          clickAction={handleClickNextPage}
+          type='button'
+        />
     </div>
   )
 }

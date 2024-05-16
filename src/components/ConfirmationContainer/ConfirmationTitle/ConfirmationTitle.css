@@ -1,0 +1,10 @@
+.confirmation__container-title {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  color: #292929;
+  font-weight: 400;
+  font-size: 30px;
+  padding-left: 40px;
+  border-bottom: 1px solid #928f94;
+}

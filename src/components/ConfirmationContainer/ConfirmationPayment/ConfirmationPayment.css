@@ -1,0 +1,13 @@
+.confirmation__container-pay-container {
+  font-weight: 400;
+  font-size: 24px;
+  color: #292929;
+}
+
+
+.confirmation__container-pay-container span {
+  /* margin-left: 20px; */
+  height: 130px;
+  flex-grow: 1;
+  padding: 20px 40px;
+}
