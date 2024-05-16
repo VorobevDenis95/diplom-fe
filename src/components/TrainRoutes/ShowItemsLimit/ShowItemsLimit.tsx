@@ -6,25 +6,25 @@ const arrLimit = [5, 10, 20];
 const ShowItemslimit = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const currentLimit = searchParams.get('limit') ? Number(searchParams.get('limit')) : arrLimit[0]; 
+  const currentLimit = searchParams.get('limit') ? Number(searchParams.get('limit')) : arrLimit[0];
   const [limit, setLimit] = useState(currentLimit);
-  
+
   useEffect(() => {
     const prevParams = Object.fromEntries(searchParams);
-  if (limit !==  Number(prevParams.limit) ) {
+    if (limit !== Number(prevParams.limit) && limit !== 5) {
+      setSearchParams({ ...prevParams, limit: `${limit}` })
+    }
 
-    // setSearchParams(prevParams)
-    setSearchParams({...prevParams, limit: `${limit}`})
-
+    if (limit === 5 && prevParams.limit) {
+      delete prevParams.limit;
+      setSearchParams(prevParams);
   
-        // setSearchParams({...prevParams});
-      
     }
   }, [limit])
 
   const clickNumber = (item: number) => {
     if (item === limit) return;
-      setLimit(item);
+    setLimit(item);
 
   }
 
@@ -32,14 +32,14 @@ const ShowItemslimit = () => {
     <div className="limit__items">
       <div>
         показывать по
-         
-          {arrLimit.map((item) => (
-            <span
+
+        {arrLimit.map((item) => (
+          <span
             key={item}
             onClick={() => clickNumber(item)}
             className={`${limit === item ? 'limit__items-active' : ''}`}
-            >{item}</span>
-          ))}
+          >{item}</span>
+        ))}
       </div>
     </div>
   )

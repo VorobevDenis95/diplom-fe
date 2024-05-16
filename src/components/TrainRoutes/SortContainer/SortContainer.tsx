@@ -13,9 +13,6 @@ export interface SortRouteObject {
 }
 
 const SortContainer = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  
   const [arrSort, setArrSort] = useState <SortRouteObject[]> 
   ([{
     name: 'времени',
@@ -30,16 +27,19 @@ const SortContainer = () => {
     type: 'duration',
    }
   ])
-  // const [sort, setSort] = useState<SortRoutes>(arrSort[0]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [currentSort, setCurrentSort] = useState(searchParams.get('sort') 
+  ? searchParams.get('sort') : 'date');
+
+  useEffect(() => {
+    setCurrentSort(searchParams.get('sort') ? searchParams.get('sort') : 'date');
+    const arr = sortArr(arrSort, currentSort as SortRoutesType);
+      setArrSort([...arr]);   
+  }, [searchParams.get('sort')])
+  
   const [isActive, setActive] = useState(false);
   
-  useEffect(() => {
-    const prevParams = Object.fromEntries(searchParams)
-    if (arrSort[0].type !==  prevParams.sort)
-    setSearchParams({...prevParams, sort: `${arrSort[0].type}`})
-    // console.log({...prevParams, sort: `${arrSort[0].type}`})
-  }, [arrSort])
-
   const clickSort = () => {
     console.log(1)
     setActive(!isActive);  
@@ -47,16 +47,19 @@ const SortContainer = () => {
   }
 
   const clickFilterElement = (el: SortRouteObject) => {
-    if (el.name !== arrSort[0].name) {
-      const arr = sortArr(arrSort, el.name);
-      setArrSort([...arr]);
+
+    if (el.type !== currentSort && isActive) {
+      const prevParams = Object.fromEntries(searchParams)
+      if (el.type === 'date') {
+        delete prevParams.sort;
+        setSearchParams(prevParams);
+        setActive(!isActive);
+        return;
+      }
+      setSearchParams({ ...prevParams, sort: `${el.type}` })
+      
     }
     setActive(!isActive);
-    
-
-    // if (sort !== el) {
-      
-    // }
     
   }
 

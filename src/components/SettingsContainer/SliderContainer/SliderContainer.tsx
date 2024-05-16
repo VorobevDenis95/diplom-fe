@@ -29,6 +29,7 @@ const SliderContainer = ({min, max, value, step, onChange}: SliderContainerProps
 
   const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
+    console.log(e.target.value)
     const newMinVal = Math.min(+e.target.value, maxValue - step);
     if (!value) setMinValue(newMinVal);
     onChange({ min: newMinVal, max: maxValue });
@@ -43,22 +44,6 @@ const SliderContainer = ({min, max, value, step, onChange}: SliderContainerProps
 
   const minPos = ((minValue - min) / (max - min)) * 100;
   const maxPos = ((maxValue - min) / (max - min)) * 100;
-
-  // const myInput = useRef<HTMLDivElement>(null);
-  // const myStartSlider = useRef<HTMLDivElement>(null);
-  // const myEndSlider = useRef<HTMLDivElement>(null);
-  
-  
-  // const handleClickPrice = (e) => {
-  //   console.log(e)
-  //   const target = e.target;
-  //   const coordinates = target.getBoundingClientRect(); 
-  //   console.log(coordinates);
-  //   if (e.clientX < coordinates.right && e.clientX > coordinates.right - 20) {
-  //     console.log(1);
-  //   }
-  // }
-
 
   return (
     <>

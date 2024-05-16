@@ -8,21 +8,33 @@ import useDebounce from '../../shared/hooks/useDebounce';
 // const PriceContainer = ({items} : Omit<ResponseRoutes, 'total_count'>) => {
 const PriceContainer = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [value, setValue] = useState({min: 100, max: 20000});
+  const [value, setValue] = useState({
+    min: searchParams.get('price_from') ? Number(searchParams.get('price_from')) : 100,
+    max: searchParams.get('price_to') ? Number(searchParams.get('price_to')) : 20000
+  });
   const prevParams = Object.fromEntries(searchParams);
   const debounceValue = useDebounce(value);
-  
-  // const {status} = useAppSelector(state => state.direction)
-  useEffect(() => {
-    // setSearchParams({ ...prevParams, price_from: `${value.max}`});
-    if (value.max !== Number(prevParams.price_to))
-    setSearchParams({ ...prevParams, price_to: `${debounceValue.max}`});
-  }, [debounceValue.max])
 
   useEffect(() => {
-    if (value.min !== Number(prevParams.price_from))
-    setSearchParams({ ...prevParams, price_from: `${debounceValue.min}`});
-    }, [debounceValue.min])
+    if (value.max !== Number(prevParams.price_to) && value.max !== 20000) {
+      setSearchParams({ ...prevParams, price_to: `${debounceValue.max}` });
+    }
+    if (value.max === 20000 && prevParams.price_to) {
+      delete prevParams.price_to;
+      setSearchParams(prevParams);
+    }
+  })
+
+  useEffect(() => {
+    if (value.min !== Number(prevParams.price_from) && value.min !== 100) {
+      setSearchParams({ ...prevParams, price_from: `${debounceValue.min}` });
+    }
+    if (value.min === 100 && prevParams.price_from) {
+      delete prevParams.price_from;
+      setSearchParams(prevParams);
+    }
+
+  }, [debounceValue.min])
 
   return (
     <>
@@ -33,7 +45,7 @@ const PriceContainer = () => {
           <span>до</span>
         </div>
         <SliderContainer min={100} max={20000} step={1}
-        value={value} onChange={setValue}/>
+          value={value} onChange={setValue} />
       </div>
 
     </>
