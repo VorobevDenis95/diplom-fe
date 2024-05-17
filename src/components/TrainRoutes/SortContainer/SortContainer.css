@@ -1,4 +1,7 @@
 .sort__routes {
+  width: 235px;
+  height: 15px;
+  position: relative;
   display: flex;
   cursor: pointer;
 }
@@ -17,4 +20,20 @@
 
 .sort__routes-filters-active {
   overflow: visible;
+  height: 100px;
+  position: absolute;
+  left: 116.5px;
+}
+
+.sort__routes-filters-active span {
+  width: 139px;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 1px 5px 1px rgba(146, 143, 148, 0.4);
+  background-color: #f7f5f9;
+  height: 70px;
+  
+}
+
+.sort__routes-filters-active span:nth-last-of-type() {
+  border: none;
 }

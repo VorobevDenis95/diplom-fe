@@ -31,7 +31,7 @@ const ShowItemslimit = () => {
   return (
     <div className="limit__items">
       <div>
-        показывать по
+        показывать по:
 
         {arrLimit.map((item) => (
           <span

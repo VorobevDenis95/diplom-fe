@@ -23,6 +23,14 @@
   cursor: pointer;
 }
 
+.last-ticket__item:hover {
+  border: 1px solid #ffa800;
+}
+
+.last-ticket__item:active {
+  box-shadow: none;
+}
+
 .last-ticket__item__container {
   display: flex;
   justify-content: space-between;
