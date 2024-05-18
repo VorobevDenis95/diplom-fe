@@ -1,0 +1,17 @@
+.successful-order {
+  position: relative;
+  height: 1113px;
+}
+
+.succesful-order-content {
+  position: absolute;
+  max-width: 1404px;
+  width: 100%;
+  height: 1113px;
+  top: -100px;
+  left: calc(50% - 700px);
+  z-index: 2;
+  background-color: #fff;
+
+  /* transform: translate(-50%, -50%); */
+}

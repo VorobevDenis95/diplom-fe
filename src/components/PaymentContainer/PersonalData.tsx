@@ -23,18 +23,19 @@ const PersonalData = ({handleInputFullName, firstNameValue, lastNameValue, patro
       </h4>
       <div className="personal-data-body">
         <div className="personal-data-body-container">
-          <WrapperContainer title="Фамилия" 
+          
+          <WrapperContainer title="Фамилия"
+          classname="wrapper_input-container-title-color-black">
+            <InputPassenger type="last_name"
+              changeInput={handleInputFullName} value={lastNameValue} />
+          </WrapperContainer>
+
+          <WrapperContainer title="Имя" 
           classname="wrapper_input-container-title-color-black">
             <InputPassenger type="first_name"
               changeInput={handleInputFullName} value={firstNameValue} />
           </WrapperContainer>
 
-          <WrapperContainer title="Имя"
-          classname="wrapper_input-container-title-color-black">
-            <InputPassenger type="last_name"
-              changeInput={handleInputFullName} value={lastNameValue} />
-          </WrapperContainer>
-          
           <WrapperContainer title="Отчество"
           classname="wrapper_input-container-title-color-black">
             <InputPassenger type="patronymic"

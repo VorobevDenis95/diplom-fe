@@ -27,7 +27,7 @@ const SeatItem = ({seatItem, position = 'seat-static', typeDirection} : SeatItem
   const [isActive, setActive] = useState(false);
   const {tickets} = useAppSelector(state => state.train);
 
-  const {arrival, departure} = useAppSelector(state => state.train);
+  const {arrival, departure, item} = useAppSelector(state => state.train);
   
   const [activeDirection, setActiveDirection] = useState(typeDirection ==="departure" ? departure : arrival);
 
@@ -49,7 +49,7 @@ useEffect(() => {
         return
     }
     console.log(activeDirection.activeNumberCars)
-    if (activeDirection.activeNumberCars && activeDirection.coach && position) {
+    if (activeDirection.activeNumberCars && activeDirection.coach && position && item) {
       const price = getPrice(position, seatItem.index);
       const linensPrice =  activeDirection.servicesObj.inCludesLinens || activeDirection.servicesObj.linens ? activeDirection.coach.linens_price : 0; 
       const wifiPrice = activeDirection.servicesObj.wifi ? activeDirection.coach.wifi_price : 0;
@@ -58,6 +58,8 @@ useEffect(() => {
       const totalPrice = (activeDirection.coach[price] + linensPrice + wifiPrice) * coeff;
       const obj = {
         ...seatItem,
+        route_direction_id: item[typeDirection]?._id as string,
+        coach_id: activeDirection.coach._id,
         numberCars: activeDirection.activeNumberCars!,
         is_adult: activeDirection.activeTypeTicket === "adult" ? true : false,
         include_children_seat: false,
@@ -66,6 +68,7 @@ useEffect(() => {
         typeDirection: typeDirection,
         
       }
+      console.log(activeDirection)
       console.log(seatItem)
       dispatch(addRemoveTicket({ticket: obj, typeDirection}));
     }

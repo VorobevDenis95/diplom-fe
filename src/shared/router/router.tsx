@@ -8,6 +8,7 @@ import Passenger from '../../pages/Passenger/Passenger';
 import ReviewsContainer from '../../components/Reviews/ReviewsContainer';
 import Payment from '../../pages/Payment/Payment';
 import Confirmation from '../../pages/Confirmation/Confirmation';
+import SuccesfulOrder from '../../pages/SuccessfulOrder/SuccesfulOrder';
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
       {
         path: '/confirmation',
         element: <Confirmation />
+      },
+      {
+        path: '/order',
+        element: <SuccesfulOrder />,
       }
     ]
   }

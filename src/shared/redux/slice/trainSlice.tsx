@@ -7,7 +7,8 @@ import { DataPaymentPassenger } from "../../../pages/Payment/Payment";
 
 export interface TicketProps {
   type: TicketType;
-  // number: number;
+  route_direction_id: string;
+  coach_id: string;
   available: boolean;
   index: number;
   numberCars: string;
@@ -15,7 +16,6 @@ export interface TicketProps {
   price: number;
   is_adult: boolean;
   include_children_seat: boolean;
-  // is_child?: boolean;
 }
 
 export interface DirectionTrainStore {
@@ -98,6 +98,9 @@ const train = createSlice({
     setTrain(state, action: PayloadAction<TraineRoutesItemProps['item']>) {
       state.item = action.payload;
     },
+    // setIdTrain(state, action: PayloadAction<{ direction_id: string, typeDirection: 'arrival' | 'departure' }>) {
+    //   state[action.payload.typeDirection].id = action.payload.direction_id;
+    // },
     clearTrain(state) {
       state.item = null;
     },
@@ -181,7 +184,8 @@ export const { setTrain, clearTrain, setActiveTypeTicket,
   setServicesObj, resetServicesObj, addRemoveTicket, setActiveNumberCars,
   setCoach, clearCoach, setInclude_children_seat,
   addPassengers, removePassengers, clearTrainState,
-  setUserTrain
+  setUserTrain,
 } = train.actions;
 
 export default train.reducer;
+

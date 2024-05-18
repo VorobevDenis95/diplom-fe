@@ -3,13 +3,24 @@ import CityInput from "../../input/CityInput";
 import DateInput from "../../input/DateInput";
 import './FormDirection.css';
 import arrows from '../../../assets/images/svg/arrows.svg'
-import { FormEvent } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../shared/redux/redux-hooks";
 import { changingCities } from "../../../shared/redux/slice/directionSlice";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { sendCurrentDateToServer } from './utils'
 
 const FormDirection = ({ state }: StateHeader) => {
+  const location = useLocation();
+  const [isActive, setActive] = useState(true);
+
+  useEffect(() => {
+    if (location.pathname === '/order') {
+      setActive(false);
+    } else {
+      setActive(true);
+    }
+  }, [location])
+
   const navigate = useNavigate();
   const { cityFrom, cityTo, dateStart, dateTo } = useAppSelector(state => state.direction);
   const dispatch = useAppDispatch();
@@ -38,6 +49,9 @@ const FormDirection = ({ state }: StateHeader) => {
   }
 
   return (
+
+    <>
+      {isActive &&
     <form className={`form-direction ${state}`}
       onSubmit={handleSubmit}
     >
@@ -74,6 +88,9 @@ const FormDirection = ({ state }: StateHeader) => {
       </div>
 
     </form>
+
+      }
+    </>
   )
 }
 

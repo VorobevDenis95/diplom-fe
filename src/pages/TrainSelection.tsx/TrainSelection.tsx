@@ -49,6 +49,7 @@ const TrainSelection = () => {
 
   const clickSelectSeats = (item: TraineRoutesItemProps['item']) => {
     dispatch(setTrain(item));
+    
     navigate(`/routes/${item.departure._id}${item.arrival?._id ? `/${item.arrival._id}`  : ''}/seats`);
   }
   // console.log(isActive)

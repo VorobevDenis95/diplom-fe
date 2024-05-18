@@ -4,6 +4,7 @@ import { CitiesProps } from "../types/types";
 import { ItemRoutes, ResponseRoutes } from "../types/typesRoutesBilets";
 import { paramsRoutesSelection } from "../typesParamsUrl";
 import { SeatsRequestProps } from "../types/typesSeats";
+import { OrderDataProps } from "../types/typesOrder";
 
 
 export const getCities = async (city: string, controller: AbortController) => {
@@ -97,6 +98,24 @@ export const getSeats = async(id: string) => {
       }
     })
     return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const sendOrder = async(data: OrderDataProps) => {
+  try {
+    const response = await axios({
+      url: `${BASE_URL}/order`,
+      method: 'post',
+      headers: {
+      'Content-Type': 'application/json',  
+      },
+      data: JSON.stringify(data),
+    })
+    // console.log(response.data)
+    return response.data;
+    
   } catch (error) {
     console.log(error);
   }

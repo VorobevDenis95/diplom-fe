@@ -4,6 +4,7 @@
   z-index: 1;
   position: relative;
   color: #fff;
+  /* background-color: #000; */
 }
 
 .header::after {
@@ -24,6 +25,11 @@
 .header__home {
   min-height: 985px;
   border-bottom: 8px solid rgba(255, 168, 0, 1);
+}
+
+.header__order {
+  min-height: 834px;
+  background-color: #000;
 }
 
 .header__home::after {

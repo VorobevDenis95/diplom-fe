@@ -1,0 +1,52 @@
+.order__grade {
+  height: 161px;
+  background-color: rgba(255, 168, 0, 0.88);
+  display: flex;
+}
+
+.order__grade-stars-сontainer p {
+  font-size: 24px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.order__star1:hover,
+.order__star1.active {
+  fill: white;
+}
+
+.order__star2:hover,
+.order__star2.active,
+.order__star1.active ~ .order__star2 {
+  fill: white;
+}
+
+.order__star3:hover,
+.order__star3.active,
+.order__star1.active ~ .order__star3 {
+  fill: white;
+}
+
+.order__star4:hover,
+.order__star4.active,
+.order__star1.active ~ .order__star4 {
+  fill: white;
+}
+
+.order__star5:hover,
+.order__star5.active,
+.order__star1.active ~ .order__star5 {
+  fill: white;
+}
+
+.order__grade-btn {
+  width: 323px;
+  height: 60px;
+  border: 1px solid #3e3c41;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 27px;
+  font-weight: 700;
+  color: #292929;
+}
+

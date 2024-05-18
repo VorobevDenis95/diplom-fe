@@ -1,0 +1,18 @@
+.order__info {
+  height: 312px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #f4f3f6;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #292929;
+}
+
+.order__info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 155px;
+}
