@@ -1,0 +1,21 @@
+.body-direction__container {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.body-direction__container-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.body-direction__container-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.body-direction__container-grey {
+  color: #928f94;
+  font-weight: 400;
+  font-size: 18px;
+}

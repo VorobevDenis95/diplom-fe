@@ -1,9 +1,9 @@
-import { ReactNode, useEffect, useState } from "react";
-import arrowToIcon from '../../../assets/images/svg/time__container/arrow_to.svg';
-import arrowFromIcon from '../../../assets/images/svg/time__container/arrow_from.svg';
+import { ReactNode} from "react";
+import './DirectContainer.css';
 
 interface DirectContainerProps {
-  back: boolean;
+  img: string;
+  title: string;
   active: boolean;
   clickBtnDirect: (active: boolean) => void;
   children?: ReactNode
@@ -11,15 +11,7 @@ interface DirectContainerProps {
 
 
 
-const DirectContainer = ({back, active, clickBtnDirect, children}: DirectContainerProps) => {
-
-  const [title, setTitle] = useState(back ? 'Обратно' : 'Туда');
-  const [src, setSrc] = useState(back ? arrowFromIcon : arrowToIcon);
-
-  useEffect(() => {
-    back ? setTitle('Обратно') : setTitle('Туда');
-    back ? setSrc(arrowFromIcon) : setSrc(arrowToIcon);
-  }, [back])
+const DirectContainer = ({ active, clickBtnDirect, title, img: src, children}: DirectContainerProps) => {
 
   return (
     <div className="direct-time__container">
@@ -27,7 +19,7 @@ const DirectContainer = ({back, active, clickBtnDirect, children}: DirectContain
       <div className='direct-time__container-main-flex'>
         <img src={src} alt="icon arrow" />
         <h2>{title}</h2>
-        {children}
+        <span>{children}</span>
       </div>
       <button onClick={() => clickBtnDirect(active)}
       className={`direct-time__container_btn-show-content ${active ? 'active__btn' : ''}`}>

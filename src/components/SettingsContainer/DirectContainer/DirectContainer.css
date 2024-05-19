@@ -1,0 +1,15 @@
+.direct-time__container {
+  border-bottom: none;
+  min-height: 40px;
+}
+
+.direct-time__container-main {
+  padding: 0;
+}
+
+.direct-time__container-main-flex span {
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  align-self: flex-end;
+}
