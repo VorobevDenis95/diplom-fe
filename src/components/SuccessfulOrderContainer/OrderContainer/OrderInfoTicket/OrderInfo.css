@@ -1,8 +1,9 @@
 .order__info {
+  padding: 0 15%;
   height: 312px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   background-color: #f4f3f6;
   font-size: 18px;
   line-height: 1.2;

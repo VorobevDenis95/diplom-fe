@@ -5,9 +5,26 @@ import './OrderGrade.css'
 const OrderGrade = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [hoverIndex, setHoverIndex] = useState(0);
 
   const handleClickStar = (index: number) => {
-    setActiveIndex(index);
+    if (activeIndex !== index) {
+      setActiveIndex(index);
+      console.log(index);
+      console.log(activeIndex)
+    }
+  }
+
+  const handleHoverStar = (index: number) => {
+    console.log(index)
+    console.log(hoverIndex)
+    if (hoverIndex !== index) {
+      setHoverIndex(index);
+    }
+  }
+
+  const handleLeaveStar = () => {
+    setHoverIndex(0);
   }
 
   return (
@@ -17,14 +34,33 @@ const OrderGrade = () => {
         <p>Оценить сервис</p>
         <div className="order__grade-stars">
           <GradeStar activeIndex={activeIndex}
+            activeHover={hoverIndex}
+            hoverStar={handleHoverStar}
+            leaveStar={handleLeaveStar}
             index={1} clickStar={handleClickStar} />
-          <GradeStar activeIndex={activeIndex}
+          <GradeStar
+            activeHover={hoverIndex}
+            hoverStar={handleHoverStar}
+            leaveStar={handleLeaveStar}
+            activeIndex={activeIndex}
             index={2} clickStar={handleClickStar} />
-          <GradeStar activeIndex={activeIndex}
+          <GradeStar
+            activeHover={hoverIndex}
+            hoverStar={handleHoverStar} 
+            leaveStar={handleLeaveStar}
+            activeIndex={activeIndex}
             index={3} clickStar={handleClickStar} />
-          <GradeStar activeIndex={activeIndex}
+          <GradeStar
+            activeHover={hoverIndex}
+            hoverStar={handleHoverStar}
+            leaveStar={handleLeaveStar}
+            activeIndex={activeIndex}
             index={4} clickStar={handleClickStar} />
-          <GradeStar activeIndex={activeIndex}
+          <GradeStar
+            activeHover={hoverIndex}
+            hoverStar={handleHoverStar}
+            leaveStar={handleLeaveStar}
+            activeIndex={activeIndex}
             index={5} clickStar={handleClickStar} />
         </div>
       </div>

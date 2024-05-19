@@ -38,7 +38,7 @@ const Header = () => {
         <HeaderMenuNavigate />
         <div className="header__container">
           <div className="header__container-body">
-            {!isMain && <h1 >
+            {!isMain && classState !== 'order' &&<h1 >
               <p className="bold500">
                 Вся жизнь -
               </p>

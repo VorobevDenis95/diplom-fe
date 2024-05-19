@@ -28,9 +28,15 @@ export interface OrderMainProps {
   last_name: string;
 }
 
-
+export interface OrderHeaderPriceProps {
+  orderNumber: string;
+  price: number;
+}
 export interface OrderStarProps {
   index: number;
   activeIndex: number;
+  activeHover: number;
   clickStar: (index: number) => void;
+  hoverStar: (index: number) => void;
+  leaveStar: () => void;
 }

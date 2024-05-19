@@ -2,6 +2,18 @@
   height: 161px;
   background-color: rgba(255, 168, 0, 0.88);
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px
+}
+
+.order__grade-stars {
+  display: flex;
+}
+
+.order__grade-stars-сontainer {
+  display: flex;
+  align-items: center;
 }
 
 .order__grade-stars-сontainer p {
@@ -10,36 +22,20 @@
   color: #292929;
 }
 
-.order__star1:hover,
-.order__star1.active {
-  fill: white;
+.order__star {
+  cursor: pointer;
 }
 
-.order__star2:hover,
-.order__star2.active,
-.order__star1.active ~ .order__star2 {
-  fill: white;
+.order__star-active {
+  fill: #fff;
 }
 
-.order__star3:hover,
-.order__star3.active,
-.order__star1.active ~ .order__star3 {
-  fill: white;
-}
-
-.order__star4:hover,
-.order__star4.active,
-.order__star1.active ~ .order__star4 {
-  fill: white;
-}
-
-.order__star5:hover,
-.order__star5.active,
-.order__star1.active ~ .order__star5 {
-  fill: white;
+.order__star-hover {
+  fill: #f0e6e6;
 }
 
 .order__grade-btn {
+  cursor: pointer;
   width: 323px;
   height: 60px;
   border: 1px solid #3e3c41;
@@ -48,5 +44,16 @@
   font-size: 27px;
   font-weight: 700;
   color: #292929;
+}
+
+.order__grade-btn:hover {
+  box-shadow: 0px 3px 5px #292929;
+}
+
+.order__grade-btn:active {
+  background-color: #fff;
+  color: #ffa800;
+  border-color: #ffa800;
+  box-shadow: none;
 }
 

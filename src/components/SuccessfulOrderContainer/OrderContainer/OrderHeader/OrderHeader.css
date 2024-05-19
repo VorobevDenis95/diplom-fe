@@ -1,0 +1,19 @@
+.order__header {
+  display: flex;
+  padding: 0 80px;
+  justify-content: space-between;
+  align-items: center;
+  height: 150px;
+  font-size: 36px;
+  font-weight: 700;
+  color: #3e3c41;
+}
+
+.order__header span {
+  margin-right: 10px;
+}
+
+.order__header-price__container-grey {
+  color: #928f94;
+}
+

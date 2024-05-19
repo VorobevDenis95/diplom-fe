@@ -3,7 +3,7 @@
   height: 1113px;
 }
 
-.succesful-order-content {
+.succesful-order-content-basic {
   position: absolute;
   max-width: 1404px;
   width: 100%;
@@ -14,4 +14,14 @@
   background-color: #fff;
 
   /* transform: translate(-50%, -50%); */
+}
+
+.successful-order__title {
+  position: absolute;
+  top: -200px;
+  z-index: 2;
+  left: calc(50% - 700px);
+  font-size: 72px;
+  font-weight: 700;
+  color: #fff;
 }

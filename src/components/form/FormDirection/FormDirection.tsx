@@ -80,7 +80,7 @@ const FormDirection = ({ state }: StateHeader) => {
               />
               <button className="form-direction__submit"
                 type="submit">
-                НАЙТИ НАПРАВЛЕНИЕ</button>
+                НАЙТИ БИЛЕТЫ</button>
 
             </div>
           </div>
