@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BodyContainerPassenger from "../SettingsContainer/BodyContainerPassenger/BodyContainerPassenger";
 import SettingContainer from "../SettingsContainer/SettingContainer";
 import TitleContainer from "../SettingsContainer/TitleContainer/TitleContainer";
@@ -8,10 +8,23 @@ import arrowTo from '../../assets/images/svg/time__container/arrow_to.svg';
 import arrowFrom from '../../assets/images/svg/time__container/arrow_from.svg';
 import passengerIcon from '../../assets/images/svg/time__container/passengerIcon.svg';
 import BodyPassenger from "../SettingsContainer/BodyContainerPassenger/BodyPassenger/BodyPassenger";
+import BodyPrice from "../SettingsContainer/BodyContainer/BodyPrice/BodyPrice";
 
 const AsidePassenger = () => {
 
   const {tickets, item} = useAppSelector(state => state.train);
+
+  const [children, setChildren] = useState(tickets.filter((el) => !el.is_adult));
+  const [adults, setAdults] = useState(tickets.filter((el) => el.is_adult));
+  const [totalPriceChildren, setTotalPriceChildren] = useState(children.reduce((acc, el) => acc + el.price, 0));
+  const [totalPriceAdult, setTotalPriceAdult] = useState(adults.reduce((acc, el) => acc + el.price, 0));
+
+  useEffect(() => {
+    setChildren(tickets.filter((el) => !el.is_adult));
+    setAdults(tickets.filter((el) => el.is_adult));
+    setTotalPriceChildren(children.reduce((acc, el) => acc + el.price, 0));
+    setTotalPriceAdult(adults.reduce((acc, el) => acc + el.price, 0));
+  }, [tickets])
 
   // const departure: TicketProps[] = tickets.filter((el) => el.typeDirection === 'departure');
   const arrival: TicketProps[] = tickets.filter((el) => el.typeDirection === 'arrival');
@@ -20,6 +33,9 @@ const AsidePassenger = () => {
   const [activeDeparture, setActiveDeparture] = useState(false);
   const [activeArrival, setActiveArrival] = useState(false);
   const [activePassenger, setActivePassenger] = useState(false);
+
+
+
 
   const handleClickBtnDeparture = (active: boolean) => {
     setActiveDeparture(!active);
@@ -75,7 +91,10 @@ const AsidePassenger = () => {
       clickBtnDirect={handleClickBtnPassenger}
       title="Пассажиры"
       image={passengerIcon}
+      adults={{length: adults.length, price: totalPriceAdult}}
+      children={{length: children.length, price: totalPriceChildren}}
       />
+      <BodyPrice price={totalPriceAdult + totalPriceChildren}/>
     </SettingContainer>
   )
 }

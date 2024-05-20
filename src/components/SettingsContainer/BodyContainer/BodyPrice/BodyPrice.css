@@ -1,0 +1,22 @@
+.body__price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e5e5e5;
+  padding: 20px;
+}
+
+.body__price-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  align-self: flex-end;
+  margin-bottom: 5px;
+}
+
+.body__price-total {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffa800;
+  margin-right: 10px;
+}
