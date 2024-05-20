@@ -98,10 +98,6 @@
   width: 730px;
 }
 
-.home__container {
-
-}
-
 .main {
   margin-top: 100px;
   height: 340px;
@@ -116,9 +112,18 @@
   position: relative;
 }
 
+.city-input input {
+  background-image: url('../../../assets/images/svg/input/navigate.svg');
+}
+
+.input-container-calendar input {
+  background-image: url('../../../assets/images/svg/input/calendar.svg');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
 @media screen and (max-width: 1750px) {
   .form-direction__city-to {
     margin-right: 0 !important;
   }
-  
 }

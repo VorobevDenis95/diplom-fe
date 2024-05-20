@@ -1,0 +1,11 @@
+.modal__info-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 700px;
+  padding: 5%;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #000;
+  border-bottom: 1px dashed #928f94;
+}

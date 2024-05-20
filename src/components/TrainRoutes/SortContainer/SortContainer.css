@@ -30,8 +30,12 @@
   border-bottom: 1px solid #e5e5e5;
   box-shadow: 1px 5px 1px rgba(146, 143, 148, 0.4);
   background-color: #f7f5f9;
-  height: 70px;
-  
+  height: 70px; 
+}
+
+.sort__routes-filters-active span:hover {
+  background-color: #ffca82;
+  color: #fff;
 }
 
 .sort__routes-filters-active span:nth-last-of-type() {
