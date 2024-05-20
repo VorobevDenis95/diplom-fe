@@ -4,8 +4,11 @@ import mailImage from '../../assets/images/svg/mail.svg';
 import skypeImage from '../../assets/images/svg/skype.svg';
 import geolocationImage from '../../assets/images/svg/geolocation.svg';
 
+const year = new Date().getFullYear();
 
 const Footer = () => {
+
+
   return (
     <footer className='footer' id='footer'>
       <div className='footer__container'>
@@ -86,7 +89,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer__logo-container">
-        <span>Лого</span>
+        <span className='logo-item'>Лого</span>
         <button type='button'>
           <a href='/#header'>
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,7 +98,7 @@ const Footer = () => {
           </svg>
           </a>
         </button>
-        <span>2024 WEB</span>
+        <span>{year} WEB</span>
       </div>
     </footer>
   )

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import GradeStar from "./GradeStar/GradeStar";
 import './OrderGrade.css'
+import { useNavigate } from "react-router-dom";
 
 const OrderGrade = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoverIndex, setHoverIndex] = useState(0);
+
+  const navigate = useNavigate();
 
   const handleClickStar = (index: number) => {
     if (activeIndex !== index) {
@@ -64,7 +67,8 @@ const OrderGrade = () => {
             index={5} clickStar={handleClickStar} />
         </div>
       </div>
-      <button className="order__grade-btn">ВЕРНУТЬСЯ НА ГЛАВНУЮ</button>
+      <button onClick={() => navigate('/')}
+       className="order__grade-btn">ВЕРНУТЬСЯ НА ГЛАВНУЮ</button>
     </div>
   )
 }

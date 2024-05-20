@@ -1,0 +1,15 @@
+.modal__footer {
+  height: 107px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__footer-button {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  width: 233px;
+  height: 52px;
+  color: 292929l;
+  font-weight: 700;
+}

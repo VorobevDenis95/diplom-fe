@@ -30,6 +30,7 @@ const SeatsContainer = ({item} : TraineRoutesItemProps) => {
           </svg>
         </div>
       }
+      
       { 
         item.departure.have_second_class &&
         <div className='seats__container'> 

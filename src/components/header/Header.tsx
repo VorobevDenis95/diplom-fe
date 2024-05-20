@@ -34,7 +34,8 @@ const Header = () => {
   return (
     <>
       <header className={`header header__${classState}`} id='header'>
-        <div className="logo">Лого</div>
+        <div className="logo">
+          <span className="logo-item">Лого</span></div>
         <HeaderMenuNavigate />
         <div className="header__container">
           <div className="header__container-body">

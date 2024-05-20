@@ -1,0 +1,26 @@
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { OrderDataProps } from "../../types/typesOrder";
+
+interface OrderStore {
+  order: null | OrderDataProps;
+}
+
+const initialState : OrderStore = {
+  order: null,
+}
+
+const order = createSlice({
+  name: 'order',
+  initialState,
+  reducers: {
+    setOrder(state, action: PayloadAction<OrderDataProps>) {
+      state.order = action.payload;
+    },
+    clearOrderState(state) {
+      Object.assign(state, initialState);
+    }
+  }
+})
+
+export const { setOrder, clearOrderState } = order.actions;
+export default order.reducer;

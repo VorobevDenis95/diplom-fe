@@ -1,5 +1,6 @@
 .confirmation {
   max-width: 959px;
+  width: 100%;
 }
 
 .confirmation .next__container__btn {

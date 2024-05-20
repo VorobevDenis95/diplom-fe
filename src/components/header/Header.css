@@ -81,7 +81,10 @@
 .logo {
   width: 100%;
   padding-left: 120px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.logo-item {
   font-size: 36px;
   font-weight: 900;
-  background-color: rgba(0, 0, 0, 0.6);
 }

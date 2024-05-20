@@ -8,6 +8,10 @@
   background-color: #fff;
 }
 
+.confirmation__container:first-of-type {
+  margin-top: 0;
+}
+
 .confirmation__container-wrapper {
   display: flex;
   justify-content: space-between;

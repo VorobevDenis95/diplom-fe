@@ -8,6 +8,7 @@ import NextButton from '../../components/NextButton/NextButton';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../shared/redux/redux-hooks';
 import { setUserTrain } from '../../shared/redux/slice/trainSlice';
+import AsidePassenger from '../../components/AsideContainer/AsidePassenger';
 // import {useForm, SubmitHandler} from 'react-hook-form';
 
 export type PaymentMethodType = 'cash' | 'online';
@@ -177,28 +178,31 @@ const Payment = () => {
 
   return (
 
-    <div className="payment">
-      <form onSubmit={(e) => handleSubmitForm(e)} >
-        <div className='payment-body'>
-          <PersonalData
-            handleInputFullName={handleInputFullName}
-            firstNameValue={firstNameValue}
-            lastNameValue={lastNameValue}
-            patronymicValue={patronymicValue}
-            phoneValue={phoneValue}
-            emailValue={emailValue}
+    <div className="flex">
+      <AsidePassenger />
+      <div className="payment">
+        <form onSubmit={(e) => handleSubmitForm(e)} >
+          <div className='payment-body'>
+            <PersonalData
+              handleInputFullName={handleInputFullName}
+              firstNameValue={firstNameValue}
+              lastNameValue={lastNameValue}
+              patronymicValue={patronymicValue}
+              phoneValue={phoneValue}
+              emailValue={emailValue}
+            />
+            <PaymentMethodContainer onChangeRadio={handleChangeRadio} />
+
+          </div>
+
+          <NextButton title='Купить биллеты'
+            active={true}
+            clickAction={handleClickNextPage}
+            type='submit'
           />
-          <PaymentMethodContainer onChangeRadio={handleChangeRadio} />
+        </form>
 
-        </div>
-
-        <NextButton title='Купить биллеты'
-          active={true}
-          clickAction={handleClickNextPage}
-          type='submit'
-        />
-      </form>
-
+      </div>
     </div>
 
   )

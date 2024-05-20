@@ -8,8 +8,8 @@
 .footer__container {
   width: 100%;
   display: flex;
-  justify-content: center;
-  padding: 20px 0;
+  justify-content: space-around;
+  padding: 20px 15%;
 }
 
 .footer__container__address {

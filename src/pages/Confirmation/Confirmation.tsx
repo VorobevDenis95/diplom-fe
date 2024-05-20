@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 // import TrainRoutes from '../../components/TrainRoutes/TrainRoutes';
-import { useAppSelector } from '../../shared/redux/redux-hooks';
+import { useAppDispatch, useAppSelector } from '../../shared/redux/redux-hooks';
 import { ItemRoutes } from '../../shared/types/typesRoutesBilets';
 import './Confirmation.css';
 import { sendCurrentDateToServer } from '../../components/form/FormDirection/utils';
@@ -14,11 +14,14 @@ import { TicketProps } from '../../shared/redux/slice/trainSlice';
 import { OrderDataProps, OrderDirectionProps, OrderSeatsProps } from '../../shared/types/typesOrder';
 import { DataPaymentPassenger } from '../Payment/Payment';
 import { formatPhoneNumber } from './utils';
-import { sendOrder } from '../../shared/api/serviceApi';
+import AsidePassenger from '../../components/AsideContainer/AsidePassenger';
+import { setOrder } from '../../shared/redux/slice/orderSlice';
 
 const Confirmation = () => {
 
-  const {user, item, tickets, passengers} = useAppSelector(state => state.train);
+  const dispatch = useAppDispatch();
+
+  const { user, item, tickets, passengers } = useAppSelector(state => state.train);
   // const {  } = useAppSelector(state => state.train)
   const [cashText, setCashText] = useState('');
 
@@ -37,7 +40,7 @@ const Confirmation = () => {
     }
   });
 
-  const arrivalSeats:OrderSeatsProps[] = arrival.map((el, index) => {
+  const arrivalSeats: OrderSeatsProps[] = arrival.map((el, index) => {
     return {
       coach_id: el.coach_id,
       person_info: {
@@ -51,7 +54,7 @@ const Confirmation = () => {
 
   useEffect(() => {
 
-  
+
 
   }, [departure, arrival])
 
@@ -72,24 +75,24 @@ const Confirmation = () => {
     console.log(item);
   }
 
-  async function sendData(data: OrderDataProps) {
-    const response = await sendOrder(data);
-    console.log(response);
-    // if (response) navigate('/order')
-  }
+  // async function sendData(data: OrderDataProps) {
+  //   const response = await sendOrder(data);
+  //   console.log(response);
+  //   // if (response) navigate('/order')
+  // }
 
   const handleClickNextPage = () => {
 
     // собираем данные для отправки на сервер
 
     const arrivalObj: OrderDirectionProps = {
-        route_direction_id: arrival[0]?.route_direction_id,
-        seats: [
-          ...arrivalSeats,
-        ]
-    } 
+      route_direction_id: arrival[0]?.route_direction_id,
+      seats: [
+        ...arrivalSeats,
+      ]
+    }
 
-    const orderData :OrderDataProps = {
+    const orderData: OrderDataProps = {
       user: {
         ...user as DataPaymentPassenger,
         phone: formatPhoneNumber(user?.phone as string),
@@ -106,30 +109,34 @@ const Confirmation = () => {
       orderData.arrival = arrivalObj;
     }
 
-    sendData(orderData);
-    
+    dispatch(setOrder(orderData));
+    // sendData(orderData);
+
     // navigate('/order', {state: {orderData}});
-    // navigate('/order');
+    navigate('/order');
   }
 
 
 
   return (
-    <div className='confirmation'>
-      {item && 
-      <ConfirmationTrain item={item} onClick={handleEditBtn}/>
-      }
-      
-      <ConfirmationContainer list={passengers} 
-      totalAmount={totalPrice}/>
+    <div className="flex">
+      <AsidePassenger />
+      <div className='confirmation'>
+        {item &&
+          <ConfirmationTrain item={item} onClick={handleEditBtn} />
+        }
 
-      <ConfirmationPayment text={cashText} />
+        <ConfirmationContainer list={passengers}
+          totalAmount={totalPrice} />
 
-      <NextButton title='Подтвердить'
+        <ConfirmationPayment text={cashText} />
+
+        <NextButton title='Подтвердить'
           active={true}
           clickAction={handleClickNextPage}
           type='button'
         />
+      </div>
     </div>
   )
 }
