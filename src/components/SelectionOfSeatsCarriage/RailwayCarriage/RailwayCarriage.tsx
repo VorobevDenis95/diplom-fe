@@ -34,7 +34,15 @@ const RailwayCarriage = () => {
   const [btnActive, setBtnActive] = useState(false);
 
   useEffect(() => {
-    tickets.length > 0 ? setBtnActive(true) : setBtnActive(false);
+
+    if (id2) {
+      const departureTickets = tickets.filter((el) => el.typeDirection === 'departure');
+      const arrivalTickets = tickets.filter((el) => el.typeDirection === 'arrival');
+      (departureTickets.length === arrivalTickets.length && tickets.length > 0) ?
+        setBtnActive(true) : setBtnActive(false)
+    } else {
+      (tickets.length > 0) ? setBtnActive(true) : setBtnActive(false)
+    }
   }, [tickets])
 
   useEffect(() => {
@@ -72,7 +80,6 @@ const RailwayCarriage = () => {
   const nextPage = () => {
     if (btnActive) {
       navigate('/passengers')
-
     }
 
     return
@@ -87,44 +94,44 @@ const RailwayCarriage = () => {
       <div className='railway-carriage'>
         <div className="railway-carriage-item">
 
-        <div className='railway-carriage__button-container'>
-          <img src={arrowRight} alt="icon arrow" />
-          <button className='railway-carriage__btn-back'
-            onClick={clickChangeTrain}>
-            Выбрать другой поезд
-          </button>
+          <div className='railway-carriage__button-container'>
+            <img src={arrowRight} alt="icon arrow" />
+            <button className='railway-carriage__btn-back'
+              onClick={clickChangeTrain}>
+              Выбрать другой поезд
+            </button>
 
-        </div>
-        {/* <RouteRailwayCarriage list={response as SeatsRequestProps} /> */}
+          </div>
+          {/* <RouteRailwayCarriage list={response as SeatsRequestProps} /> */}
 
-        <div>
-          {item?.departure && <RouteRailwayCarriage item={item.departure} typeDirection='departure'/>}
-          {responseDeparture && <QualityTickets list={responseDeparture} typeDirection='departure'/>}
-          <ContainerRailwayCarriage data={responseDeparture} typeDirection='departure' />
-        
-        </div>
+          <div>
+            {item?.departure && <RouteRailwayCarriage item={item.departure} typeDirection='departure' />}
+            {responseDeparture && <QualityTickets list={responseDeparture} typeDirection='departure' />}
+            <ContainerRailwayCarriage data={responseDeparture} typeDirection='departure' />
+
+          </div>
         </div>
         {item?.arrival && <div className='railway-carriage-item'>
-        <div className='railway-carriage__button-container container-back'>
-        <img src={arrowLeft} alt="icon arrow" />
-          <button className='railway-carriage__btn-back'
-            onClick={clickChangeTrain}>
-            Выбрать другой поезд
-          </button>
+          <div className='railway-carriage__button-container container-back'>
+            <img src={arrowLeft} alt="icon arrow" />
+            <button className='railway-carriage__btn-back'
+              onClick={clickChangeTrain}>
+              Выбрать другой поезд
+            </button>
           </div>
           {item?.arrival && <RouteRailwayCarriage item={item.arrival}
-          typeDirection='arrival' />}
-          {responseDeparture && <QualityTickets list={responseArrival} typeDirection='arrival'/>}
+            typeDirection='arrival' />}
+          {responseDeparture && <QualityTickets list={responseArrival} typeDirection='arrival' />}
           <ContainerRailwayCarriage data={responseArrival} typeDirection='arrival' />
-        
+
         </div>
         }
-      
-      <NextButton title='Далее' type='button'
-      clickAction={nextPage} active={btnActive} />
+
+        <NextButton title='Далее' type='button'
+          clickAction={nextPage} active={btnActive} />
       </div>
 
-      
+
     </div>
   )
 }

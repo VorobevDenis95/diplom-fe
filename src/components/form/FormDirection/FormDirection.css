@@ -116,6 +116,10 @@
   background-image: url('../../../assets/images/svg/input/navigate.svg');
 }
 
+.city-input input:focus {
+  background-image: none;
+}
+
 .input-container-calendar input {
   background-image: url('../../../assets/images/svg/input/calendar.svg');
   background-repeat: no-repeat;

@@ -9,19 +9,24 @@ import arrowFrom from '../../assets/images/svg/time__container/arrow_from.svg';
 import passengerIcon from '../../assets/images/svg/time__container/passengerIcon.svg';
 import BodyPassenger from "../SettingsContainer/BodyContainerPassenger/BodyPassenger/BodyPassenger";
 import BodyPrice from "../SettingsContainer/BodyContainer/BodyPrice/BodyPrice";
+// import './AsidePassenger.css';
 
 const AsidePassenger = () => {
 
   const {tickets, item} = useAppSelector(state => state.train);
 
-  const [children, setChildren] = useState(tickets.filter((el) => !el.is_adult));
-  const [adults, setAdults] = useState(tickets.filter((el) => el.is_adult));
+  const [children, setChildren] = useState(tickets.filter((el) => !el.is_adult)
+  .filter((el) => el.typeDirection === 'departure'));
+  const [adults, setAdults] = useState(tickets.filter((el) => el.is_adult)
+  .filter((el) => el.typeDirection === 'departure'));
   const [totalPriceChildren, setTotalPriceChildren] = useState(children.reduce((acc, el) => acc + el.price, 0));
   const [totalPriceAdult, setTotalPriceAdult] = useState(adults.reduce((acc, el) => acc + el.price, 0));
 
   useEffect(() => {
-    setChildren(tickets.filter((el) => !el.is_adult));
-    setAdults(tickets.filter((el) => el.is_adult));
+    setChildren(tickets.filter((el) => !el.is_adult)
+    .filter((el) => el.typeDirection === 'departure'));
+    setAdults(tickets.filter((el) => el.is_adult)
+    .filter((el) => el.typeDirection === 'departure'));
     setTotalPriceChildren(children.reduce((acc, el) => acc + el.price, 0));
     setTotalPriceAdult(adults.reduce((acc, el) => acc + el.price, 0));
   }, [tickets])

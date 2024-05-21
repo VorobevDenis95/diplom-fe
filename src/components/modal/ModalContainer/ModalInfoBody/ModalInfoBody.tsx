@@ -6,7 +6,6 @@ const ModalInfoBody = () => {
       <p className='modal__info-body__text'>
         Таким образом консультация с широким активом в значительной степени
         обуславливает создание модели развития.
-
       </p>
       <p className='modal__info-body__text'>
         Повседневная практика показывает,

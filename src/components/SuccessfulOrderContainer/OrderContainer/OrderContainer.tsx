@@ -13,7 +13,7 @@ import Loader from '../../Loader/Loader';
 const OrderContainer = () => {
 
   const [isLoad, setLoad] = useState(false);
-  const {tickets} = useAppSelector(state => state.train);
+  const { tickets } = useAppSelector(state => state.train);
   const [total, setTotal] = useState(tickets.reduce((acc, el) => acc + el.price, 0));
   const { order } = useAppSelector(state => state.order);
   const [active, setActive] = useState(false);
@@ -40,8 +40,8 @@ const OrderContainer = () => {
 
   return (
     <>
-      { isLoad && <Loader />}
-      { !isLoad && active && order &&
+      {isLoad && <Loader />}
+      {!isLoad && active && order &&
         <div className="successful-order">
           <div className="succesful-order-content">
             <h3 className="successful-order__title">Благодарим Вас за заказ!</h3>

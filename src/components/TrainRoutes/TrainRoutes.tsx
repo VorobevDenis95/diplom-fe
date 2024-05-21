@@ -1,4 +1,3 @@
-// import { useNavigate } from "react-router-dom";
 import { TraineRoutesItemProps } from "../../shared/types/typesRoutesBilets";
 import { capitalized } from "../utils";
 import AboutRouteContainerDirectLine from "./AboutRouteContainer/AboutRouteContainerDirectLine";
@@ -6,17 +5,8 @@ import AboutRouteContainerDirectLineBack from "./AboutRouteContainer/AboutRouteC
 import RouteCategoriesSeatsContainer from "./RouteCategoriesSeatsContainer/RouteCategoriesSeatsContainer";
 import SelectSeatsContainer from "./SelectSeatsContainer/SelectSeatsContainer";
 import './TrainRoutes.css';
-// import { useAppDispatch } from "../../shared/redux/redux-hooks";
-// import { setTrain } from "../../shared/redux/slice/trainSlice";
 
 const TrainRoutes = ({ item, children }: TraineRoutesItemProps) => {
-  // const navigate = useNavigate();
-  // const dispatch = useAppDispatch();
-
-  // const clickSelectSeats = (item: TraineRoutesItemProps['item']) => {
-  //   dispatch(setTrain(item));
-  //   navigate(`/routes/${item.departure._id}${item.arrival?._id ? `/${item.arrival._id}`  : ''}/seats`);
-  // }
 
   return (
     <div className="train-routes__item">
@@ -45,8 +35,6 @@ const TrainRoutes = ({ item, children }: TraineRoutesItemProps) => {
             is_express={item.departure.is_express}
           />
           {children}
-          {/* <button onClick={() => clickSelectSeats(item)}
-            className="train-routes__item__btn-select-seats">Выбрать места</button> */}
         </div>
 
       </div>

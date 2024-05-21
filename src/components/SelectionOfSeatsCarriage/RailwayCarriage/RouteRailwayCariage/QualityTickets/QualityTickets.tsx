@@ -42,7 +42,7 @@ const QualityTickets = ({ list, typeDirection }: QualityTicketsProps) => {
   // }, [tickets])
 
   function filterTickets(tickets: TicketProps[], type: TicketType) {
-    return tickets.filter((el) => el.type === type)
+    return tickets.filter((el) => el.type === type).filter((el) => el.typeDirection === typeDirection);
   }
 
   useEffect(() => {

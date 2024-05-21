@@ -17,17 +17,20 @@ const Header = () => {
 
   useEffect(() => {
     if (location.pathname.includes('routes') ||
-    location.pathname.includes('passengers') ||
-    location.pathname.includes('payment') ||
-    location.pathname.includes('confirmation') 
-  ) {
+      location.pathname.includes('passengers') ||
+      location.pathname.includes('payment') ||
+      location.pathname.includes('confirmation')
+    ) {
       !isMain ? setMain(true) : isMain;
       if (classState !== 'main') setClassState('main');
     }
-
     if (location.pathname === '/order') {
       setMain(false);
       setClassState('order');
+    }
+    if (location.pathname === '/') {
+      setMain(false);
+      setClassState('home');
     }
   }, [location])
 
@@ -39,7 +42,7 @@ const Header = () => {
         <HeaderMenuNavigate />
         <div className="header__container">
           <div className="header__container-body">
-            {!isMain && classState !== 'order' &&<h1 >
+            {!isMain && classState !== 'order' && <h1 >
               <p className="bold500">
                 Вся жизнь -
               </p>

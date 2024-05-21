@@ -16,43 +16,26 @@ import Loader from "../../components/Loader/Loader";
 
 const TrainSelection = () => {
   const { status, items, totalCount } = useAppSelector(state => state.direction)
-  // const {} = useAppSelector(state => state.train)
   const params = useParams();
-  
 
-  // const [isActive, setActive] = useState(loading ? false : true);
   const [searchParams] = useSearchParams();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const paramsObject = Object.fromEntries(searchParams)
   const debounceGetParams = useDebounce(params);
-  // const debounceGetParamsObject = useDebounce(paramsObject, 2000);
 
-
-  // useEffect(() => {
-  //   const controller = new AbortController();
-  //   const signal = controller.signal;
-
-  //   dispatch(fetchRoutes({ ...params, ...paramsObject } as paramsRoutesSelection, { signal }));
-
-  //   return () => {
-  //     controller.abort();
-  //   };
-  // }, [debounceGetParams]);
 
   useEffect(() => {
-    
-      dispatch(fetchRoutes({ ...params, ...paramsObject } as paramsRoutesSelection, ))
-      // console.log(debounceGetParams)
+
+    dispatch(fetchRoutes({ ...params, ...paramsObject } as paramsRoutesSelection,))
   }, [debounceGetParams]);
 
   const clickSelectSeats = (item: TraineRoutesItemProps['item']) => {
     dispatch(setTrain(item));
-    
-    navigate(`/routes/${item.departure._id}${item.arrival?._id ? `/${item.arrival._id}`  : ''}/seats`);
+
+    navigate(`/routes/${item.departure._id}${item.arrival?._id ? `/${item.arrival._id}` : ''}/seats`);
   }
-  // console.log(isActive)
 
   return (
     <>
@@ -62,24 +45,27 @@ const TrainSelection = () => {
       }
       {
         status !== 'loading' &&
-        <div className="flex">
+        <div className="flex ">
           <AsideSelection />
           <div className="train__selection">
+            <div>
             <div className="train__selection__header">
               <span>найдено {totalCount}</span>
-              <SortContainer />
-              <ShowItemslimit />
+              {items.length > 0 && <SortContainer />}
+              {items.length > 0 && <ShowItemslimit />}
             </div>
             <div className="train-routes">
               {items.map((el) => (
                 <TrainRoutes key={el.departure._id} item={el}>
                   <button onClick={() => clickSelectSeats(el)}
-                   className="train-routes__item__btn-select-seats">Выбрать места</button> 
+                    className="train-routes__item__btn-select-seats">Выбрать места</button>
                 </TrainRoutes>
               ))}
 
             </div>
-            <PoginationContainer />
+
+            </div>
+            { items.length > 0 && <PoginationContainer />}
           </div>
         </div>}
 
@@ -90,4 +76,3 @@ const TrainSelection = () => {
 }
 
 export default TrainSelection;
-

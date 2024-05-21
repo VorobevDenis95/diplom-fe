@@ -5,7 +5,6 @@ import './ShowItemsLimit.css';
 const arrLimit = [5, 10, 20];
 const ShowItemslimit = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const currentLimit = searchParams.get('limit') ? Number(searchParams.get('limit')) : arrLimit[0];
   const [limit, setLimit] = useState(currentLimit);
 
@@ -18,14 +17,12 @@ const ShowItemslimit = () => {
     if (limit === 5 && prevParams.limit) {
       delete prevParams.limit;
       setSearchParams(prevParams);
-  
     }
   }, [limit])
 
   const clickNumber = (item: number) => {
     if (item === limit) return;
     setLimit(item);
-
   }
 
   return (

@@ -24,7 +24,7 @@ const PassengerDocumentContainer = ({ list, index, clickValue, clickInput, isAct
   changeInputPassportSeries, changeInputPassportNumber, changeInputCertificateNumber,
   data
  }: PassengerDocumentContainerProps) => {
-
+  console.log(data)
   return (
     <div className="passenger__document-container">
       <WrapperContainer title="Тип документа">

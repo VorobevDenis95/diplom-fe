@@ -13,37 +13,36 @@ export interface SortRouteObject {
 }
 
 const SortContainer = () => {
-  const [arrSort, setArrSort] = useState <SortRouteObject[]> 
-  ([{
-    name: 'времени',
-    type: 'date',
-  },
-  {
-    name: 'стоимости',
-    type: 'price'
-  },
-   {
-    name: 'длительности',
-    type: 'duration',
-   }
-  ])
+  const [arrSort, setArrSort] = useState<SortRouteObject[]>
+    ([{
+      name: 'времени',
+      type: 'date',
+    },
+    {
+      name: 'стоимости',
+      type: 'price'
+    },
+    {
+      name: 'длительности',
+      type: 'duration',
+    }
+    ])
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [currentSort, setCurrentSort] = useState(searchParams.get('sort') 
-  ? searchParams.get('sort') : 'date');
+  const [currentSort, setCurrentSort] = useState(searchParams.get('sort')
+    ? searchParams.get('sort') : 'date');
 
   useEffect(() => {
     setCurrentSort(searchParams.get('sort') ? searchParams.get('sort') : 'date');
     const arr = sortArr(arrSort, currentSort as SortRoutesType);
-      setArrSort([...arr]);   
+    setArrSort([...arr]);
   }, [searchParams.get('sort')])
-  
+
   const [isActive, setActive] = useState(false);
-  
+
   const clickSort = () => {
     console.log(1)
-    setActive(!isActive);  
-    console.log(isActive)
+    setActive(!isActive);
   }
 
   const clickFilterElement = (el: SortRouteObject) => {
@@ -57,34 +56,26 @@ const SortContainer = () => {
         return;
       }
       setSearchParams({ ...prevParams, sort: `${el.type}` })
-      
+
     }
     setActive(!isActive);
-    
+
   }
 
   return (
-    <>
     <div className="sort__routes">
       <div onClick={clickSort} >
         сортировать по
       </div>
-      <div className={`sort__routes-filters ${
-        isActive ? 'sort__routes-filters-active' : ''
-      }`}>
+      <div className={`sort__routes-filters ${isActive ? 'sort__routes-filters-active' : ''
+        }`}>
         {arrSort.map((el) => (
-          <span onClick={() => clickFilterElement(el)} 
-          key={el.name}>{el.name}</span>  
+          <span onClick={() => clickFilterElement(el)}
+            key={el.name}>{el.name}</span>
         ))}
-      </div> 
-
+      </div>
     </div>
-    
-    </>
-
   )
-
-      
 }
 
 export default SortContainer

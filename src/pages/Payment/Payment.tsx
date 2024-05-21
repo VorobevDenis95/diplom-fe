@@ -178,7 +178,7 @@ const Payment = () => {
 
   return (
 
-    <div className="flex">
+    <div className="flex flex-start">
       <AsidePassenger />
       <div className="payment">
         <form onSubmit={(e) => handleSubmitForm(e)} >

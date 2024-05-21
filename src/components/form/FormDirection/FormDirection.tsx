@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../../shared/redux/redux-hook
 import { changingCities } from "../../../shared/redux/slice/directionSlice";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { sendCurrentDateToServer } from './utils'
+import { clearTrainState } from "../../../shared/redux/slice/trainSlice";
 
 const FormDirection = ({ state }: StateHeader) => {
   const location = useLocation();
@@ -27,6 +28,7 @@ const FormDirection = ({ state }: StateHeader) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch(clearTrainState());
     // navigate(`routes/${cityFrom.id}/${cityTo.id}`);
     //отправляем роут по параметрам которые существуют
     navigate(`routes/${cityFrom.id}/${cityTo.id}${dateStart

@@ -30,7 +30,7 @@ const AsideSelection = () => {
   }, [])
 
   return (
-    <div>
+    <div >
       <SettingContainer>
         <TravelDatesContainer />
         <CheckBoxContainer />

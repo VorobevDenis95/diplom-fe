@@ -1,12 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-// import TrainRoutes from '../../components/TrainRoutes/TrainRoutes';
 import { useAppDispatch, useAppSelector } from '../../shared/redux/redux-hooks';
 import { ItemRoutes } from '../../shared/types/typesRoutesBilets';
 import './Confirmation.css';
 import { sendCurrentDateToServer } from '../../components/form/FormDirection/utils';
 import ConfirmationContainer from '../../components/ConfirmationContainer/ConfirmationContainer';
 import { useEffect, useState } from 'react';
-// import ConfirmationTitle from '../../components/ConfirmationContainer/ConfirmationTitle/ConfirmationTitle';
 import ConfirmationTrain from '../../components/ConfirmationContainer/ConfirmationTrain/ConfirmationTrain';
 import ConfirmationPayment from '../../components/ConfirmationContainer/ConfirmationPayment/ConfirmationPayment';
 import NextButton from '../../components/NextButton/NextButton';
@@ -22,7 +20,6 @@ const Confirmation = () => {
   const dispatch = useAppDispatch();
 
   const { user, item, tickets, passengers } = useAppSelector(state => state.train);
-  // const {  } = useAppSelector(state => state.train)
   const [cashText, setCashText] = useState('');
 
   const departure: TicketProps[] = tickets.filter((el) => el.typeDirection === 'departure');
@@ -53,13 +50,6 @@ const Confirmation = () => {
   });
 
   useEffect(() => {
-
-
-
-  }, [departure, arrival])
-
-
-  useEffect(() => {
     user?.payment_method === 'cash' ? setCashText('Наличными') : setCashText('Онлайн')
   }, [user])
 
@@ -74,12 +64,6 @@ const Confirmation = () => {
         ? `/${sendCurrentDateToServer(dateTo)}` : ''}` : ''}`);
     console.log(item);
   }
-
-  // async function sendData(data: OrderDataProps) {
-  //   const response = await sendOrder(data);
-  //   console.log(response);
-  //   // if (response) navigate('/order')
-  // }
 
   const handleClickNextPage = () => {
 
@@ -110,18 +94,16 @@ const Confirmation = () => {
     }
 
     dispatch(setOrder(orderData));
-    // sendData(orderData);
-
-    // navigate('/order', {state: {orderData}});
     navigate('/order');
   }
 
 
 
   return (
-    <div className="flex">
+    <div className="flex flex-start">
       <AsidePassenger />
       <div className='confirmation'>
+        
         {item &&
           <ConfirmationTrain item={item} onClick={handleEditBtn} />
         }

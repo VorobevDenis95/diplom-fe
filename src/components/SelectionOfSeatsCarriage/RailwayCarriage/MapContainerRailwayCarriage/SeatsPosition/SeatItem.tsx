@@ -48,7 +48,6 @@ useEffect(() => {
       if (index >= 0) dispatch(setInclude_children_seat(index))
         return
     }
-    console.log(activeDirection.activeNumberCars)
     if (activeDirection.activeNumberCars && activeDirection.coach && position && item) {
       const price = getPrice(position, seatItem.index);
       const linensPrice =  activeDirection.servicesObj.inCludesLinens || activeDirection.servicesObj.linens ? activeDirection.coach.linens_price : 0; 
@@ -68,8 +67,6 @@ useEffect(() => {
         typeDirection: typeDirection,
         
       }
-      console.log(activeDirection)
-      console.log(seatItem)
       dispatch(addRemoveTicket({ticket: obj, typeDirection}));
     }
   }

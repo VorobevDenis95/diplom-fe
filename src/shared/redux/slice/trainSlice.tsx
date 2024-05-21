@@ -155,13 +155,16 @@ const train = createSlice({
       state.tickets[action.payload].include_children_seat = !state.tickets[action.payload].include_children_seat
     },
     addPassengers(state, action: PayloadAction<{ data: PassengerDataSeats, index: number }>) {
+      console.log(action.payload.index)
       const findEl = state.passengers.findIndex((el) => el.index === action.payload.index)
-
+      console.log(findEl)
       if (findEl === -1) {
         state.passengers.push({
           ...action.payload.data,
           index: action.payload.index
-        });
+        })
+      } else {
+        state.passengers[findEl] = action.payload.data;
       }
     },
     removePassengers(state, action: PayloadAction<{ data: PassengerDataSeats, index: number }>) {
@@ -184,7 +187,7 @@ export const { setTrain, clearTrain, setActiveTypeTicket,
   setServicesObj, resetServicesObj, addRemoveTicket, setActiveNumberCars,
   setCoach, clearCoach, setInclude_children_seat,
   addPassengers, removePassengers, clearTrainState,
-  setUserTrain,
+  setUserTrain, 
 } = train.actions;
 
 export default train.reducer;

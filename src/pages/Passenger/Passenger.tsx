@@ -10,10 +10,17 @@ const Passenger = () => {
   const { tickets, passengers } = useAppSelector(state => state.train);
   const navigator = useNavigate();
 
+  const arrivalTickets = tickets.filter((el) => el.typeDirection === 'arrival');
+
+  const currentArr = arrivalTickets.length > 0 ? arrivalTickets : tickets;
+
   useEffect(() => {
-    console.log(passengers)
-    passengers.length === tickets.length && tickets.length !== 0 
-    ? setBtnNextPageActive(true) : setBtnNextPageActive(false);
+    if (arrivalTickets.length > 0) {
+      arrivalTickets.length === passengers.length ? setBtnNextPageActive(true) : setBtnNextPageActive(false);
+    } else {
+      passengers.length === tickets.length && tickets.length !== 0 
+      ? setBtnNextPageActive(true) : setBtnNextPageActive(false);
+    }
   }, [passengers])
 
   const [btnNextPageActive, setBtnNextPageActive] = useState(false);
@@ -25,10 +32,10 @@ const Passenger = () => {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex flex-start">
         <AsidePassenger />
         <div className="passenger">
-          {tickets.map((el, index) => (
+          {currentArr.map((el, index) => (
             <PassengerContainer el={el} index={index + 1}
               key={index} />
           ))}

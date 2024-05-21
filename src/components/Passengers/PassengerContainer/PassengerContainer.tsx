@@ -11,7 +11,7 @@ import { TicketType } from '../SelectInput/ListValues/ListValues';
 import { GenderType } from '../InputContainer/RadioBtn/RadioBtnItem';
 import { requiredFieldsObject } from './utils';
 import RequiestContainer from '../RequiestContainer/RequiestContainer';
-import { useAppDispatch } from '../../../shared/redux/redux-hooks';
+import { useAppDispatch, useAppSelector } from '../../../shared/redux/redux-hooks';
 
 export interface PassengerContainerProps {
   index: number,
@@ -44,10 +44,17 @@ const initPassengerDataSeats: PassengerDataSeats = {
 const PassengerContainer = ({ index }: PassengerContainerProps) => {
 
   const dispatch = useAppDispatch();
+  const {passengers} = useAppSelector(state => state.train);
+
+  const defaultPassenger = passengers.length > 0 ? passengers[index - 1] : initPassengerDataSeats;
+
+
   const [isActive, setActive] = useState(false);
   const [currentImage, setCurrentImage] = useState(isActive ? closeIcon : openIcon);
 
-  const [data, setData] = useState<PassengerDataSeats>(initPassengerDataSeats);
+
+
+  const [data, setData] = useState<PassengerDataSeats>(defaultPassenger);
 
   useEffect(() => {
     isActive ? setCurrentImage(closeIcon) : setCurrentImage(openIcon);
@@ -136,7 +143,8 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
   // const [isActiveList, setActiveList] = useState(false);
   const listDocument: TypeDocument[] = ['Паспорт РФ', 'Свидетельство о рождении'];
 
-  const [indexDocument, setIndexDocument] = useState(0);
+
+  const [indexDocument, setIndexDocument] = useState(data.document_type === 'свидетельство' ? 1 : 0);
 
   const clickValueDocument = (i: number) => {
     console.log(i)
@@ -149,8 +157,8 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
   }
 
   useEffect(() => {
-    setPassportValue('');
-    setCertificateValue('');
+    // setPassportValue('');
+    // setCertificateValue('');
 
     setData((prevstate) => {
       return {
@@ -163,7 +171,7 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
 
   // radio btn logic
 
-  const [isActiveTypeGender, setActiveTypeGender] = useState<GenderType>('male');
+  const [isActiveTypeGender, setActiveTypeGender] = useState<GenderType>(data.gender ? 'male' : 'female');
 
   const clickBtnGender = (type: GenderType) => {
     setActiveTypeGender(type);
@@ -187,9 +195,9 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
   }
 
   // logic document change
-  const [passportValue, setPassportValue] = useState('');
+  const [passportValue, setPassportValue] = useState(data.document_data && data.document_type === 'паспорт' ? data.document_data : '');
 
-  const [certificateValue, setCertificateValue] = useState('');
+  const [certificateValue, setCertificateValue] = useState(data.document_data && data.document_type === 'свидетельство' ? data.document_data : '');
 
 
   const changeSeriesPassport = (series: string, number: string) => {
@@ -207,6 +215,9 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
   }
 
   useEffect(() => {
+
+  
+
     setData((prevstate) => {
       return {
         ...prevstate,
@@ -221,18 +232,19 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
   const [isChecked, setChecked] = useState(false);
 
   useEffect(() => {
+
     setRequired(requiredFieldsObject(data));
   }, [data])
 
   const clickRequired = () => {
     setRequired(requiredFieldsObject(data));
     setChecked(true);
-    console.log(required);
   }
 
   useEffect(() => {
-    if (isChecked && required.length === 0)  
+    if (isChecked && required.length === 0 ) {
       dispatch(addPassengers({data, index})) 
+    }
     if (isChecked && required.length !== 0) dispatch(removePassengers({data, index}))
   }, [isChecked, required])
 
@@ -241,6 +253,8 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
   // }
 
   // const [statusRequiredContainer, setStatusRequiredContainer] = useState();
+
+  console.log(data)
 
   return (
     <div className="passenger__item">
