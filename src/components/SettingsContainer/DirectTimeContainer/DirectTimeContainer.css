@@ -1,9 +1,11 @@
 .direct-time__container {
-  
+  padding: 32.5px;
   min-height: 70px;
-  /* border: 1px solid #fff; */
-  border-bottom: 1px solid #E5E5E5;
   color: #E5E5E5;
+}
+
+.settings__container__selection .direct-time__container {
+  border-bottom: 1px solid #E5E5E5;
 }
 
 .direct-time__container_btn-show-content {

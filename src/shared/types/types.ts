@@ -12,6 +12,7 @@ export interface CityProps {
 export interface InputProps {
   nameClass: string;
   placeholder?: string;
+  // onBlur?: () => void;
 }
 
 export interface CoordinatesProps {

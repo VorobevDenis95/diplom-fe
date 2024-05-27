@@ -15,7 +15,7 @@ const CheckBoxContainer = () => {
 
 
   return (
-    <>
+    <div className='checkbox__container'>
       <CheckBoxItem key={coupeIcon} src={coupeIcon} title='Купе'
       params='have_second_class' /> 
       <CheckBoxItem key={reservedSeat} src={reservedSeat} title='Плацкарт'
@@ -28,7 +28,7 @@ const CheckBoxContainer = () => {
       params='have_wifi' /> 
       <CheckBoxItem key={expressIcon} src={expressIcon} title='Экспресс'
       params='have_air_conditioning' /> 
-    </>
+    </div>
   )
 }
 

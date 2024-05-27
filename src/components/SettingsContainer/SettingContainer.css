@@ -3,3 +3,9 @@
   /* padding: 15px; */
   background-color: #3E3C41;
 }
+
+.settings__container__selection .search-form__input-date-from, .search-form__input-date-to {
+  width: 100%;
+  height: 43px;
+  padding: 0 10px;
+}

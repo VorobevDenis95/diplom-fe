@@ -14,10 +14,8 @@ import LastTicketsContainer from '../lastTicketsContainer/LastTicketsContainer';
 
 const AsideSelection = () => {
 
-  // const {items} = useAppSelector(state => state.direction);
-
   const [lastTicketsList, setLastTicketsList] = useState<ItemRoutes[]>([]);
-
+    
 
   useEffect(() => {
     (async () => {
@@ -31,7 +29,7 @@ const AsideSelection = () => {
 
   return (
     <div >
-      <SettingContainer>
+      <SettingContainer className='settings__container__selection'>
         <TravelDatesContainer />
         <CheckBoxContainer />
         <PriceContainer />

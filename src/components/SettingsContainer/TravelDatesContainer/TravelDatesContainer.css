@@ -1,5 +1,17 @@
+.travel-date__container {
+  padding: 32.5px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
 .travel-date__container h3{
   font-size: 30px;
   color: #fff;
   font-weight: 400;
+}
+
+.travel-date__container-date-from, 
+.travel-date__container-date-to {
+  width: 100%;
+  height: 43px;
+  padding: 0 10px;
 }

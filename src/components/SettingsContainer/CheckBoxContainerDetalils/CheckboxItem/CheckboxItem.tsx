@@ -20,17 +20,14 @@ const CheckBoxItem = ({src, title, params}: CheckBoxItemProps) => {
   // setSearchParams({...prevParams, [params] :`${value}`})
 
   useEffect(() => {
-    if (value) {
+    if (value && prevParams[params] !== `${value}`) {
       setSearchParams({...prevParams, [params]: `${value}`})
     }
     if (searchParams.get(params)) {
-      if (!value) {
-        
+      if (!value && prevParams[params]) {
+        delete prevParams[params];
         // удаляем свойство из гет параметра при значении фолс
-        const updatedParams = {...prevParams};
-        delete updatedParams[params];
-        console.log(updatedParams);
-      setSearchParams({...updatedParams});
+      setSearchParams({...prevParams});
       }
     }
   }, [value])
