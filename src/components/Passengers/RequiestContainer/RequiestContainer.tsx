@@ -38,7 +38,6 @@ const RequiestContainer = ({ clickBtnPassenger, data, checkStatus }: RequiestCon
   const [color, setColor] = useState(setColorClass(data, checkStatus));
 
   useEffect(() => {
-    console.log(data)
     setColor(setColorClass(data, checkStatus));
   }, [data])
 

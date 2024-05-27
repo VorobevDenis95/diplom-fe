@@ -115,7 +115,6 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
   const [indexInfoContainer, setIndexInfoContainer] = useState(0);
 
   const clickValueInfoContainer = (i: number) => {
-    console.log(i)
     setIndexInfoContainer(i);
     // setActiveListInfoContainer(!isActiveListInfoContainer);
     setActiveInfoContainer(!isActiveInfoContainer);
@@ -147,7 +146,6 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
   const [indexDocument, setIndexDocument] = useState(data.document_type === 'свидетельство' ? 1 : 0);
 
   const clickValueDocument = (i: number) => {
-    console.log(i)
     setIndexDocument(i);
     setActiveDocument(!isActiveDocument);
   }
@@ -243,9 +241,9 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
 
   useEffect(() => {
     if (isChecked && required.length === 0 ) {
-      dispatch(addPassengers({data, index})) 
+      dispatch(addPassengers({data, index: (index - 1)})) 
     }
-    if (isChecked && required.length !== 0) dispatch(removePassengers({data, index}))
+    if (isChecked && required.length > 0) dispatch(removePassengers(index - 1))
   }, [isChecked, required])
 
   // function statusCheck () {
@@ -254,7 +252,6 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
 
   // const [statusRequiredContainer, setStatusRequiredContainer] = useState();
 
-  console.log(data)
 
   return (
     <div className="passenger__item">

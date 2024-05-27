@@ -6,8 +6,11 @@ export function requiredFullName(name: string) {
 }
 
 export function requiredBirthday(date: string) {
-  const regex = /^\d{2}\.\d{2}\.\d{2}$/;
-  return date.length === 8 && regex.test(date);
+  const regex = /^\d{4}\.\d{2}\.\d{2}$/;
+  console.log(date)
+  console.log(date.length )
+  console.log(regex.test(date))
+  return date.length === 10 && regex.test(date);
 }
 
 export function requiredNumbers(date: string, length: number) {
@@ -16,7 +19,6 @@ export function requiredNumbers(date: string, length: number) {
 }
 
 export function requiredPassport(str: string) {
-  console.log(str)
   const regex = /^\d{4}\s\d{6}$/;
   return regex.test(str);
 }
@@ -38,8 +40,8 @@ export function requiredFieldsObject(data: PassengerDataSeats) {
     }
 
     if (key === 'birthday') {
-      if (requiredBirthday(data[key])) {
-        result.push({ type: key, value: 'Дата рождения заполнена не правильно. Пример: 12.05.1990' })
+      if (!requiredBirthday(data[key])) {
+        result.push({ type: key, value: 'Дата рождения заполнена не правильно. Пример: 12.05.90' })
       }
     }
 

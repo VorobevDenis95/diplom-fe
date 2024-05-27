@@ -25,7 +25,6 @@ const PassportInput = ({changeSeries, changeNumber, value} : PassportInputProps)
   const valueSeries = series.current?.value ? series.current.value : '';
   const valueNumber = number.current?.value ? number.current.value : '';
 
-
   return (
     <>
       <WrapperContainer title="Серия">

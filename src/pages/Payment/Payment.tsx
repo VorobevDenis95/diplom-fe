@@ -6,29 +6,13 @@ import { InputType } from '../../components/Passengers/InputContainer/InputPasse
 import { EmailPhoneInput } from '../../components/Passengers/PhoneContainer/PhoneContainer';
 import NextButton from '../../components/NextButton/NextButton';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../shared/redux/redux-hooks';
+import { useAppDispatch, useAppSelector } from '../../shared/redux/redux-hooks';
 import { setUserTrain } from '../../shared/redux/slice/trainSlice';
 import AsidePassenger from '../../components/AsideContainer/AsidePassenger';
+// import { maskPhone } from './utils';
 // import {useForm, SubmitHandler} from 'react-hook-form';
 
 export type PaymentMethodType = 'cash' | 'online';
-
-// interface MyPaymentForm {
-//   first_name: string;
-//   last_name: string;
-//   patronymic: string;
-//   phone: string;
-//   email: string;
-//   payment_method: PaymentMethodType;
-// }
-
-// const {
-//   register,
-//   handleSubmit,
-//   watch,
-//   formState: { errors },
-// } = useForm<MyPaymentForm>()
-// const onSubmit: SubmitHandler<MyPaymentForm> = (data) => console.log(data)
 
 export interface DataPaymentPassenger {
   first_name: string;
@@ -49,18 +33,19 @@ const initDataPayment: DataPaymentPassenger = {
 }
 
 const Payment = () => {
-
+  
+  const {user} = useAppSelector(state => state.train)
   const navigator = useNavigate();
   const dispatch = useAppDispatch();
 
   const [data, setData] = useState(initDataPayment);
 
   //personalData logic
-  const [firstNameValue, setFirstNameValue] = useState('');
-  const [lastNameValue, setLastNameValue] = useState('');
-  const [patronymicValue, setPatronymicValue] = useState('');
-  const [phoneValue, setPhoneValue] = useState('');
-  const [emailValue, setEmailValue] = useState('');
+  const [firstNameValue, setFirstNameValue] = useState(user?.first_name ? user.first_name: '');
+  const [lastNameValue, setLastNameValue] = useState(user?.last_name ? user.last_name: '');
+  const [patronymicValue, setPatronymicValue] = useState(user?.patronymic ? user.patronymic: '');
+  const [phoneValue, setPhoneValue] = useState(user?.phone ? user.phone: '');
+  const [emailValue, setEmailValue] = useState(user?.email ? user.email: '');
 
   const handleInputFullName = (type: InputType | EmailPhoneInput, e: ChangeEvent<HTMLInputElement>) => {
 
@@ -75,7 +60,8 @@ const Payment = () => {
         setPatronymicValue(e.target.value);
         break;
       case 'phone':
-        setPhoneValue(e.target.value);
+        console.log('+7' + e.target.value)
+        setPhoneValue(e.target.value)
         break;
       case 'email':
         setEmailValue(e.target.value);
@@ -93,18 +79,6 @@ const Payment = () => {
   const handleChangeRadio = (value: PaymentMethodType) => {
     setPaymentType(value);
   }
-  // const handleClickCheckboxes = (value: boolean, title?: string) => {
-  //   if (title && value) {
-  //     setCheckBoxesType('Не выбрано');
-  //     setPaymentType('cash');
-  //     return
-  //   }
-  //   if (title && !value) {
-  //     title === 'Наличные' ? setCheckBoxesType('Наличными') : setCheckBoxesType('Онлайн');
-  //     title === 'Наличные' ? setPaymentType('cash') : setPaymentType('online');
-  //     return;
-  //   }
-  // }
 
   useEffect(() => {
     setData((prevState) => {

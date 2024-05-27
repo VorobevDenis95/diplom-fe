@@ -20,3 +20,17 @@
 //   }
 //   return result;
 // }
+
+export function maskPhone(phone: string): string {
+  let newPhone = phone;
+
+  if (newPhone[0] !== '+') {
+    newPhone = '+' + newPhone.slice(0); 
+  }
+
+  if (newPhone[1] === '8') {
+    newPhone = '+7' + newPhone.slice(1);
+  }
+
+  return '+' + newPhone;
+}

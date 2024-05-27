@@ -155,24 +155,29 @@ const train = createSlice({
       state.tickets[action.payload].include_children_seat = !state.tickets[action.payload].include_children_seat
     },
     addPassengers(state, action: PayloadAction<{ data: PassengerDataSeats, index: number }>) {
-      console.log(action.payload.index)
       const findEl = state.passengers.findIndex((el) => el.index === action.payload.index)
-      console.log(findEl)
+
+      console.log(action.payload.index)
       if (findEl === -1) {
         state.passengers.push({
           ...action.payload.data,
           index: action.payload.index
         })
       } else {
-        state.passengers[findEl] = action.payload.data;
+        state.passengers[findEl] = {
+          ...action.payload.data,
+          index: action.payload.index
+        };
       }
     },
-    removePassengers(state, action: PayloadAction<{ data: PassengerDataSeats, index: number }>) {
-      const findEl = state.passengers.findIndex((el) => el.index === action.payload.index)
+    removePassengers(state, action: PayloadAction<  number >) {
+      const findEl = state.passengers.findIndex((el) => el.index === action.payload)
 
-      if (findEl !== -1)
-        state.passengers = state.passengers.slice(0, findEl).concat(state.passengers.slice(findEl + 1));
-    },
+      console.log(action.payload)
+      if (findEl !== -1) {
+        state.passengers = state.passengers.slice(0, action.payload).concat(state.passengers.slice(action.payload+ 1)); 
+      }
+      },
     setUserTrain(state, action: PayloadAction<DataPaymentPassenger>) {
       state.user = action.payload;
     },
