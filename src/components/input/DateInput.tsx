@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import DatePicker from "./Additional/Datepicker";
 import { getCurrentDate, setCurrentDate } from "./utils";
-import { InputProps } from "../../shared/types/types";
 import { useAppDispatch, useAppSelector } from "../../shared/redux/redux-hooks";
 import { setDateEnd, setDateStart } from "../../shared/redux/slice/directionSlice";
 import { useSearchParams } from "react-router-dom";

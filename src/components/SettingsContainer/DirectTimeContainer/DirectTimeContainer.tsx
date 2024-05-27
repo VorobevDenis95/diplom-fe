@@ -29,9 +29,11 @@ const DirectTImeContainer = ({src, title} :DirectTImeContainerProps) => {
         isActive && 
         <>
           <span>Время отбытия</span>
-          <SliderContainer min={0} max={24} value={value} step={1} onChange={setValue} />
+          <SliderContainer time
+          min={0} max={24} value={value} step={1} onChange={setValue} />
           <span>Время прибытия</span>
-          <SliderContainer min={0} max={24} value={valueFrom} step={1} onChange={setValueFrom} />
+          <SliderContainer time 
+          min={0} max={24} value={valueFrom} step={1} onChange={setValueFrom} />
         </>
       }
     </div> 

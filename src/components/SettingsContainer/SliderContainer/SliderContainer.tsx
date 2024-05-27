@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './SliderContainer.css'
 
 interface SliderContainerProps {
+  time?: boolean; 
   min: number;
   max: number;
   value: {
@@ -15,7 +16,7 @@ interface SliderContainerProps {
   }) => void;
 }
 
-const SliderContainer = ({min, max, value, step, onChange}: SliderContainerProps) => {
+const SliderContainer = ({ min, max, value, step, onChange, time }: SliderContainerProps) => {
   const [minValue, setMinValue] = useState(value ? value.min : min);
   const [maxValue, setMaxValue] = useState(value ? value.max : max);
 
@@ -48,70 +49,55 @@ const SliderContainer = ({min, max, value, step, onChange}: SliderContainerProps
   return (
     <>
       <div className="wrapper">
-      <div className="input-wrapper">
-        <input
-          className="input"
-          type="range"
-          value={minValue}
-          min={min}
-          max={max}
-          step={step}
-          onChange={handleMinChange}
-        />
-        <input
-          className="input"
-          type="range"
-          value={maxValue}
-          min={min}
-          max={max}
-          step={step}
-          onChange={handleMaxChange}
-        />
-      </div>
-
-      <div className="control-wrapper">
-        <div className="control" style={{ left: `${minPos}%` }} />
-        <div className="rail">
-          <div
-            className="inner-rail" 
-            style={{ left: `${minPos}%`, right: `${100 - maxPos}%` }}
+        <div className="input-wrapper">
+          <input
+            className="input"
+            type="range"
+            value={minValue}
+            min={min}
+            max={max}
+            step={step}
+            onChange={handleMinChange}
+          />
+          <input
+            className="input"
+            type="range"
+            value={maxValue}
+            min={min}
+            max={max}
+            step={step}
+            onChange={handleMaxChange}
           />
         </div>
-        <div className="control" style={{ left: `${maxPos}%` }} />
+
+        <div className="control-wrapper">
+          <div className="control" style={{ left: `${minPos}%` }} />
+          <div className="rail">
+            <div
+              className="inner-rail"
+              style={{ left: `${minPos}%`, right: `${100 - maxPos}%` }}
+            />
+          </div>
+          <div className="control" style={{ left: `${maxPos}%` }} />
+        </div>
       </div>
-    </div>
-    <div className="control__container">
-      <div className='control__value-default'>
-        <div className='value-default__min'>{min}</div>
-        <div className='value-default__max'>{max}</div>
-      </div>
-      <div className='control__value-container'>
-        <div className='number value__start'
-        style={{ left: `${minPos}%`, right: `${100 - maxPos}%` }}
-        >{minValue}</div>
-        <div className='number value__end'
-        style={{ left: `${maxPos* 0.8}%` }}
-        >{maxValue}</div>
+      <div className="control__container">
+        <div className='control__value-default'>
+          {value.min >= min * 20 && <div className='value-default__min'>{min.toLocaleString('ru-RU')}</div>}
+          { value.max < max * 0.8 &&<div className='value-default__max'>{max.toLocaleString('ru-RU')}</div>}
+        </div>
+        <div className='control__value-container'>
+          <div className='number value__start'
+            style={{ left: `${minPos}%`, right: `${100 - maxPos}%` }}
+          >{minValue.toLocaleString('ru-RU')}</div>
+          <div className='number value__end'
+            style={{ left: time ? `${maxPos * 0.9}%` : `${maxPos * 0.8}%` }}
+          >{maxValue.toLocaleString('ru-RU')}</div>
+
+        </div>
 
       </div>
-
-    </div>
     </>
-
-
-
-    // <div className="price__container">
-    //   <h3>Стоимость</h3>
-    //   <div className='price__container__input'>
-    //     <div className="price__container__inpit-filed"
-    //       onClick={handleClickPrice}
-    //       ref={myInput}>
-    //       <div className='price__container__input__start'
-    //       ref={myStartSlider}/>
-    //       <div className='price__container__input__end'/>
-    //     </div>
-    //   </div>
-    // </div>    
   )
 }
 
