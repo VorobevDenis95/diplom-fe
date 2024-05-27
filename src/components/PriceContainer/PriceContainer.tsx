@@ -23,7 +23,7 @@ const PriceContainer = () => {
       delete prevParams.price_to;
       setSearchParams(prevParams);
     }
-  })
+  }, [debounceValue.max])
 
   useEffect(() => {
     if (value.min !== Number(prevParams.price_from) && value.min !== 100) {
