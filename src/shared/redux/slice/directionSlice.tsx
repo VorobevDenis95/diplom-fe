@@ -1,38 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { fetchRoutes } from "../asyncThunks/getRouteAsynkThunk";
 import { CityProps } from "../../types/types";
-import { ItemRoutes, ResponseRoutes } from "../../types/typesRoutesBilets";
+import { ResponseRoutes } from "../../types/typesRoutesBilets";
+import { DirectionStore } from "../../types/store/directionStore";
 
-// interface DirectionSliceProps {
-//   cityFrom: CityProps,
-//   cityTo: CityProps,
-//   dateStart: string,
-//   dateTo: string,
-// }
-
-interface DirectionStore {
-  cityFrom: CityProps;
-  cityTo: CityProps;
-  items: ItemRoutes[];
-  totalCount: number,
-  dateStart: string;
-  dateTo: string;
-  limit: number;
-  ofset: number;
-  error: string;
-  loading: boolean;
-  status: string;
+const initialCityState: CityProps = {
+  id: '',
+  name: ''
 }
 
 const initialState: DirectionStore = {
-  cityFrom: {
-    id: '',
-    name: ''
-  },
-  cityTo: {
-    id: '',
-    name: ''
-  },
+  cityFrom: initialCityState,
+  cityTo: initialCityState,
   items: [],
   totalCount: 0,
   limit: 5,
@@ -94,8 +73,6 @@ const direction = createSlice({
     })
   },
 })
-
-// type Status = '' | '' |
 
 export const {setCityFrom, setCityTo, setDateStart, setDateEnd, changingCities,
   clearDirectionState

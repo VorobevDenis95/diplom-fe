@@ -1,10 +1,5 @@
+import { WrapperContainerProps } from '../../../shared/types/components/componentsTypes';
 import './WrapperContainer.css'
-
-export interface WrapperContainerProps {
-  children: React.ReactNode;
-  title: string,
-  classname?: string,
-}
 
 const WrapperContainer = ({title, children, classname}: WrapperContainerProps) => {
   return (

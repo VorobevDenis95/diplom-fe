@@ -4,54 +4,7 @@ import { TicketType, TypeRailwayCarriage } from "../../types/typesTrain";
 import { CoachSeatsRequestProps } from "../../types/typesSeats";
 import { PassengerDataSeats } from "../../../components/Passengers/PassengerContainer/PassengerContainer";
 import { DataPaymentPassenger } from "../../../pages/Payment/Payment";
-
-export interface TicketProps {
-  type: TicketType;
-  route_direction_id: string;
-  coach_id: string;
-  available: boolean;
-  index: number;
-  numberCars: string;
-  typeDirection: 'departure' | 'arrival';
-  price: number;
-  is_adult: boolean;
-  include_children_seat: boolean;
-}
-
-export interface DirectionTrainStore {
-  item?: TraineRoutesItemProps['item'] | null;
-  coach?: null | CoachSeatsRequestProps;
-  activeTypeTicket?: TicketType;
-  activeTypeRailwayCarriage?: TypeRailwayCarriage | null;
-  activeNumberCars?: string | null;
-  totalPrice?: number;
-  servicesObj: {
-    conditional: boolean,
-    wifi: boolean,
-    linens: boolean,
-    inCludesLinens: boolean,
-  }
-}
-
-export interface TrainStore {
-  item: TraineRoutesItemProps['item'] | null;
-  coach: null | CoachSeatsRequestProps;
-  departure: DirectionTrainStore,
-  arrival: DirectionTrainStore,
-  activeTypeTicket: TicketType;
-  activeTypeRailwayCarriage: TypeRailwayCarriage | null;
-  activeNumberCars: string | null;
-  tickets: TicketProps[];
-  totalPrice: number;
-  servicesObj: {
-    conditional: boolean,
-    wifi: boolean,
-    linens: boolean,
-    inCludesLinens: boolean,
-  };
-  passengers: PassengerDataSeats[];
-  user: DataPaymentPassenger | null;
-}
+import { TicketProps, TrainStore } from "../../types/store/trainStore";
 
 const initialState: TrainStore = {
   item: null,
@@ -98,9 +51,6 @@ const train = createSlice({
     setTrain(state, action: PayloadAction<TraineRoutesItemProps['item']>) {
       state.item = action.payload;
     },
-    // setIdTrain(state, action: PayloadAction<{ direction_id: string, typeDirection: 'arrival' | 'departure' }>) {
-    //   state[action.payload.typeDirection].id = action.payload.direction_id;
-    // },
     clearTrain(state) {
       state.item = null;
     },
@@ -130,7 +80,6 @@ const train = createSlice({
       const findEl = state.tickets.findIndex(el => el.index === action.payload.ticket.index && el.numberCars === state[action.payload.typeDirection].activeNumberCars
         && el.typeDirection === action.payload.typeDirection
       );
-      // console.log(findEl)
       if (findEl === -1) {
         state.tickets.push(action.payload.ticket);
       } else {
@@ -156,8 +105,6 @@ const train = createSlice({
     },
     addPassengers(state, action: PayloadAction<{ data: PassengerDataSeats, index: number }>) {
       const findEl = state.passengers.findIndex((el) => el.index === action.payload.index)
-
-      console.log(action.payload.index)
       if (findEl === -1) {
         state.passengers.push({
           ...action.payload.data,
@@ -172,8 +119,6 @@ const train = createSlice({
     },
     removePassengers(state, action: PayloadAction<  number >) {
       const findEl = state.passengers.findIndex((el) => el.index === action.payload)
-
-      console.log(action.payload)
       if (findEl !== -1) {
         state.passengers = state.passengers.slice(0, action.payload).concat(state.passengers.slice(action.payload+ 1)); 
       }

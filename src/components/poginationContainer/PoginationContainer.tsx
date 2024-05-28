@@ -15,20 +15,6 @@ const PoginationContainer = () => {
   const [quantityPages, setQuantityPages] = useState(totalCount > 0 ? Math.round(totalCount / limit) : 0);
   const [paginationArr, setPaginationArr] = useState(getPages(quantityPages, currentPage)); 
 
-  // useEffect(() => {
-  //  setQuantityPages(totalCount > 0 ? Math.round(totalCount / limit) : 0);
-   
-  // //  const offset = Number(searchParams.get('offset'));
-  //  if (offset) setCurrentPage(Math.round((offset + limit) / limit)) 
-  //  else setCurrentPage(1);
-
-  // setPaginationArr(getPages(quantityPages,currentPage))
-  
-  // const prevParams = Object.fromEntries(searchParams);
-  // // setSearchParams({...prevParams, offset: `${(currentPage - 1) * limit}`});
-
-  // }, [totalCount, items, limit, offset])
-
   useEffect(() => {
     const newQuantityPages = totalCount > 0 ? Math.round(totalCount / limit) : 0;
     setQuantityPages(newQuantityPages);

@@ -11,3 +11,11 @@ export function getAddress (params: paramsRoutesSelection, currentAdress: string
   }
   return currentAdress;
 }
+
+export function handleRequestError (error: any) {
+  if (error instanceof Error) {
+    throw new Error(error.message);
+  } else {
+    throw new Error('Unknown error');
+  }
+};

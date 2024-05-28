@@ -1,6 +1,5 @@
 .reviews-item {
   display: flex;
-  /* flex-wrap: wrap; */
   max-width: 600px;
   padding: 20px;
   

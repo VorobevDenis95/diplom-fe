@@ -1,11 +1,6 @@
+import { DropListProps } from "../../../shared/types/components/componentsTypes";
 import { CityProps } from "../../../shared/types/types";
 import './DropdownListOfHints.css';
-
-interface DropListProps {
-  list: CityProps[],
-  handleClick: (el: CityProps) => void,
-  isActive: boolean
-}
 
 const DropdownListOfHints = ({list, handleClick, isActive} : DropListProps ) => {
   return (

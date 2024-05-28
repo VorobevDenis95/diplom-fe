@@ -1,8 +1,5 @@
+import { TitleContainerProps } from '../../../shared/types/components/componentsTypes';
 import './TitlleContainer.css';
-
-interface TitleContainerProps {
-  title: string
-}
 
 const TitleContainer = ({title}: TitleContainerProps) => {
   return (

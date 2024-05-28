@@ -1,18 +1,9 @@
-import { ChangeEvent } from "react";
-import InputPassenger, { InputType } from "../Passengers/InputContainer/InputPassenger";
+import InputPassenger from "../Passengers/InputContainer/InputPassenger";
 import WrapperContainer from "../Passengers/WrapperContainer/WrapperContainer";
 import './PersonalData.css'
-import PhoneContainer, { EmailPhoneInput } from "../Passengers/PhoneContainer/PhoneContainer";
+import PhoneContainer from "../Passengers/PhoneContainer/PhoneContainer";
 import EmailContainer from "../Passengers/EmailContainer/EmailContainer";
-
-interface PersonalDataProps {
-  handleInputFullName: (type: InputType | EmailPhoneInput, e: ChangeEvent<HTMLInputElement>) => void;
-  firstNameValue: string;
-  lastNameValue: string;
-  patronymicValue: string;
-  phoneValue: string;
-  emailValue: string;
-}
+import { PersonalDataProps } from "../../shared/types/components/componentsTypes";
 
 const PersonalData = ({handleInputFullName, firstNameValue, lastNameValue, patronymicValue, phoneValue, emailValue}: PersonalDataProps) => {
 

@@ -3,9 +3,7 @@ import SliderContainer from '../SettingsContainer/SliderContainer/SliderContaine
 import './PriceContainer.css';
 import { useSearchParams } from 'react-router-dom';
 import useDebounce from '../../shared/hooks/useDebounce';
-// import { useAppSelector } from '../../shared/redux/redux-hooks';
 
-// const PriceContainer = ({items} : Omit<ResponseRoutes, 'total_count'>) => {
 const PriceContainer = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [value, setValue] = useState({

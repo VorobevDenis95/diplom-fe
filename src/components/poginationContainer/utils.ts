@@ -10,13 +10,7 @@ export const getPages = (quantityPages: number, currentPage: number) => {
     pagination.unshift(currentPage - 1);
   }
 
-  // if (currentPage = 3 ) {
-  //   // pagination.unshift('...');
-  //   pagination.unshift(1);
-  // }
-
   if (currentPage > 3) {
-      // pagination.unshift('...');
       pagination.unshift(1);
   }
 

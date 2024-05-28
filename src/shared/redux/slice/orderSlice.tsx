@@ -1,9 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { OrderDataProps } from "../../types/typesOrder";
-
-interface OrderStore {
-  order: null | OrderDataProps;
-}
+import { OrderStore } from "../../types/store/orderStore";
 
 const initialState : OrderStore = {
   order: null,

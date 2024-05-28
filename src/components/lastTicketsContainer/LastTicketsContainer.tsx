@@ -1,12 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { ItemRoutes } from "../../shared/types/typesRoutesBilets";
 import SelectSeatsContainer from "../TrainRoutes/SelectSeatsContainer/SelectSeatsContainer";
 import { capitalized } from "../utils";
 import './LastTicketsContainer.css';
-
-interface LastTicketsContainerProps {
-  list: ItemRoutes[];
-}
+import { LastTicketsContainerProps } from "../../shared/types/components/componentsTypes";
 
 const LastTicketsContainer = ({list}: LastTicketsContainerProps) => {
   const navigate = useNavigate()
@@ -43,7 +39,6 @@ const LastTicketsContainer = ({list}: LastTicketsContainerProps) => {
           </div>
           
         <div className="last-ticket__item__bottom">
-          {/* <SeatsContainer item={item} /> */}
 
           <div className="last-ticket__item__bottom__price-container">
             <div className="last-ticket__item__bottom__price-container__box">

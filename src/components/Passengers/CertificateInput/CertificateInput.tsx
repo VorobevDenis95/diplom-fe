@@ -2,11 +2,9 @@
 import { useEffect, useRef } from 'react';
 import WrapperContainer from '../WrapperContainer/WrapperContainer';
 import './CertificateInput.css';
+import { CertificateInputProps } from '../../../shared/types/components/componentsTypes';
 
-interface CertificateInputProps {
-  changeInputCertificateNumber: (text: string) => void;
-  value: string;
-}
+
 
 const CertificateInput = ({ changeInputCertificateNumber, value }: CertificateInputProps) => {
 

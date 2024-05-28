@@ -1,34 +1,8 @@
-// import { useEffect, useState } from 'react';
-// import CheckboxContainer from '../Passengers/InputContainer/CheckboxContainer/CheckboxContainer';
 import './PaymentMethodContainer.css';
 import RadioContainer from '../Passengers/InputContainer/RadioContainer/RadioContainer';
-import { PaymentMethodType } from '../../pages/Payment/Payment';
-
-export type PaymentCheckboxType = 'Онлайн' | 'Наличными' | 'Не выбрано'; 
-
-export interface PaymentMethodContainerProps {
-  onChangeRadio: (value: PaymentMethodType) => void;
-}
+import { PaymentMethodContainerProps } from '../../shared/types/components/componentsTypes';
 
 const PaymentMethodContainer = ({onChangeRadio} : PaymentMethodContainerProps) => {
-
-  // const [checkedOnline, setCheckedOnline] = useState(false);
-  // const [checkedCash, setCheckedCash] = useState(false);
-
-  // useEffect(() => {
-  //   if (type === 'Не выбрано') {
-  //     setCheckedOnline(false);
-  //     setCheckedCash(false);
-  //   }
-  //   if (type === 'Наличными') {
-  //     setCheckedCash(true);
-  //     setCheckedOnline(false)
-  //   }
-  //   if (type === 'Онлайн') {
-  //     setCheckedOnline(true);
-  //     setCheckedCash(false);
-  //   }
-  // }, [type])
 
   return (
     <div className="payment-method">

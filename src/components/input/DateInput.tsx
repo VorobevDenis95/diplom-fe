@@ -4,12 +4,7 @@ import { getCurrentDate, setCurrentDate } from "./utils";
 import { useAppDispatch, useAppSelector } from "../../shared/redux/redux-hooks";
 import { setDateEnd, setDateStart } from "../../shared/redux/slice/directionSlice";
 import { useSearchParams } from "react-router-dom";
-
-interface DateInputProps {
-  nameClass: string;
-  data?: string;
-  // action: (value: string) => void;
-}
+import { DateInputProps } from "../../shared/types/components/componentsTypes";
 
 const DateInput = ({ nameClass, data }: DateInputProps) => {
   const [date, setDate] = useState<Date>();

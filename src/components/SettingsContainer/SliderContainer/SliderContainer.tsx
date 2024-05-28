@@ -1,20 +1,6 @@
 import { useEffect, useState } from 'react';
 import './SliderContainer.css'
-
-interface SliderContainerProps {
-  time?: boolean; 
-  min: number;
-  max: number;
-  value: {
-    min: number;
-    max: number;
-  };
-  step: number;
-  onChange: (objMinMax: {
-    min: number;
-    max: number;
-  }) => void;
-}
+import { SliderContainerProps } from '../../../shared/types/components/componentsTypes';
 
 const SliderContainer = ({ min, max, value, step, onChange, time }: SliderContainerProps) => {
   const [minValue, setMinValue] = useState(value ? value.min : min);

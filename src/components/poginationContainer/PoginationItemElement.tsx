@@ -1,11 +1,6 @@
+import { PoginationItemElementProps } from '../../shared/types/components/componentsTypes';
 import './PoginationItemElement.css';
 
-
-interface PoginationItemElementProps {
-  numberPage: string | number ;
-  currentPage?: number;
-  clickPage: (num: number | string) => void;
-}
 const PoginationItemElement = ({numberPage, currentPage, clickPage} :PoginationItemElementProps) => {
   
   return (

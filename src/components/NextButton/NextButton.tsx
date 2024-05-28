@@ -1,11 +1,6 @@
+import { NextButtonProps } from '../../shared/types/components/componentsTypes';
 import './NextButton.css';
 
-interface NextButtonProps{
-  active: boolean;
-  clickAction: () => void;
-  title: string;
-  type: 'button' | 'submit';
-}
 
 const NextButton = ({active, clickAction, title, type} :NextButtonProps) => {
 

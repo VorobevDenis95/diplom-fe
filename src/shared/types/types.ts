@@ -67,3 +67,5 @@ export interface ContainerWorkProps {
 export interface StateHeader {
   state? : 'home' | 'main' | 'order'
 }
+
+export type PaymentCheckboxType = 'Онлайн' | 'Наличными' | 'Не выбрано'; 

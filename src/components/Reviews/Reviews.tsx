@@ -1,10 +1,5 @@
+import { ReviewsProps } from '../../shared/types/components/componentsTypes';
 import './Reviews.css';
-
-export interface ReviewsProps {
-  src: string;
-  name: string;
-  text: string;
-}
 
 const Reviews = ({src, name, text} :ReviewsProps) => {
   return (

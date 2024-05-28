@@ -5,6 +5,7 @@ import { ItemRoutes, ResponseRoutes } from "../types/typesRoutesBilets";
 import { paramsRoutesSelection } from "../typesParamsUrl";
 import { SeatsRequestProps } from "../types/typesSeats";
 import { OrderDataProps } from "../types/typesOrder";
+import { handleRequestError } from "./utils";
 
 
 export const getCities = async (city: string, controller: AbortController) => {
@@ -19,13 +20,13 @@ export const getCities = async (city: string, controller: AbortController) => {
       params: { name: city },
     });
     return response.data;
-    
+
   } catch (error) {
-      console.log(error);
+    handleRequestError(error);
   }
 }
 
-export const getRoute = async(params: paramsRoutesSelection) => {
+export const getRoute = async (params: paramsRoutesSelection) => {
   let currentAdress = '/routes?';
   for (const key in params) {
     const value: paramsRoutesSelection[keyof paramsRoutesSelection] = params[key as keyof paramsRoutesSelection];
@@ -36,46 +37,38 @@ export const getRoute = async(params: paramsRoutesSelection) => {
     currentAdress += `&${key}=${value}`;
   }
   try {
-    // url: `${BASE_URL}/routes?from_city_id=${}&to_city_id=${}&date_start=${}&date_end={}`
-    const response:  AxiosResponse<ResponseRoutes> = await axios({
-      // url: `${BASE_URL}/routes?from_city_id=${params.cityFrom}&to_city_id=${params.cityTo}
-      // ${params.dateStart ? `&date_start=${params.dateStart}` : ''}
-      // ${params.dateEnd ? `date_end=${params.dateEnd}` : ''}
-      // `,
-      // url: `${BASE_URL}/routes?from_city_id=${params.cityFrom}&to_city_id=${params.cityTo}`,
+    const response: AxiosResponse<ResponseRoutes> = await axios({
       url: `${BASE_URL}${currentAdress}`,
 
       headers: {
         'Content-Type': 'application/json',
       },
     })
-      console.log(currentAdress)
-      console.log(response.data)
     return response.data;
 
   } catch (error) {
-    console.log(error);
+    handleRequestError(error);
   }
 }
 
-export const subscribe = async(mail: string) => {
+export const subscribe = async (mail: string) => {
   try {
     const response = await axios({
       url: `${BASE_URL}/subscribe`,
       method: 'post',
       headers: {
-      'Content-Type': 'application/json',  
+        'Content-Type': 'application/json',
       },
       data: mail,
     })
     return response.data;
-    
+
   } catch (error) {
-    console.log(error);
+    handleRequestError(error);
   }
 }
 
-export const lastTickets = async() => {
+export const lastTickets = async () => {
   try {
     const response: AxiosResponse<ItemRoutes[]> = await axios({
       url: `${BASE_URL}/routes/last`,
@@ -85,11 +78,11 @@ export const lastTickets = async() => {
     })
     return response.data;
   } catch (error) {
-    console.log(error);
+    handleRequestError(error);
   }
 }
 
-export const getSeats = async(id: string) => {
+export const getSeats = async (id: string) => {
   try {
     const response: AxiosResponse<SeatsRequestProps[]> = await axios({
       url: `${BASE_URL}/routes/${id}/seats`,
@@ -99,23 +92,23 @@ export const getSeats = async(id: string) => {
     })
     return response.data;
   } catch (error) {
-    console.log(error);
+    handleRequestError(error);
   }
 }
 
-export const sendOrder = async(data: OrderDataProps) => {
+export const sendOrder = async (data: OrderDataProps) => {
   try {
     const response = await axios({
       url: `${BASE_URL}/order`,
       method: 'post',
       headers: {
-      'Content-Type': 'application/json',  
+        'Content-Type': 'application/json',
       },
       data: JSON.stringify(data),
     })
     return response.data;
-    
+
   } catch (error) {
-    console.log(error);
+    handleRequestError(error);
   }
 }

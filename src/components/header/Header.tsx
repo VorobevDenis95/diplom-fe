@@ -6,12 +6,9 @@ import StageWrapper from "./stageWrapper/StageWrapper";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-
-
 const Header = () => {
   const [classState, setClassState] = useState<StateHeader['state']>('home');
   const [isMain, setMain] = useState(false);
-
 
   const location = useLocation();
 

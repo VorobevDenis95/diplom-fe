@@ -12,11 +12,9 @@ import { capitalized } from "../utils";
 const CityInput = ({nameClass, placeholder}: InputProps) => {
   const [inputValue, setInputValue] = useState('');
   const [isActive, setActiveList] = useState(false);
-  // const abortControllerRef = new AbortController();
   const abortControllerRef = useRef<AbortController>(new AbortController());
   const [listCities, setListCities] = useState<CitiesProps['list']>([]);
   const debounceGetCities = useDebounce(inputValue);
-  // const [timeout, setMyTimeout] = useState(0);
   const [city, setCity] = useState<CityProps>({
     id: '',
     name: '',
@@ -36,11 +34,6 @@ const CityInput = ({nameClass, placeholder}: InputProps) => {
       }
     })
   }
-
-  // передавать в диспач город
-  // useEffect(() => {
-
-  // }, [city])
 
   useEffect(() => {
     if (!inputValue.trim()) {
@@ -84,11 +77,7 @@ const CityInput = ({nameClass, placeholder}: InputProps) => {
   }, [inputValue])
 
   const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // console.log(listCities[0].name);
-    // if ( listCities.length > 0 && e.target.value === listCities[0].name) {
-    //   console.log(2)
 
-    // }
     if (abortControllerRef.current.signal.aborted) 
       abortControllerRef.current = new AbortController();
       setInputValue(e.target.value);
@@ -103,9 +92,6 @@ const CityInput = ({nameClass, placeholder}: InputProps) => {
       
       if (el) setActiveList(false);
       abortControllerRef.current.abort();
-      // abortControllerRef.current = new AbortController();
-    // setActiveList(false);
-    
   }
 
   return (
@@ -113,13 +99,6 @@ const CityInput = ({nameClass, placeholder}: InputProps) => {
       <div className="city-input">
         <input className={nameClass} type="text" required
           placeholder={placeholder}
-          // onBlur={
-          //   (e) => {
-          //     if (!city) {
-                       
-          //     }
-          //   }
-          // }
           value={capitalized(currentCity.name)} onChange={onChangeValue}
       />
         <DropdownListOfHints 

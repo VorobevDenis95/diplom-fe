@@ -3,27 +3,23 @@ import './DirectTimeContainer.css';
 import SliderContainer from '../SliderContainer/SliderContainer';
 import useDebounce from '../../../shared/hooks/useDebounce';
 import { useSearchParams } from 'react-router-dom';
-
-interface DirectTImeContainerProps {
-  src: string;
-  title: string;
-}
+import { DirectTImeContainerProps } from '../../../shared/types/components/componentsTypes.tsx';
 
 const DirectTImeContainer = ({src, title} :DirectTImeContainerProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const prevParams = Object.fromEntries(searchParams);
-  const currentParams = useState<string>(title === 'Туда' ? 'start_' : 'end_');
+  const [currentParams] = useState<string>(title === 'Туда' ? 'start_' : 'end_');
   
   const [isActive, setActive] = useState(false);
   const [value, setValue] = useState({
-    min: searchParams.get(`${currentParams[0]}arrival_hour_from`) ? Number(searchParams.get(`${currentParams[0]}arrival_hour_from`)) : 0,
-    max: searchParams.get(`${currentParams[0]}arrival_hour_to`) ? Number(searchParams.get(`${currentParams[0]}arrival_hour_to`)) : 24
+    min: searchParams.get(`${currentParams}arrival_hour_from`) ? Number(searchParams.get(`${currentParams}arrival_hour_from`)) : 0,
+    max: searchParams.get(`${currentParams}arrival_hour_to`) ? Number(searchParams.get(`${currentParams}arrival_hour_to`)) : 24
   });
   console.log(value)
   const [valueFrom, setValueFrom] = useState({
 
-    min: searchParams.get(`${currentParams[0]}departure_hour_from`) ? Number(searchParams.get(`${currentParams[0]}departure_hour_from`)) : 0,
-    max: searchParams.get(`${currentParams[0]}departure_hour_to`) ? Number(searchParams.get(`${currentParams[0]}departure_hour_to`)) : 24
+    min: searchParams.get(`${currentParams}departure_hour_from`) ? Number(searchParams.get(`${currentParams}departure_hour_from`)) : 0,
+    max: searchParams.get(`${currentParams}departure_hour_to`) ? Number(searchParams.get(`${currentParams}departure_hour_to`)) : 24
   });
 
   const debounceValue = useDebounce(value);
@@ -31,34 +27,34 @@ const DirectTImeContainer = ({src, title} :DirectTImeContainerProps) => {
 
 
   useEffect(() => {
-    if (value.max !== Number(prevParams[`${currentParams[0]}arrival_hour_to`]) && value.max !== 24) {
-      setSearchParams({...prevParams, [`${currentParams[0]}arrival_hour_to`]: `${value.max}`})
+    if (value.max !== Number(prevParams[`${currentParams}arrival_hour_to`]) && value.max !== 24) {
+      setSearchParams({...prevParams, [`${currentParams}arrival_hour_to`]: `${value.max}`})
     }
-    if (value.max === 24 && prevParams[`${currentParams[0]}arrival_hour_to`]) {
-      delete prevParams[`${currentParams[0]}arrival_hour_to`];
+    if (value.max === 24 && prevParams[`${currentParams}arrival_hour_to`]) {
+      delete prevParams[`${currentParams}arrival_hour_to`];
       setSearchParams({...prevParams});
     }
 
   }, [debounceValue.max])
 
   useEffect(() => {
-    if (value.min !== Number(prevParams[`${currentParams[0]}arrival_hour_from`]) && value.min !== 0) {
-      setSearchParams({...prevParams, [`${currentParams[0]}arrival_hour_from`]: `${value.min}`})
-      console.log(`${currentParams[0]}departure_hour_from`)
+    if (value.min !== Number(prevParams[`${currentParams}arrival_hour_from`]) && value.min !== 0) {
+      setSearchParams({...prevParams, [`${currentParams}arrival_hour_from`]: `${value.min}`})
+      console.log(`${currentParams}departure_hour_from`)
     }
-    if (value.min === 0 && prevParams[`${currentParams[0]}arrival_hour_from`]) {
+    if (value.min === 0 && prevParams[`${currentParams}arrival_hour_from`]) {
       console.log(value)
-      delete prevParams[`${currentParams[0]}arrival_hour_from`];
+      delete prevParams[`${currentParams}arrival_hour_from`];
       setSearchParams({...prevParams});
     }
   }, [debounceValue.min])
 
   useEffect(() => {
-    if (valueFrom.max !== Number(prevParams[`${currentParams[0]}departure_hour_to`]) && valueFrom.max !== 24) {
-      setSearchParams({...prevParams, [`${currentParams[0]}departure_hour_to`]: `${valueFrom.max}`})
+    if (valueFrom.max !== Number(prevParams[`${currentParams}departure_hour_to`]) && valueFrom.max !== 24) {
+      setSearchParams({...prevParams, [`${currentParams}departure_hour_to`]: `${valueFrom.max}`})
     }
-    if (valueFrom.max === 24 && prevParams[`${currentParams[0]}departure_hour_to`]) {
-      delete prevParams[`${currentParams[0]}departure_hour_to`];
+    if (valueFrom.max === 24 && prevParams[`${currentParams}departure_hour_to`]) {
+      delete prevParams[`${currentParams}departure_hour_to`];
       setSearchParams({...prevParams});
     }
 
@@ -67,11 +63,11 @@ const DirectTImeContainer = ({src, title} :DirectTImeContainerProps) => {
 
   useEffect(() => {
 
-    if (valueFrom.min !== Number(prevParams[`${currentParams[0]}departure_hour_from`]) && valueFrom.min !== 0) {
-      setSearchParams({...prevParams, [`${currentParams[0]}departure_hour_from`]: `${valueFrom.min}`})
+    if (valueFrom.min !== Number(prevParams[`${currentParams}departure_hour_from`]) && valueFrom.min !== 0) {
+      setSearchParams({...prevParams, [`${currentParams}departure_hour_from`]: `${valueFrom.min}`})
     }
-    if (valueFrom.min === 0 && prevParams[`${currentParams[0]}departure_hour_from`]) {
-      delete prevParams[`${currentParams[0]}departure_hour_from`];
+    if (valueFrom.min === 0 && prevParams[`${currentParams}departure_hour_from`]) {
+      delete prevParams[`${currentParams}departure_hour_from`];
       setSearchParams({...prevParams});
     }
 
