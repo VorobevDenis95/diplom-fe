@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import ConfirmationTrain from '../../components/ConfirmationContainer/ConfirmationTrain/ConfirmationTrain';
 import ConfirmationPayment from '../../components/ConfirmationContainer/ConfirmationPayment/ConfirmationPayment';
 import NextButton from '../../components/NextButton/NextButton';
-import { TicketProps } from '../../shared/redux/slice/trainSlice';
+import { TicketProps } from '../../shared/types/store/trainStore';
 import { OrderDataProps, OrderDirectionProps, OrderSeatsProps } from '../../shared/types/typesOrder';
 import { DataPaymentPassenger } from '../Payment/Payment';
 import { formatPhoneNumber } from './utils';

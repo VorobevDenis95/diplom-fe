@@ -3,13 +3,12 @@ import BodyContainerPassenger from "../SettingsContainer/BodyContainerPassenger/
 import SettingContainer from "../SettingsContainer/SettingContainer";
 import TitleContainer from "../SettingsContainer/TitleContainer/TitleContainer";
 import { useAppSelector } from "../../shared/redux/redux-hooks";
-import { TicketProps } from "../../shared/redux/slice/trainSlice";
+import { TicketProps } from "../../shared/types/store/trainStore";
 import arrowTo from '../../assets/images/svg/time__container/arrow_to.svg';
 import arrowFrom from '../../assets/images/svg/time__container/arrow_from.svg';
 import passengerIcon from '../../assets/images/svg/time__container/passengerIcon.svg';
 import BodyPassenger from "../SettingsContainer/BodyContainerPassenger/BodyPassenger/BodyPassenger";
 import BodyPrice from "../SettingsContainer/BodyContainer/BodyPrice/BodyPrice";
-// import './AsidePassenger.css';
 
 const AsidePassenger = () => {
 

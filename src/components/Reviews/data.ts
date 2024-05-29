@@ -1,4 +1,4 @@
-import { ReviewsProps } from "./Reviews";
+import { ReviewsProps } from '../../shared/types/components/componentsTypes';
 import user1 from '../../assets/images/image/reviews/1.png';
 import user2 from '../../assets/images/image/reviews/2.png';
 

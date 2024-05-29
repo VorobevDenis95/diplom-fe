@@ -3,7 +3,7 @@ import './PassengerContainer.css';
 import openIcon from '../../../assets/images/svg/passenger/open-btn.svg';
 import closeIcon from '../../../assets/images/svg/passenger/close-btn.svg';
 import closeIcon2 from '../../../assets/images/svg/passenger/close2.svg';
-import { TicketProps, addPassengers, removePassengers } from '../../../shared/redux/slice/trainSlice';
+import { addPassengers, removePassengers } from '../../../shared/redux/slice/trainSlice';
 import PassengerInfoContainer from '../PassengerInfoConrainer/PassengerInfoContainer';
 import PassengerDocumentContainer, { TypeDocument } from '../PassengerDocumentContainer/PassengerDocumentContainer';
 import { InputType } from '../InputContainer/InputPassenger';
@@ -12,6 +12,7 @@ import { GenderType } from '../InputContainer/RadioBtn/RadioBtnItem';
 import { requiredFieldsObject } from './utils';
 import RequiestContainer from '../RequiestContainer/RequiestContainer';
 import { useAppDispatch, useAppSelector } from '../../../shared/redux/redux-hooks';
+import { TicketProps } from '../../../shared/types/store/trainStore';
 
 export interface PassengerContainerProps {
   index: number,

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../../../../shared/redux/redux-hooks';
 // import { RouteRailwayCarriageProps } from '../../../../../shared/types/typesRoutesBilets';
 import './QualityTickets.css';
-import { TicketProps } from '../../../../../shared/redux/slice/trainSlice';
+import { TicketProps } from '../../../../../shared/types/store/trainStore';
 import QualityTicketsItem from './QualityTicketsItem/QualityTicketsItem';
 import { TicketType } from '../../../../../shared/types/typesTrain';
 import { SeatsRequestProps } from '../../../../../shared/types/typesSeats';
