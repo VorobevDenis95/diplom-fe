@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './SliderContainer.css'
 import { SliderContainerProps } from '../../../shared/types/components/componentsTypes';
 
-const SliderContainer = ({ min, max, value, step, onChange, time }: SliderContainerProps) => {
+const SliderContainer = ({ min, max, value, step, onChange, time, direction }: SliderContainerProps) => {
   const [minValue, setMinValue] = useState(value ? value.min : min);
   const [maxValue, setMaxValue] = useState(value ? value.max : max);
 
@@ -12,7 +12,6 @@ const SliderContainer = ({ min, max, value, step, onChange, time }: SliderContai
       setMaxValue(value.max);
     }
   }, [value])
-
 
   const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -55,15 +54,15 @@ const SliderContainer = ({ min, max, value, step, onChange, time }: SliderContai
           />
         </div>
 
-        <div className="control-wrapper">
-          <div className="control" style={{ left: `${minPos}%` }} />
-          <div className="rail">
+        <div className={`control-wrapper ${direction ? 'control-wrapper__direction' : ''}`}>
+          <div className={`control ${direction ? 'control__direction' : ''}`} style={{ left: `${minPos}%` }} />
+          <div className={`rail ${direction ? 'rail__direction' : ''}`}>
             <div
-              className="inner-rail"
+              className={`inner-rail ${direction ? 'inner-rail__direction' : ''}`}
               style={{ left: `${minPos}%`, right: `${100 - maxPos}%` }}
             />
           </div>
-          <div className="control" style={{ left: `${maxPos}%` }} />
+          <div className={`control ${direction ? 'control__direction' : ''}`} style={{ left: `${maxPos}%` }} />
         </div>
       </div>
       <div className="control__container">

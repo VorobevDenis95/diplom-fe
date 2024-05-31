@@ -89,6 +89,21 @@ input[type='range']::-webkit-slider-thumb:active {
   border: 1px solid #c4c4c4;
 }
 
+
+.rail__direction {
+  width: 101% !important;
+  height: 10px !important;
+}
+
+.control__direction {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.inner-rail__direction {
+  height: 10px !important;
+}
+
 .inner-rail {
   position: absolute;
   top: -1px;

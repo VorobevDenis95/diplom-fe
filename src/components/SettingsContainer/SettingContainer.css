@@ -4,13 +4,25 @@
   background-color: #3E3C41;
 }
 
+.settings__container button {
+  cursor: pointer;
+}
+
 .settings__container__selection .search-form__input-date-from, .search-form__input-date-to {
   width: 100%;
   height: 43px;
   padding: 0 10px;
 }
 
-.settings__passenger .body__passenger {
+.settings__passenger .body__passenger,
+.settings__passenger .body-container__passenger {
   padding: 0;
 }
 
+.settings__passenger .settings-container__body {
+  padding: 0 35px;
+}
+
+.settings__passenger .body__passenger-item {
+  padding: 0 35px;
+}

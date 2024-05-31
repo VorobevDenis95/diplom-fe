@@ -34,6 +34,7 @@ interface SliderContainerProps {
     min: number;
     max: number;
   }) => void;
+  direction?: boolean
 }
 interface TitleContainerProps {
   title: string
