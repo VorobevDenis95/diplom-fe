@@ -54,7 +54,7 @@ const AsidePassenger = () => {
   }
   
   return (
-    <SettingContainer>
+    <SettingContainer className="settings__passenger">
       <TitleContainer title='ДЕТАЛИ ПОЕЗДКИ' />
       { item &&
         <BodyContainerPassenger 

@@ -6,22 +6,30 @@
 .seat-busy {
   cursor: not-allowed;
   background-color: #c4c4c4;
+  color: #F3F3F3;
+}
+
+.seat, .seat-busy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
 
 .seat-static {
-  margin-right: 31.55px;
+  margin-right: 32.1px;
   width: 27px;
   height: 31px;
 }
 
 .seat-static:nth-child(2n) {
-  margin-right: 4px;
+  margin-right: 3.4px;
 }
 
 .seat-passage {
   width: 40px;
   height: 29px;
-  margin-right: 5px;
+  margin-right: 6px;
 }
 
 .seat-passage:nth-child(2n) {

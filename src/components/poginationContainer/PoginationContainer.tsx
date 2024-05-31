@@ -51,12 +51,9 @@ const PoginationContainer = () => {
   }
 
   const clickPageEl = (num: number | string) => {
-      console.log(typeof num)
     if (typeof num === 'number') {
       const currenPage = num - 1 < 1 ? 0 : num - 1;
       const offset = currenPage * limit;
-      console.log(num)
-      console.log(offset)
       const prevParams = Object.fromEntries(searchParams)
       return setSearchParams({...prevParams, offset: `${offset}`})
     }

@@ -10,6 +10,5 @@ export function sortArr(arr: SortRouteObject[], type: SortRoutesType) {
       return 0
     }
   }
-  // console.log(arr.sort(compareByTitle))
   return arr.sort(compareByTitle);
 }

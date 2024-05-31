@@ -21,12 +21,7 @@
   width: 35%;
   display: flex;
   flex-direction: column;
-  /* text-align: center; */
 }
-
-/* .direct-line-route__container:nth-of-type(1) {
-  width: 20%;
-} */
 
 .direct-line-route__container__date {
   font-size: 24px;

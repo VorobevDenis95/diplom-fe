@@ -10,14 +10,10 @@ import arrowLeft from '../../../assets/images/svg/time__container/blockArrowLeft
 import QualityTickets from './RouteRailwayCariage/QualityTickets/QualityTickets';
 import { clearActiveTypeRailwayCarriage, clearTrain } from '../../../shared/redux/slice/trainSlice';
 import ContainerRailwayCarriage from './MapContainerRailwayCarriage/RailwaysCarriage/ContainerRailwayCarriage/ContainerRailwayCarriage';
-// import AsideSelection from '../../input/AsideContainer/AsideSelection';
 import { sendCurrentDateToServer } from '../../form/FormDirection/utils';
 import NextButton from '../../NextButton/NextButton';
 import AsideSelection from '../../AsideContainer/AsideSelection';
 
-// interface RailwayCarriageProps {
-
-// }
 
 const RailwayCarriage = () => {
   const dispatch = useAppDispatch();
@@ -66,12 +62,6 @@ const RailwayCarriage = () => {
     dispatch(clearTrain());
     dispatch(clearActiveTypeRailwayCarriage('departure'));
 
-    // const clickChangeTrainBack = () => {
-    //   dispatch(clearTrain());
-    //   dispatch(clearActiveTypeRailwayCarriage(''));
-    // }
-
-
     navigate(`/routes/${cityFrom.id}/${cityTo.id}${dateStart
       ? `/${sendCurrentDateToServer(dateStart)}${dateTo
         ? `/${sendCurrentDateToServer(dateTo)}` : ''}` : ''}`);
@@ -85,8 +75,6 @@ const RailwayCarriage = () => {
     return
   }
 
-
-  // console.log(item?.departure)
   return (
 
     <div className="flex-container-align">

@@ -1,7 +1,6 @@
 import { RailwayCarriageItemMapProps } from '../../MapRailwayCarriage';
 import SeatItem from '../SeatItem';
 import { filterSeatsArrEven, filterSeatsArrOdd } from '../utils';
-import './SeatPositionSecond.css';
 
 const SeatPositionSecond = ({seats, typeDirection} :RailwayCarriageItemMapProps) => {
   return (

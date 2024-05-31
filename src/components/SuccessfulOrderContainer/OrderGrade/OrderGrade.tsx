@@ -13,14 +13,10 @@ const OrderGrade = () => {
   const handleClickStar = (index: number) => {
     if (activeIndex !== index) {
       setActiveIndex(index);
-      console.log(index);
-      console.log(activeIndex)
     }
   }
 
   const handleHoverStar = (index: number) => {
-    console.log(index)
-    console.log(hoverIndex)
     if (hoverIndex !== index) {
       setHoverIndex(index);
     }

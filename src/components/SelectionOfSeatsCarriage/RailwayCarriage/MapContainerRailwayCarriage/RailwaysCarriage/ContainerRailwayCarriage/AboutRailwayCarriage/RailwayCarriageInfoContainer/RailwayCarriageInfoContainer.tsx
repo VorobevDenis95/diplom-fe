@@ -2,9 +2,7 @@ import { useEffect } from 'react';
 import { SeatsRequestProps } from '../../../../../../../../shared/types/typesSeats';
 import './RailwayCarriageInfoContainer.css';
 import { getLowerSeats, getUpperSeats } from './utils';
-// import { TypeRailwayCarriage } from '../../../../../../../../shared/types/typesTrain';
 import SelectSeatsContainer2 from '../../../../../../../TrainRoutes/SelectSeatsContainer/SelectSeatsContainer2';
-// import { useAppSelector } from '../../../../../../../../shared/redux/redux-hooks';
 
 interface RailwayCarriageInfoContainerProps {
   item: SeatsRequestProps;
@@ -14,16 +12,7 @@ interface RailwayCarriageInfoContainerProps {
 
 const RailwayCarriageInfoContainer = ({item,  typeDirection} :RailwayCarriageInfoContainerProps) => {
 
-  // const { arrival, departure } = useAppSelector(state => state.train);
-  // const [activeDirection, setActiveDirection] = useState(typeDirection === "departure" ? departure : arrival);
-
-  // useEffect(() => {
-  //   typeDirection === "departure" ? setActiveDirection(departure) : setActiveDirection(arrival);
-  // }, [typeDirection, departure, arrival])
-
-  
   useEffect(() => {
-    console.log(typeDirection)
   }, [item])
   
   return (

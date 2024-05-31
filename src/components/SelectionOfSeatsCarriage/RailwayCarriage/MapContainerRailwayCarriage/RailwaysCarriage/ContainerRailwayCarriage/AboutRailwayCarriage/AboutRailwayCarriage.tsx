@@ -44,7 +44,6 @@ const AboutRailwayCarriage = ({ data, typeDirection }: ContainerRailwayCarriageP
   // }
 
   function addAvilableCarriages() {
-    console.log(data)
     const arr = data.filter(el => el.coach.class_type === activeDirection.activeTypeRailwayCarriage)
       .map((el, index) => ({ name: el.coach.name, index }));
     return arr;
@@ -59,7 +58,6 @@ const AboutRailwayCarriage = ({ data, typeDirection }: ContainerRailwayCarriageP
 
   useEffect(() => {
     const names = addAvilableCarriages();
-    console.log(names)
     setCarriages(names)
     setSelectedCarriage(0);
     // dispatch(setActiveNumberCars)
@@ -69,16 +67,11 @@ const AboutRailwayCarriage = ({ data, typeDirection }: ContainerRailwayCarriageP
 
   useEffect(() => {
     const i = data.findIndex((el) => el.coach.name === avaliableCarriages[0]?.name);
-
-    console.log(i);
     if (i >= 0) setSeatsListIndex(i)
   }, [avaliableCarriages])
 
   useEffect(() => {
-    // console.log(seatsListIndex);
-    console.log(1243211111111)
     if (activeDirection.activeTypeRailwayCarriage) {
-      console.log(data[seatsListIndex])
       dispatch(setActiveNumberCars({
         numberCars: searchNumber(data[seatsListIndex].coach.name),
         typeDirection
@@ -103,11 +96,8 @@ const AboutRailwayCarriage = ({ data, typeDirection }: ContainerRailwayCarriageP
 
   const clickNumberCarriage = (item: NumberCarriageProps) => {
     setSelectedCarriage(item.index);
-    // dispatch(setActiveNumberCars(searchNumber(avaliableCarriages[selectedCarriage]?.name)))
-    // console.log(item.index)
     const i = data.findIndex((el) => el.coach.name === item.name);
     if (i >= 0) setSeatsListIndex(i)
-    // console.log(avaliableCarriages)
   }
 
   return (

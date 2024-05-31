@@ -5,14 +5,8 @@ import { capitalized } from '../../../utils';
 import './RouteRailwayCarriage.css';
 import { formatTimeStringHour, formatTimeStringMinutes } from './utils';
 
-
-
-// interface Props 
-
 const RouteRailwayCarriage = ({ item, typeDirection }: RouteRailwayCarriageProps) => {
 
-  
-  // console.log(item)
   return (
     <>
       <div className='railway-carriage__route'>
@@ -43,13 +37,13 @@ const RouteRailwayCarriage = ({ item, typeDirection }: RouteRailwayCarriageProps
           </div>
           {
             typeDirection === 'departure' &&
-          <AboutRouteContainerDirectLine item={item}
-          isNotTime={true} />
+            <AboutRouteContainerDirectLine item={item}
+              isNotTime={true} />
           }
           {
             typeDirection === 'arrival' &&
             <AboutRouteContainerDirectLineBack item={item}
-            isNotTime={true} />
+              isNotTime={true} />
           }
 
           <div className='railway-carriage__route__train-container-time'>
@@ -68,7 +62,6 @@ const RouteRailwayCarriage = ({ item, typeDirection }: RouteRailwayCarriageProps
           </div>
         </div>
       </div>
-      {/* {list && list._id} */}
     </>
   )
 }

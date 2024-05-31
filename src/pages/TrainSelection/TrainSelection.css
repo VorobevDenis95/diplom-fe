@@ -12,3 +12,30 @@
   font-size: 18px;
 }
 
+.train-routes__item__btn-select-seats {
+  cursor: pointer;
+  align-self: center;
+  width: 228px;
+  height: 39px;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #FFA800;
+  border: none;
+  text-align: center;
+}
+
+.train-routes__item__btn-select-seats:disabled {
+  background-color: #918F94;
+}
+
+.train-routes__item__btn-select-seats:hover {
+  box-shadow: 1px 1px 1px #000;
+}
+
+.train-routes__item__btn-select-seats:active {
+  border: 1px solid #FFA800;
+  color: #FFA800;
+  background-color: #fff;
+}

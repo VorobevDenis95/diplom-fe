@@ -101,12 +101,6 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
 
   }
 
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data])
-
-
-
   //info container  logic
 
   const [isActiveInfoContainer, setActiveInfoContainer] = useState(true);
@@ -247,13 +241,6 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
     if (isChecked && required.length > 0) dispatch(removePassengers(index - 1))
   }, [isChecked, required])
 
-  // function statusCheck () {
-
-  // }
-
-  // const [statusRequiredContainer, setStatusRequiredContainer] = useState();
-
-
   return (
     <div className="passenger__item">
       <div className={`passenger__item__header 
@@ -262,7 +249,7 @@ const PassengerContainer = ({ index }: PassengerContainerProps) => {
           <button onClick={() => setActive(!isActive)}>
             <img src={currentImage} alt="" />
           </button>
-          <h3>Пассажир {index}</h3>
+          <h3 className='passenger__item__header__title'>Пассажир {index}</h3>
         </div>
         {isActive && <button
           onClick={() => { setActive(!isActive) }}

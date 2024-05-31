@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../../../../shared/redux/redux-hooks';
-// import { RouteRailwayCarriageProps } from '../../../../../shared/types/typesRoutesBilets';
 import './QualityTickets.css';
 import { TicketProps } from '../../../../../shared/types/store/trainStore';
 import QualityTicketsItem from './QualityTicketsItem/QualityTicketsItem';
@@ -33,13 +32,6 @@ const QualityTickets = ({ list, typeDirection }: QualityTicketsProps) => {
     setQuantityAddTickets(available_seats - tickets.length);
   }, [list, tickets])
 
-  // useEffect(() => {
-  //   if (tickets.length) {
-  //     setTicketsAduls(tickets.filter((el) => el.type === 'adult' ));
-  //     setTicketsChild(tickets.filter((el) => el.type === 'child'));
-
-  //   }
-  // }, [tickets])
 
   function filterTickets(tickets: TicketProps[], type: TicketType) {
     return tickets.filter((el) => el.type === type).filter((el) => el.typeDirection === typeDirection);

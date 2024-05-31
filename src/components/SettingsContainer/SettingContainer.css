@@ -9,3 +9,8 @@
   height: 43px;
   padding: 0 10px;
 }
+
+.settings__passenger .body__passenger {
+  padding: 0;
+}
+

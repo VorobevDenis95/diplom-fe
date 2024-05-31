@@ -16,7 +16,6 @@ const SliderContainer = ({ min, max, value, step, onChange, time }: SliderContai
 
   const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    console.log(e.target.value)
     const newMinVal = Math.min(+e.target.value, maxValue - step);
     if (!value) setMinValue(newMinVal);
     onChange({ min: newMinVal, max: maxValue });

@@ -90,6 +90,10 @@ interface ReviewsProps {
   text: string;
 }
 
+interface AddPassengersProps {
+  clickAction: () => void;
+}
+
 export type {
   DateInputProps,
   СhildrenContainerProps,
@@ -104,5 +108,6 @@ export type {
   PaymentMethodContainerProps,
   PersonalDataProps,
   PoginationItemElementProps,
-  ReviewsProps
+  ReviewsProps,
+  AddPassengersProps
 }

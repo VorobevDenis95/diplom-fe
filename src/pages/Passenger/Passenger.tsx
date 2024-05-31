@@ -5,10 +5,12 @@ import PassengerContainer from "../../components/Passengers/PassengerContainer/P
 import { useAppSelector } from "../../shared/redux/redux-hooks";
 import './Passenger.css';
 import { useNavigate } from "react-router-dom";
+import AddPasseger from "../../components/Passengers/PassengerContainer/AddPassenger/AddPassenger";
 
 const Passenger = () => {
   const { tickets, passengers } = useAppSelector(state => state.train);
   const navigator = useNavigate();
+  const { item } = useAppSelector(state => state.train);
 
   const arrivalTickets = tickets.filter((el) => el.typeDirection === 'arrival');
 
@@ -18,8 +20,8 @@ const Passenger = () => {
     if (arrivalTickets.length > 0) {
       arrivalTickets.length === passengers.length ? setBtnNextPageActive(true) : setBtnNextPageActive(false);
     } else {
-      passengers.length === tickets.length && tickets.length !== 0 
-      ? setBtnNextPageActive(true) : setBtnNextPageActive(false);
+      passengers.length === tickets.length && tickets.length !== 0
+        ? setBtnNextPageActive(true) : setBtnNextPageActive(false);
     }
   }, [passengers])
 
@@ -27,7 +29,11 @@ const Passenger = () => {
 
   const nextPage = () => {
     if (btnNextPageActive)
-    navigator('/payment');
+      navigator('/payment');
+  }
+
+  const handleAddPassenger = () => {
+    item && navigator(`/routes/${item.departure._id}${item.arrival?._id ? `/${item.arrival._id}` : ''}/seats`);
   }
 
   return (
@@ -39,8 +45,9 @@ const Passenger = () => {
             <PassengerContainer el={el} index={index + 1}
               key={index} />
           ))}
+        <AddPasseger clickAction={handleAddPassenger}/>
           <NextButton title="Далее" type="button"
-           clickAction={nextPage} active={btnNextPageActive} />
+            clickAction={nextPage} active={btnNextPageActive} />
 
         </div>
 

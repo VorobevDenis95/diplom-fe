@@ -4,14 +4,11 @@
   position: relative;
   color: #fff;
   font-size: 24px;
-  /* background-color: aqua; */
-  /* z-index: 2; */
 }
 
 .how-to-work::after {
   content: "";
   background-image: url('../../assets//images/image/how-it-work-background.png');
-  /* background-position: bottom; */
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;

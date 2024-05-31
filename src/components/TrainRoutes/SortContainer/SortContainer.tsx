@@ -41,7 +41,6 @@ const SortContainer = () => {
   const [isActive, setActive] = useState(false);
 
   const clickSort = () => {
-    console.log(1)
     setActive(!isActive);
   }
 

@@ -12,6 +12,13 @@
   background-color: #fff;
   padding: 5px;
   border: 1px solid #c4c4c4;
+  padding: 0 20px;
+}
+
+.passenger__item__header__title {
+  font-size: 30px;
+  font-weight: 400;
+  color: #292929;
 }
 
 .passenger__item__header-active {
@@ -21,10 +28,10 @@
 
 .passenger__item__header-container {
   display: flex;
-  align-items: center;
 }
 
 .passenger__item__header-container button {
+  cursor: pointer;
   margin-right: 5px;
   border: none;
   background-color: transparent;

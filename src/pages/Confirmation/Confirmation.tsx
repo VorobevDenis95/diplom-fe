@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../shared/redux/redux-hooks';
-import { ItemRoutes } from '../../shared/types/typesRoutesBilets';
 import './Confirmation.css';
 import { sendCurrentDateToServer } from '../../components/form/FormDirection/utils';
 import ConfirmationContainer from '../../components/ConfirmationContainer/ConfirmationContainer';
@@ -58,11 +57,11 @@ const Confirmation = () => {
 
   const [totalPrice] = useState(tickets.reduce((acc, value) => acc + value.price, 0));
 
-  const handleEditBtn = (item: ItemRoutes) => {
+  const handleEditBtn = () => {
     navigate(`/routes/${cityFrom.id}/${cityTo.id}${dateStart
       ? `/${sendCurrentDateToServer(dateStart)}${dateTo
         ? `/${sendCurrentDateToServer(dateTo)}` : ''}` : ''}`);
-    console.log(item);
+    
   }
 
   const handleClickNextPage = () => {

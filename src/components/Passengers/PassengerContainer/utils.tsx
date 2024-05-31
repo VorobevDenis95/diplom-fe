@@ -7,9 +7,6 @@ export function requiredFullName(name: string) {
 
 export function requiredBirthday(date: string) {
   const regex = /^\d{4}\.\d{2}\.\d{2}$/;
-  console.log(date)
-  console.log(date.length )
-  console.log(regex.test(date))
   return date.length === 10 && regex.test(date);
 }
 

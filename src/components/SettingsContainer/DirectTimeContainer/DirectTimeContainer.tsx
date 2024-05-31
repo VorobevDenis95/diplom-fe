@@ -15,7 +15,7 @@ const DirectTImeContainer = ({src, title} :DirectTImeContainerProps) => {
     min: searchParams.get(`${currentParams}arrival_hour_from`) ? Number(searchParams.get(`${currentParams}arrival_hour_from`)) : 0,
     max: searchParams.get(`${currentParams}arrival_hour_to`) ? Number(searchParams.get(`${currentParams}arrival_hour_to`)) : 24
   });
-  console.log(value)
+
   const [valueFrom, setValueFrom] = useState({
 
     min: searchParams.get(`${currentParams}departure_hour_from`) ? Number(searchParams.get(`${currentParams}departure_hour_from`)) : 0,
@@ -40,10 +40,8 @@ const DirectTImeContainer = ({src, title} :DirectTImeContainerProps) => {
   useEffect(() => {
     if (value.min !== Number(prevParams[`${currentParams}arrival_hour_from`]) && value.min !== 0) {
       setSearchParams({...prevParams, [`${currentParams}arrival_hour_from`]: `${value.min}`})
-      console.log(`${currentParams}departure_hour_from`)
     }
     if (value.min === 0 && prevParams[`${currentParams}arrival_hour_from`]) {
-      console.log(value)
       delete prevParams[`${currentParams}arrival_hour_from`];
       setSearchParams({...prevParams});
     }

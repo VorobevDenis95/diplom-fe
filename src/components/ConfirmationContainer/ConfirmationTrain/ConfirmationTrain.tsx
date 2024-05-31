@@ -5,7 +5,7 @@ import './ConfirmationTrain.css';
 
 interface ConfirmationTrainProps {
   item: ItemRoutes,
-  onClick: (item: ItemRoutes) => void
+  onClick: (item?: ItemRoutes) => void
 }
 
 const ConfirmationTrain = ({ item, onClick }: ConfirmationTrainProps) => {
