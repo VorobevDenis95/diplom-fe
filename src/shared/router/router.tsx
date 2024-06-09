@@ -10,36 +10,36 @@ import Main from '../../pages/Main/Main';
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/diplom-fe/',
     element: <Root/>,
     children: [
       {
-        path: '/',
+        path: '/diplom-fe/',
         element: 
           <Main />
       },
       {
-        path: '/routes/:from_city_id/:to_city_id/:date_start?/:date_end?/:offset?',
+        path: 'routes/:from_city_id/:to_city_id/:date_start?/:date_end?/:offset?',
         element: <TrainSelection />,
       },
       {
-        path: '/routes/:id/:id2?/seats',
+        path: 'routes/:id/:id2?/seats',
         element: <RailwayCarriage />
       },
       {
-        path: '/passengers',
+        path: 'passengers',
         element: <Passenger />
       },
       {
-        path: '/payment',
+        path: 'payment',
         element: <Payment />
       }, 
       {
-        path: '/confirmation',
+        path: 'confirmation',
         element: <Confirmation />
       },
       {
-        path: '/order',
+        path: 'order',
         element: <SuccesfulOrder />,
       }
     ]
