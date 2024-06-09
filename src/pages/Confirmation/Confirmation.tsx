@@ -96,8 +96,6 @@ const Confirmation = () => {
     navigate('/order');
   }
 
-
-
   return (
     <div className="flex flex-start">
       <AsidePassenger />
