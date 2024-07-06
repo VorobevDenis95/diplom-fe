@@ -29,11 +29,11 @@ const Passenger = () => {
 
   const nextPage = () => {
     if (btnNextPageActive)
-      navigator('/payment');
+      navigator('/diplom-fe/payment');
   }
 
   const handleAddPassenger = () => {
-    item && navigator(`/routes/${item.departure._id}${item.arrival?._id ? `/${item.arrival._id}` : ''}/seats`);
+    item && navigator(`/diplom-fe/routes/${item.departure._id}${item.arrival?._id ? `/${item.arrival._id}` : ''}/seats`);
   }
 
   return (

@@ -52,7 +52,7 @@ interface LastTicketsContainerProps {
 
 interface NextButtonProps{
   active: boolean;
-  clickAction: () => void;
+  clickAction?: () => void;
   title: string;
   type: 'button' | 'submit';
 }

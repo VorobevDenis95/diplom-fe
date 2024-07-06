@@ -62,14 +62,14 @@ const RailwayCarriage = () => {
     dispatch(clearTrain());
     dispatch(clearActiveTypeRailwayCarriage('departure'));
 
-    navigate(`/routes/${cityFrom.id}/${cityTo.id}${dateStart
+    navigate(`/diplom-fe/routes/${cityFrom.id}/${cityTo.id}${dateStart
       ? `/${sendCurrentDateToServer(dateStart)}${dateTo
         ? `/${sendCurrentDateToServer(dateTo)}` : ''}` : ''}`);
   }
 
   const nextPage = () => {
     if (btnActive) {
-      navigate('/passengers')
+      navigate('/diplom-fe/passengers')
     }
 
     return

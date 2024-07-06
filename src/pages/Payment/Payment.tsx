@@ -9,8 +9,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../shared/redux/redux-hooks';
 import { setUserTrain } from '../../shared/redux/slice/trainSlice';
 import AsidePassenger from '../../components/AsideContainer/AsidePassenger';
-// import { maskPhone } from './utils';
-// import {useForm, SubmitHandler} from 'react-hook-form';
 
 export type PaymentMethodType = 'cash' | 'online';
 
@@ -73,7 +71,6 @@ const Payment = () => {
 
   // paymentMethodContainer logic
 
-  // const [checkboxesType, setCheckBoxesType] = useState<PaymentCheckboxType>('Не выбрано');
   const [paymentType, setPaymentType] = useState<PaymentMethodType | null>(null);
 
   const handleChangeRadio = (value: PaymentMethodType) => {
@@ -135,19 +132,10 @@ const Payment = () => {
   }, [paymentType])
 
 
-  // const [nextPageActive, setNextPageActive] = useState(false);
-
-  const handleClickNextPage = () => {
-    // dispatch()
-    // navigator('/');
-
-  }
-
   const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(setUserTrain(data));
-    navigator('/confirmation');
-    // console.log(data)
+    navigator('/diplom-fe/confirmation');
   }
 
   return (
@@ -171,7 +159,6 @@ const Payment = () => {
 
           <NextButton title='Купить биллеты'
             active={true}
-            clickAction={handleClickNextPage}
             type='submit'
           />
         </form>

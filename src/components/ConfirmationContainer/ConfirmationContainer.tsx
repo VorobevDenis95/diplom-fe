@@ -14,7 +14,7 @@ const ConfirmationContainer = ({ list, totalAmount }: ConfirmationContainerProps
   const navigator = useNavigate();
 
   const handleEditBtn = () => {
-    navigator('/passengers');
+    navigator('/diplom-fe/passengers');
   }
 
   return (

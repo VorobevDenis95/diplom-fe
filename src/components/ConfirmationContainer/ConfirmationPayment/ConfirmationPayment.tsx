@@ -8,7 +8,7 @@ const ConfirmationPayment = ({text }: {text: string}) => {
   const navigate = useNavigate();
 
   const handleEditBtn = () => {
-    navigate('/payment');
+    navigate('/diplom-fe/payment');
   }
 
   return (

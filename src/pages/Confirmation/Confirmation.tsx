@@ -58,7 +58,7 @@ const Confirmation = () => {
   const [totalPrice] = useState(tickets.reduce((acc, value) => acc + value.price, 0));
 
   const handleEditBtn = () => {
-    navigate(`/routes/${cityFrom.id}/${cityTo.id}${dateStart
+    navigate(`/diplom-fe/routes/${cityFrom.id}/${cityTo.id}${dateStart
       ? `/${sendCurrentDateToServer(dateStart)}${dateTo
         ? `/${sendCurrentDateToServer(dateTo)}` : ''}` : ''}`);
     
@@ -93,7 +93,7 @@ const Confirmation = () => {
     }
 
     dispatch(setOrder(orderData));
-    navigate('/order');
+    navigate('/diplom-fe/order');
   }
 
   return (

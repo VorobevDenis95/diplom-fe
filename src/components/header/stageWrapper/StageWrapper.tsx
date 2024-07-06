@@ -9,12 +9,13 @@ const StageWrapper = () => {
 
 
   useEffect(() => {
-    if (location.pathname.includes('routes')) setCount(1);
-    if (location.pathname === '/passengers') setCount(2);
-    if (location.pathname === '/payment') setCount(3);
-    if (location.pathname === '/confirmation') setCount(4);
+    if (location.pathname.includes('/diplom-fe/routes')) setCount(1);
+    if (location.pathname === '/diplom-fe/passengers') setCount(2);
+    if (location.pathname === '/diplom-fe/payment') setCount(3);
+    if (location.pathname === '/diplom-fe/confirmation') setCount(4);
   }, [location.pathname])
 
+  console.log(location);
 
   return (
 <ul className="stage-wrapper">

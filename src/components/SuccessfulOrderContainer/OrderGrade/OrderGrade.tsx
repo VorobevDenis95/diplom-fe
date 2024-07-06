@@ -63,7 +63,7 @@ const OrderGrade = () => {
             index={5} clickStar={handleClickStar} />
         </div>
       </div>
-      <button onClick={() => navigate('/')}
+      <button onClick={() => navigate('/diplom-fe')}
        className="order__grade-btn">ВЕРНУТЬСЯ НА ГЛАВНУЮ</button>
     </div>
   )

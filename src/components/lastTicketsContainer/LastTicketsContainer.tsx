@@ -7,7 +7,7 @@ import { LastTicketsContainerProps } from "../../shared/types/components/compone
 const LastTicketsContainer = ({list}: LastTicketsContainerProps) => {
   const navigate = useNavigate()
   const clickLastTicket = (id: string) => {
-    navigate(`/routes/${id}/seats`);
+    navigate(`/diplom-fe/routes/${id}/seats`);
   }
   
   return (
